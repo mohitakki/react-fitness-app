@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
         alignContent:'center',
         alignSelf:'center',
         fontSize:20,
+        fontFamily: 'Gill Sans',
         fontWeight:'bold',
         marginVertical:10,
         color:'white'
@@ -126,7 +127,8 @@ const styles = StyleSheet.create({
         textAlign:'center',
         alignContent:'center',
         alignSelf:'center',
-        fontSize:24,
+        fontSize:20,
+        fontFamily: 'Gill Sans',
         fontWeight:'bold',
         marginVertical:10
     },
@@ -135,7 +137,8 @@ const styles = StyleSheet.create({
         textAlign:'center',
         alignContent:'center',
         alignSelf:'center',
-        fontSize:24,
+        fontSize:20,
+        fontFamily: 'Gill Sans',
         fontWeight:'bold',
         marginVertical:10,
         color:'white'
