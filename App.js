@@ -13,6 +13,11 @@ export default class App extends Component {
       <View style={{flex:1, justifyContent:'center',
       alignItems:'center'}}>
         <Text> App Screen </Text>
+        <Text> App Screen </Text>
+        <Text> App Screen </Text>
+        <Text> App Screen </Text>
+        <Text> App Screen </Text>
+        <Text> App Screen </Text>
         <Button title="Click Here" onPress={()=>alert("Bas Bhai")} />
       </View>
     );
