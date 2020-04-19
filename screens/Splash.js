@@ -17,7 +17,7 @@ export default class Splash extends Component {
 
     this.timeoutHandle = setTimeout(()=>{
          // Add your logic for the transition
-         navigate('Login');
+         navigate('EnterMobile');
         
 
     }, 1000);
