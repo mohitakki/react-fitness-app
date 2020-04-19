@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Button,TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+class Login extends Component {
 
-
-export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
         };
     }
 
+    loginWithMobile(navigation){
+        const {navigate} = this.props.navigation;
+        navigate('EnterMobile')
+        
+    }
+    loginWithFacebook(navigation){
+        // const {navigate} = this.props.navigation;
+        // navigate('EnterMobile')
+        alert("Login with Facebook")
+        
+    }
+    loginWithGoogle(navigation){
+        // const {navigate} = this.props.navigation;
+        // navigate('EnterMobile')
+        alert("Login with Google")
+        
+    }
+
     render() {
+        
         return (
             <>
                 <View style={{ flex: 1 }}>
@@ -30,15 +48,15 @@ export default class Login extends Component {
                                 
                             </View>
                               <View style={{justifyContent:'space-between',flexDirection:'row',marginTop:20}}>
-                              <TouchableOpacity style={styles.btnFacebook }>
+                              <TouchableOpacity style={styles.btnFacebook } onPress={()=>this.loginWithFacebook()}>
                                     <Text style={styles.textFacebook}>Facebook</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={styles.btnGoogle}>
+                                <TouchableOpacity style={styles.btnGoogle} onPress={()=>this.loginWithGoogle()}>
                                     <Text style={styles.textGoogle}>Google</Text>
                                 </TouchableOpacity>
                               </View>
                               <View>
-                              <TouchableOpacity style={styles.btnPhone}>
+                              <TouchableOpacity style={styles.btnPhone} onPress={()=>this.loginWithMobile()}>
                                     <Text style={styles.textPhone}>Login with mobile</Text>
                                 </TouchableOpacity>
                               </View>
@@ -55,6 +73,9 @@ export default class Login extends Component {
         );
     }
 }
+
+export default Login;
+
 const styles = StyleSheet.create({
     linearGradient: {
         flex: 1,

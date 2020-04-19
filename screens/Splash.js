@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Login from './Login';
+
+
 
 export default class Splash extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+  constructor(){
+    super()
+    this.state= ''
   }
+
+  componentDidMount(){
+    // Start counting when the page is loaded
+    const {navigate} = this.props.navigation;
+
+    this.timeoutHandle = setTimeout(()=>{
+         // Add your logic for the transition
+         navigate('Login');
+        
+
+    }, 1000);
+    
+}
+
+
 
   render() {
     return (
