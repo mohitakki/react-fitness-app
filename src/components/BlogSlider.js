@@ -3,10 +3,10 @@ import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import CardSilder from 'react-native-cards-slider';
 
 export default class BlogSlider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  // }
 
   render() {
     let posts = [

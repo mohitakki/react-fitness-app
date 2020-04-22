@@ -7,5 +7,24 @@ import Splash from './Splash';
 import Profile from './Profile';
 import Blog from './Blog';
 import ViewShop from './ViewShop';
-import FitCoach from './FitCoach'
-export {EnterMobile, EnterOTP, Home, Login, Signup, Splash, Profile, Blog,ViewShop,FitCoach};
+import FitCoach from './FitCoach';
+import Shop from './Shop';
+import Help from './Help';
+import Location from './Location';
+import Onboarding from './Onboarding'
+export {
+  EnterMobile,
+  EnterOTP,
+  Home,
+  Login,
+  Signup,
+  Splash,
+  Profile,
+  Blog,
+  ViewShop,
+  FitCoach,
+  Shop,
+  Help,
+  Location,
+  Onboarding
+};

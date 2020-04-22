@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import CardSilder from 'react-native-cards-slider';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -15,6 +21,8 @@ export default class Home extends Component {
   render() {
     return (
       <>
+        {/* <StatusBar backgroundColor="blue" /> */}
+
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}
           style={{flex: 1}}>
@@ -87,6 +95,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 50,
     borderWidth: 0.5,
+    
   },
   _basicCard: {
     marginTop: 20,
@@ -120,15 +129,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Gill Sans',
+
   },
   _product_card: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    fontFamily: 'Gill Sans',
+
   },
   _blog_slider: {
     marginBottom: 10,
+    fontFamily: 'Gill Sans',
+
   },
   _viewBtn: {
     height: 20,
@@ -138,5 +153,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderColor: 'white',
     fontSize: 20,
+    fontFamily: 'Gill Sans',
+
   },
 });
