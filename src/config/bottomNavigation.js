@@ -6,6 +6,7 @@ import {TabBar} from 'react-native-animated-nav-tab-bar';
 
 const Tabs = createBottomTabNavigator();
 
+
 export default () => (
   <Tabs.Navigator
     tabBarOptions={{

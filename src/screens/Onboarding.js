@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, ImageBackground, StyleSheet, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LinearGradient from 'react-native-linear-gradient';
-import Home from './Home';
+import {Home} from '../screens';
 const slides = [
   {
     key: 1,
@@ -67,6 +67,7 @@ export default class Onboarding extends React.Component {
   };
   render() {
     if (this.state.showRealApp) {
+      this.props.navigation.navigate('bottombar');
       return <Home />;
     } else {
       return (

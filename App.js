@@ -93,17 +93,17 @@ export default function HomeStackScreen() {
     <NavigationContainer>
       <HomeStack.Navigator>
         <HomeStack.Screen
-          name="onboarding"
+          name="onboading"
           component={Onboarding}
           options={{
             headerShown: false,
           }}
         />
-
         <HomeStack.Screen
           name="bottombar"
           component={BottomNavigation}
           options={{
+            // headerShown: false,
             headerTitle: '',
             headerStyle: {
               backgroundColor: '#F26E38',
@@ -111,13 +111,6 @@ export default function HomeStackScreen() {
             // headerTitle: props => <LogoImage {...props} />,
             headerRight: props => <LogoImage {...props} />,
             headerLeft: props => <HeaderLeft {...props} />,
-            // headerLeft: () => (
-            //   <Button
-            //     onPress={() => alert('This is a button!')}
-            //     title="Info"
-            //     color="#fff"
-            // />
-            //),
           }}
         />
         <HomeStack.Screen
@@ -125,15 +118,13 @@ export default function HomeStackScreen() {
           component={Login}
           options={{
             headerShown: false,
-            headerRight: 'Image',
           }}
         />
         <HomeStack.Screen
           name="Profile"
           component={Profile}
           options={{
-            headerShown: false,
-            headerRight: 'Image',
+            headerShown: true,
           }}
         />
         <HomeStack.Screen
@@ -163,7 +154,7 @@ export default function HomeStackScreen() {
           name="home"
           component={Home}
           options={{
-            headerShown: false,
+            headerShown: true,
           }}
         />
 
@@ -171,7 +162,7 @@ export default function HomeStackScreen() {
           name="location"
           component={Location}
           options={{
-            headerShown: true,
+            headerShown: false,
           }}
         />
 

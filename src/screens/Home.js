@@ -18,6 +18,10 @@ export default class Home extends Component {
     this.state = {};
   }
 
+  static navigationOptions = {
+    title: 'Details',
+  };
+
   render() {
     return (
       <>
@@ -26,6 +30,7 @@ export default class Home extends Component {
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}
           style={{flex: 1}}>
+          
           <ScrollView>
             {/* near by GYMS */}
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
@@ -95,7 +100,6 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 50,
     borderWidth: 0.5,
-    
   },
   _basicCard: {
     marginTop: 20,
@@ -130,7 +134,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Gill Sans',
-
   },
   _product_card: {
     flex: 1,
@@ -138,12 +141,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     fontFamily: 'Gill Sans',
-
   },
   _blog_slider: {
     marginBottom: 10,
     fontFamily: 'Gill Sans',
-
   },
   _viewBtn: {
     height: 20,
@@ -154,6 +155,5 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     fontSize: 20,
     fontFamily: 'Gill Sans',
-
   },
 });
