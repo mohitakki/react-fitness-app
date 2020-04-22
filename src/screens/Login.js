@@ -17,7 +17,7 @@ class Login extends Component {
 
   loginWithMobile(navigation) {
     const {navigate} = this.props.navigation;
-    navigate('EnterMobile');
+    navigate('bottombar');
   }
   loginWithFacebook(navigation) {
     // const {navigate} = this.props.navigation;
@@ -35,13 +35,13 @@ class Login extends Component {
       <>
         <View style={{flex: 1}}>
           <LinearGradient
-            colors={['#05afd1', '#090979']}
+            colors={[ '#090979','#05afd1',]}
             style={styles.linearGradient}>
             <View style={styles.logoContainer}>
               <Image
                 source={require('./../assests/logo.png')}
                 resizeMode="contain"
-                style={{width: 300, height: 300}}
+                style={{width: 250, height: 250}}
               />
             </View>
 
@@ -105,15 +105,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   logoContainer: {
-    flex: 2,
+    flex: 4,
     height: 600,
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:100
   },
   loginPart: {
     flex: 2,
-    marginTop: 120,
+   
   },
   btnFacebook: {
     backgroundColor: '#0a42ca',
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
   },
   btnPhone: {
-    backgroundColor: '#e35e2c',
+    backgroundColor: '#f23535',
     marginTop: 20,
     height: 50,
     borderRadius: 25,

@@ -51,7 +51,7 @@ export default class EnterMobile extends Component {
             }
           }}
         >
-          <MobileDiologBox />
+          <MobileDiologBox props={this.props.navigation} />
         </RBSheet>
           </View>
           </LinearGradient>

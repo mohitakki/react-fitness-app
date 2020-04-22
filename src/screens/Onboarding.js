@@ -3,13 +3,14 @@ import {View, Text, ImageBackground, StyleSheet, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LinearGradient from 'react-native-linear-gradient';
 import {Home} from '../screens';
+import Login from './Login';
 const slides = [
   {
     key: 1,
     title: 'Title 1',
     text: 'Description',
     image: require('../assests/logo.png'),
-    backgroundColor: '#f89e20',
+    backgroundColor: '#f23535',
   },
   {
     key: 2,
@@ -67,8 +68,8 @@ export default class Onboarding extends React.Component {
   };
   render() {
     if (this.state.showRealApp) {
-      this.props.navigation.navigate('bottombar');
-      return <Home />;
+      this.props.navigation.navigate('Login');
+      return <Login />;
     } else {
       return (
         <AppIntroSlider
@@ -104,5 +105,6 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     marginBottom: 40,
+    resizeMode:'contain'
   },
 });

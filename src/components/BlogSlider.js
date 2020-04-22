@@ -43,7 +43,7 @@ export default class BlogSlider extends Component {
           {posts.map((val, i) => {
             return (
               <View style={styles._postStyle} key={i}>
-                <ImageBackground
+                <ImageBackground imageStyle={{ borderRadius: 10}}
                   style={styles._backgroundImg}
                   source={{uri: val.uri}}>
                   <View style={styles._description}>
@@ -62,13 +62,21 @@ export default class BlogSlider extends Component {
 let styles = StyleSheet.create({
   _postStyle: {
     height: 130,
-    borderRadius: 10,
+    borderRadius: 5,
     borderColor: 'white',
+    borderWidth:3
   },
   _backgroundImg: {
     flex: 1,
     resizeMode: 'cover',
-    borderRadius: 10,
+    shadowColor: "#f23535",
+    shadowOffset: {
+      width: 0.5,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 15,
   },
   _description: {
     borderWidth: 2,

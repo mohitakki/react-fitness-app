@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ImageBackground,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet,Image, ImageBackground,TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class BasicCard extends React.Component {
@@ -8,13 +8,13 @@ export default class BasicCard extends React.Component {
       <TouchableOpacity style={styles._Card} onPress={()=>alert()} activeOpacity={0.9} onPress={()=>this.props.props.navigate("FITCOACH")}>
         <LinearGradient
           colors={['#4190ea', '#4190ea', '#6c4f93']}
-          style={{flex: 1}}>
-          <ImageBackground
+          style={{flex: 1,borderRadius:6}}>
+        <Image
             source={{
               uri:
                 'https://i.pinimg.com/originals/79/60/26/796026dd0490f87f5a18ffe365c01b0d.jpg',
-            }}
-            style={styles._image}>
+            }} 
+            style={styles._image}/>
             <View style={styles._basicCard}>
               <Text style={styles._title}>FITCOACH</Text>
               <Text style={styles._title_btn}>FP BASIC</Text>
@@ -25,7 +25,7 @@ export default class BasicCard extends React.Component {
                 Revolutionary AI enable training plan that evoive and edopt to your needst
               </Text>
               </View>
-          </ImageBackground>
+         
         </LinearGradient>
       </TouchableOpacity>
     );
@@ -35,18 +35,27 @@ export default class BasicCard extends React.Component {
 let styles = StyleSheet.create({
   _Card: {
     height: 200,
-    width: '45%',
-    borderWidth: 0.8,
-    borderColor: 'black',
-    borderRadius: 10,
+    width: '44%',
+    shadowColor: "#f23535",
+    shadowOffset: {
+      width: 0.5,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 3.84,
+    elevation: 15,
+    
   },
   _image: {
-    flex: 1,
+   flex:3,
     resizeMode: 'cover',
     // justifyContent: 'center',
-    opacity: 0.6,
+    opacity: 0.7,
+    width: 200,
+    height: 100,
   },
   _basicCard: {
+    flex:1,
     justifyContent: 'space-evenly',
     flexDirection: 'row',
     alignItems: 'center',

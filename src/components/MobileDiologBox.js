@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 
-export default class MobileDiologBox extends Component {
+
+ class MobileDiologBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,10 +15,9 @@ export default class MobileDiologBox extends Component {
   }
 
   proceed=()=>{
-      alert('You will be proceeded to next Screen')
-      const {navigate} = this.props.navigation;
-      navigate('EnterOTP')
-      return false;
+    const {navigate} = this.props.navigation;
+    navigate('Home')
+      
   }
 
   render() {
@@ -37,7 +37,7 @@ export default class MobileDiologBox extends Component {
         <TouchableOpacity style={styles.btnEdit } onPress={()=>this.edit()}>
               <Text style={styles.textEdit}>EDIT</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnProceed} onPress={()=>this.navigation.navigate('EnterOTP')}>
+          <TouchableOpacity style={styles.btnProceed} onPress={()=>this.proceed() }>
               <Text style={styles.textProceed}>PROCEED</Text>
           </TouchableOpacity>
         </View>
@@ -46,6 +46,7 @@ export default class MobileDiologBox extends Component {
     );
   }
 }
+export default MobileDiologBox;
 
 const styles = StyleSheet.create({
     textPhone:{

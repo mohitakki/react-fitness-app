@@ -29,14 +29,22 @@ export default class ProdcutCard extends React.Component {
 let styles = StyleSheet.create({
   shopingCard: {
     height: 150,
-    width: '90%',
     borderRadius: 5,
-    borderWidth: 1,
     backgroundColor: 'white',
     // flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal:15,
+    shadowColor: "#f23535",
+    shadowOffset: {
+      width: 0.5,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 15,
+    
   },
   _image: {
     // flex: 1,
