@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, BackHandler } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-import CodeInput from 'react-native-confirmation-code-input';
+import RBSheet from "react-native-raw-bottom-sheet";
+import MobileDiologBox from '../components/MobileDiologBox';
 
-
-export default class EnterOTP extends Component {
+export default class EnterMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,71 +18,60 @@ export default class EnterOTP extends Component {
       navigate('EnterOTP')
       return false;
   }
-  proceedToHome(){
-    alert('OTP is Verified');
-      const {navigate} = this.props.navigation;
-      navigate('Home')
-      return false;
-  }
 
   render() {
     return (
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
-        <LinearGradient colors={['#EA0706', '#059FF4',]} style={styles.linearGradient}>
-       <View  style={styles.otp}>
+        <LinearGradient colors={['#F26E38', '#F23873', '#48CCF7']} style={styles.linearGradient}>
+        <View style={{flex:1, alignContent:'center',justifyContent:'center', marginBottom:100,
+       
+        alignItems:'center',
+        }}>
            
-     <Text style={styles.buttonText}>
-      Enter OTP
+      <Text style={styles.buttonText}>
+      Enter your mobile number to get an OTP.
         
       </Text>
       
-      {/*  <TextInput placeholder="Enter OTP" placeholderTextColor="white" style={styles.inputText}/>    */}
-    
-      <TouchableOpacity style={{top:100}}>
-      <Text>Resend code?</Text>
+      <TextInput placeholder="Enter mobile number" placeholderTextColor="white" style={styles.inputText}/>    
+    <TouchableOpacity style={styles.sentButon} onPress={()=>this.RBSheet.open()}>
+        <Text style={styles.sentText}>Send OTP</Text>
     </TouchableOpacity>
-    
-    <CodeInput 
-      ref="codeInputRef2"
-      keyboardType="numeric"
-      containerStyle={styles.codeInput}
-      codeLength={5}
-      className='border-circle'
-      compareWithCode='12345'
-      autoFocus={true}
-      codeInputStyle={{ fontWeight: '800' }}
-      onFulfill={(isValid, code) => this.proceedToHome()}
-    />
-    
-    </View> 
-  </LinearGradient>
+
+    <RBSheet
+          ref={ref => {
+            this.RBSheet = ref;
+          }}
+          height={250}
+          duration={250}
+          customStyles={{
+            container: {
+              justifyContent: "center",
+              alignItems: "center"
+            }
+          }}
+        >
+          <MobileDiologBox />
+        </RBSheet>
+          </View>
+          </LinearGradient>
           </KeyboardAvoidingView>
     );
   }
 }
 const styles = StyleSheet.create({
     linearGradient:{
-     flex:1
-      
+      flex:1,
+      paddingLeft: 15,
+      paddingRight: 15,
+      borderRadius: 5
     },
-    codeInput:{
-marginTop:10,
-marginBottom:100,
-paddingBottom:100
-    },
-    otp:{
-marginTop:100
-    },
-        buttonText: {
+    buttonText: {
       fontSize: 20,
-      justifyContent:'center',
       fontFamily: 'Gill Sans',
       margin: 10,
       color: '#ffffff',
       backgroundColor: 'transparent',
-      alignContent:'center',
-      alignItems:'center',
-      alignSelf:'center',
     },
     inputText:{
         marginTop:10,
@@ -126,11 +115,6 @@ sentText:{
     fontWeight:'700',
     color:'#F23873',
 
-},
-resendOTP:{
-  color:'white',
-  marginTop:5,
-  
 }
 })
   
