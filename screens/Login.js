@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, Button,TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-class Login extends Component {
+export default class Login extends Component {
 
     constructor(props) {
         super(props);
@@ -10,9 +10,8 @@ class Login extends Component {
         };
     }
 
-    loginWithMobile(navigation){
-        const {navigate} = this.props.navigation;
-        navigate('EnterMobile')
+    loginWithMobile({navigation}){
+        navigation.navigate('Splash')
         
     }
     loginWithFacebook(navigation){
@@ -29,11 +28,12 @@ class Login extends Component {
     }
 
     render() {
+        const {navigate} = this.props.navigation;
         
         return (
             <>
                 <View style={{ flex: 1 }}>
-                    <LinearGradient colors={['#05afd1', '#090979',]} style={styles.linearGradient}>
+                    <LinearGradient colors={['#EA0706', '#059FF4',]} style={styles.linearGradient}>
 
                         <View style={styles.logoContainer}>
                             <Image source={require('../src/logo.png')} resizeMode="contain" style={{ width: 300, height: 300 }} />
@@ -56,7 +56,7 @@ class Login extends Component {
                                 </TouchableOpacity>
                               </View>
                               <View>
-                              <TouchableOpacity style={styles.btnPhone} onPress={()=>this.loginWithMobile()}>
+                              <TouchableOpacity style={styles.btnPhone}  onPress={() => navigate('EnterMobile')}>
                                     <Text style={styles.textPhone}>Login with mobile</Text>
                                 </TouchableOpacity>
                               </View>
@@ -74,7 +74,6 @@ class Login extends Component {
     }
 }
 
-export default Login;
 
 const styles = StyleSheet.create({
     linearGradient: {
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
 
     },
     btnFacebook:{
-        backgroundColor:'#0a42ca',
+        backgroundColor:'#059FF4',
         width:180,
         height:50,
         borderRadius:25,
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
 
     },
     btnPhone:{
-        backgroundColor:'#e35e2c',
+        backgroundColor:'#EA0706',
         marginTop:20,
         height:50,
         borderRadius:25

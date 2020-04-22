@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, BackHandler } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import CodeInput from 'react-native-confirmation-code-input';
+
 
 export default class EnterOTP extends Component {
   constructor(props) {
@@ -16,48 +18,71 @@ export default class EnterOTP extends Component {
       navigate('EnterOTP')
       return false;
   }
+  proceedToHome(){
+    alert('OTP is Verified');
+      const {navigate} = this.props.navigation;
+      navigate('Home')
+      return false;
+  }
 
   render() {
     return (
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
-        <LinearGradient colors={['#F26E38', '#F23873', '#48CCF7']} style={styles.linearGradient}>
-        <View style={{flex:1, alignContent:'center',justifyContent:'center', marginBottom:100,
-       
-        alignItems:'center',
-        }}>
+        <LinearGradient colors={['#EA0706', '#059FF4',]} style={styles.linearGradient}>
+       <View  style={styles.otp}>
            
-      <Text style={styles.buttonText}>
+     <Text style={styles.buttonText}>
       Enter OTP
         
       </Text>
       
-      <TextInput placeholder="Enter OTP" placeholderTextColor="white" style={styles.inputText}/>    
-    <TouchableOpacity style={styles.sentButon} onPress={()=>this.sendOTP()}>
-        <Text style={styles.sentText}>Submit</Text>
+      {/*  <TextInput placeholder="Enter OTP" placeholderTextColor="white" style={styles.inputText}/>    */}
+    
+      <TouchableOpacity style={{top:100}}>
+      <Text>Resend code?</Text>
     </TouchableOpacity>
-    <TouchableOpacity  onPress={()=>this.sendOTP()}>
-        <Text style={styles.resendOTP}>Don't receive OTP? Click to Resend</Text>
-    </TouchableOpacity>
-
-          </View>
-          </LinearGradient>
+    
+    <CodeInput 
+      ref="codeInputRef2"
+      keyboardType="numeric"
+      containerStyle={styles.codeInput}
+      codeLength={5}
+      className='border-circle'
+      compareWithCode='12345'
+      autoFocus={true}
+      codeInputStyle={{ fontWeight: '800' }}
+      onFulfill={(isValid, code) => this.proceedToHome()}
+    />
+    
+    </View> 
+  </LinearGradient>
           </KeyboardAvoidingView>
     );
   }
 }
 const styles = StyleSheet.create({
     linearGradient:{
-      flex:1,
-      paddingLeft: 15,
-      paddingRight: 15,
-      borderRadius: 5
+     flex:1
+      
     },
-    buttonText: {
+    codeInput:{
+marginTop:10,
+marginBottom:100,
+paddingBottom:100
+    },
+    otp:{
+marginTop:100
+    },
+        buttonText: {
       fontSize: 20,
+      justifyContent:'center',
       fontFamily: 'Gill Sans',
       margin: 10,
       color: '#ffffff',
       backgroundColor: 'transparent',
+      alignContent:'center',
+      alignItems:'center',
+      alignSelf:'center',
     },
     inputText:{
         marginTop:10,

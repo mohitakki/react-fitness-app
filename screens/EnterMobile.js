@@ -18,11 +18,24 @@ export default class EnterMobile extends Component {
       navigate('EnterOTP')
       return false;
   }
+  edit=()=>{
+    alert('Here, you can edit your mobile number')
+}
+
+proceed=()=>{
+    alert('You will be proceeded to next Screen')
+    const {navigate} = this.props.navigation;
+    navigate('EnterOTP')
+    this.RBSheet.close()
+ 
+    return false;
+
+}
 
   render() {
     return (
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{flex:1}}>
-        <LinearGradient colors={['#F26E38', '#F23873', '#48CCF7']} style={styles.linearGradient}>
+        <LinearGradient colors={['#EA0706', '#059FF4',]} style={styles.linearGradient}>
         <View style={{flex:1, alignContent:'center',justifyContent:'center', marginBottom:100,
        
         alignItems:'center',
@@ -51,7 +64,26 @@ export default class EnterMobile extends Component {
             }
           }}
         >
-          <MobileDiologBox />
+          <View style={{flex:1, marginTop:60}}>
+        <Text style={styles.textPhone}>+91 9876543210</Text>
+        <Text style={{
+            textAlign:'center',
+            color:'#979595',
+            marginTop:10
+            }}>Are you sure, you want to send OTP?</Text>
+        <View style={{
+            flexDirection:'row',
+            marginTop:30,
+            justifyContent:'space-around'}}>
+        
+        <TouchableOpacity style={styles.btnEdit } onPress={()=>this.edit()}>
+              <Text style={styles.textEdit}>EDIT</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btnProceed} onPress={()=>this.proceed()}>
+              <Text style={styles.textProceed}>PROCEED</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
         </RBSheet>
           </View>
           </LinearGradient>
@@ -115,6 +147,61 @@ sentText:{
     fontWeight:'700',
     color:'#F23873',
 
-}
+},
+textPhone:{
+  textAlign:'center',
+  fontSize:30,
+  fontWeight:'600',
+  color:'black'
+
+ },
+
+ btnEdit:{
+     backgroundColor:'#9B9899',
+     width:150,
+     marginHorizontal:10,
+     height:45,
+     borderRadius:5,
+     borderColor:'#f1f1f1',
+     borderWidth:.5,
+
+
+ },
+
+ btnProceed:{
+     backgroundColor:'#EA0706',
+     width:150,
+     height:45,
+     borderRadius:5,
+     marginHorizontal:10,
+     borderColor:'#f1f1f1',
+     borderWidth:.5,
+
+
+ },
+
+ textEdit:{
+     justifyContent:'center',
+     textAlign:'center',
+     alignContent:'center',
+     alignSelf:'center',
+     fontSize:20,
+     fontFamily: 'Gill Sans',
+     fontWeight:'bold',
+     marginVertical:10,
+     color:'white'
+ },
+
+ textProceed:{
+     justifyContent:'center',
+     textAlign:'center',
+     alignContent:'center',
+     alignSelf:'center',
+     fontSize:20,
+     fontFamily: 'Gill Sans',
+     fontWeight:'bold',
+     marginVertical:10,
+     color:'white'
+ },
 })
   

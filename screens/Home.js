@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Slider from '../components/Slider'
-import CardSilder from 'react-native-cards-slider';
 import { ScrollView } from 'react-native-gesture-handler';
+import LocationSlider from '../components/LocationSlider';
+import ShopItem from '../components/ShopItem';
+
 import Login from './Login';
-
-
-
-
 
 
 
 export default class Home extends Component {
   constructor(props) {
-    super(props);
+    super(props);const Tab = createBottomTabNavigator();
+
     this.state = {
     };
   }
@@ -23,14 +23,19 @@ export default class Home extends Component {
   render() {
     return (
       <>
+       
 
-        <LinearGradient colors={['#F26E38', '#F23873', '#48CCF7']} style={{ flex: 1 }}>
+        <LinearGradient colors={['#EA0706', '#059FF4', ]} style={{ flex: 1 }}>
           <ScrollView>
 
             <Slider />
+            <LocationSlider />
+            <ShopItem />
           </ScrollView>
           
         </LinearGradient>
+
+     
 
 
 

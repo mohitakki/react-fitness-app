@@ -17,7 +17,7 @@ export default class Splash extends Component {
 
     this.timeoutHandle = setTimeout(()=>{
          // Add your logic for the transition
-         navigate('EnterMobile');
+         navigate('Login');
         
 
     }, 1000);
@@ -29,7 +29,7 @@ export default class Splash extends Component {
   render() {
     return (
         <>
-            <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+            <LinearGradient colors={['#EA0706', '#059FF4',]} style={styles.linearGradient}>
         <View style={{flex:1, justifyContent:'center',
           alignItems:'center'}}>
            

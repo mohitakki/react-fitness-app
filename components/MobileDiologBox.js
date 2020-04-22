@@ -9,39 +9,11 @@ export default class MobileDiologBox extends Component {
     };
   }
 
-  edit=()=>{
-      alert('Here, you can edit your mobile number')
-  }
-
-  proceed=()=>{
-      alert('You will be proceeded to next Screen')
-      const {navigate} = this.props.navigation;
-      navigate('EnterOTP')
-      return false;
-  }
+ 
 
   render() {
     return (
-        <View style={{flex:1, marginTop:60}}>
-        <Text style={styles.textPhone}>+91 9876543210</Text>
-        <Text style={{
-            textAlign:'center',
-            color:'#979595',
-            marginTop:10
-            }}>Are you sure, you want to send OTP?</Text>
-        <View style={{
-            flexDirection:'row',
-            marginTop:30,
-            justifyContent:'space-around'}}>
-        
-        <TouchableOpacity style={styles.btnEdit } onPress={()=>this.edit()}>
-              <Text style={styles.textEdit}>EDIT</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btnProceed} onPress={()=>this.navigation.navigate('EnterOTP')}>
-              <Text style={styles.textProceed}>PROCEED</Text>
-          </TouchableOpacity>
-        </View>
-        </View>
+        <></>
      
     );
   }

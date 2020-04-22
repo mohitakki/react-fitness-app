@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, Image } from 'react-native';
+import { Button, Text, View, Image, Slider } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,6 +10,7 @@ import Home from './screens/Home'
 import EnterMobile from './screens/EnterMobile'
 import EnterOTP from './screens/EnterOTP'
 import Profile from './screens/Profile'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 
 
@@ -58,18 +59,20 @@ function HeaderLeft(){
   )
 }
 
-export default function HomeStackScreen() {
+ export default function HomeStackScreen() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-     
+      <HomeStack.Screen name="Splash" component={Splash}
+          options={{
+          headerShown:false
 
-
-        <HomeStack.Screen name="Home" component={Home}
+          }} />
+      <HomeStack.Screen name="Home" component={Home}
           options={{
             headerTitle:'',
             headerStyle: {
-              backgroundColor: '#F26E38',
+              backgroundColor: '#EA0706',
             },
             // headerTitle: props => <LogoImage {...props} />,
             headerRight: props => <LogoImage {...props}  />,
@@ -82,6 +85,10 @@ export default function HomeStackScreen() {
             // />
             //),
           }} />
+     
+      
+
+        
 
         <HomeStack.Screen name="Login" component={Login}
           options={{
@@ -101,11 +108,7 @@ export default function HomeStackScreen() {
             headerShown: false
 
           }} />
-        <HomeStack.Screen name="Splash" component={Splash}
-          options={{
-
-
-          }} />
+        
         <HomeStack.Screen name="EnterMobile" component={EnterMobile}
           options={{
             headerShown: false
@@ -113,7 +116,12 @@ export default function HomeStackScreen() {
           }} />
         <HomeStack.Screen name="EnterOTP" component={EnterOTP}
           options={{
-            headerShown: false
+            headerTintColor:'white',
+            headerStyle: {
+              backgroundColor: '#EA0706',
+              color:'white',
+              }
+            
 
           }} />
 
@@ -122,6 +130,21 @@ export default function HomeStackScreen() {
     </NavigationContainer>
   );
 }
+// const Tab = createMaterialBottomTabNavigator();
+
+// function MyTabs() {
+//   return (
+//    <NavigationContainer>
+//       <Tab.Navigator>
+//       <Tab.Screen name="Splash" component={Splash} />
+//       <Tab.Screen name="Profile" component={Profile} />
+//       <Tab.Screen name="Home" component={Home} />
+//       <Tab.Screen name="Slider" component={Slider} />
+//     </Tab.Navigator>
+//    </NavigationContainer>
+//   );
+// }
+// export default MyTabs;
 
 
 
