@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
 export default class Header extends React.Component {
   render() {
     return (
+        <>
+        <StatusBar backgroundColor="#EA0706" />
       <View style={styles._header}>
         <View style={styles._leftSide}>
           <View style={{marginLeft: 20}}>
@@ -12,15 +14,19 @@ export default class Header extends React.Component {
                 color: 'white',
                 fontWeight: 'bold',
                 fontFamily: 'Gill Sans',
-              }}>
+              }}
+              onPress={() => this.props.navigation.navigate('location')}>
               Shalimar Garden
             </Text>
             <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
               Ghaziabad
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('location')}>
+          <View>
+
+              {this.props.icon ?
+              this.props.icon:
+            
             <Image
               style={{
                 width: 30,
@@ -33,9 +39,11 @@ export default class Header extends React.Component {
               }}
               source={require('./../assests/logo.png')}
             />
-          </TouchableOpacity>
+  }
+          </View>
         </View>
       </View>
+      </>
     );
   }
 }
