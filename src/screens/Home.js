@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import CardSilder from 'react-native-cards-slider';
 import {ScrollView} from 'react-native-gesture-handler';
 import Login from './Login';
-import {Slider, BasicCard, ProductCard, BlogSlider} from './../components';
+import {Slider, BasicCard, ProductCard, BlogSlider,Header} from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 export default class Home extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class Home extends Component {
     return (
       <>
         {/* <StatusBar backgroundColor="blue" /> */}
-
+      <Header navigation={this.props.navigation} />
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}
           style={{flex: 1}}>
