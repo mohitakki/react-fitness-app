@@ -8,7 +8,7 @@ export default class BasicCard extends React.Component {
       <TouchableOpacity style={styles._Card} onPress={()=>alert()} activeOpacity={0.9} onPress={()=>this.props.props.navigate("FITCOACH")}>
         <LinearGradient
           colors={['#4190ea', '#4190ea', '#6c4f93']}
-          style={{flex: 1,borderRadius:6}}>
+          style={{flex: 1,borderRadius:6,paddingBottom:10}}>
         <Image
             source={{
               uri:
@@ -48,11 +48,12 @@ let styles = StyleSheet.create({
   },
   _image: {
    flex:3,
-    resizeMode: 'cover',
+    // resizeMode: 'cover',
     // justifyContent: 'center',
     opacity: 0.7,
-    width: 200,
-    height: 100,
+    height: 130,
+    borderTopRightRadius:5,
+    borderTopLeftRadius:5
   },
   _basicCard: {
     flex:1,
@@ -93,6 +94,7 @@ let styles = StyleSheet.create({
   },
   _description:{
     color:"white",
-    paddingTop:20
+    paddingTop:2,
+    paddingBottom:5
   }
 });

@@ -17,7 +17,7 @@ class Login extends Component {
 
   loginWithMobile(navigation) {
     const {navigate} = this.props.navigation;
-    navigate('bottombar');
+    navigate('EnterMobile');
   }
   loginWithFacebook(navigation) {
     // const {navigate} = this.props.navigation;

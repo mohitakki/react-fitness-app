@@ -18,7 +18,7 @@ export default class EnterOTP extends Component {
   sendOTP() {
     alert('OTP is sent to you mobile number');
     const {navigate} = this.props.navigation;
-    navigate('EnterOTP');
+    navigate('bottombar');
     return false;
   }
 
