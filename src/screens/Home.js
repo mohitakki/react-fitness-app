@@ -8,7 +8,13 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Slider, BasicCard, ProductCard, BlogSlider,Header} from './../components';
+import {
+  Slider,
+  BasicCard,
+  ProductCard,
+  BlogSlider,
+  Header,
+} from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 export default class Home extends Component {
   constructor(props) {
@@ -16,19 +22,14 @@ export default class Home extends Component {
     this.state = {};
   }
 
- 
-
   render() {
     return (
       <>
         {/* <StatusBar backgroundColor="blue" /> */}
-      <Header navigation={this.props.navigation} />
-        <LinearGradient
-          colors={['#f23535', '#48CCF7']}
-          style={{flex: 1}}>
-          
-          <ScrollView>
+        <LinearGradient colors={['#f23535', '#48CCF7']} style={{flex: 1}}>
             {/* near by GYMS */}
+            <Header navigation={this.props.navigation} />
+          <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
             <Slider />
             <View style={styles._basicCard}>
