@@ -12,7 +12,7 @@ import Shop from './Shop';
 import Help from './Help';
 import Location from './Location';
 import Onboarding from './Onboarding'
-
+import GymsList from './GymsList'
 export {
   EnterMobile,
   EnterOTP,
@@ -27,5 +27,6 @@ export {
   Shop,
   Help,
   Location,
-  Onboarding
+  Onboarding,
+  GymsList
 };

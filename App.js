@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  Text,
-  View,
-  Image,
-} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import BottomNavigation from './src/config/bottomNavigation';
@@ -20,24 +16,25 @@ import {
   FitCoach,
   Location,
   Onboarding,
+  GymsList,
 } from './src/screens';
 
 const HomeStack = createStackNavigator();
 function LogoImage() {
   return (
-
-    <View style={{
-      shadowColor: "#c1c1c1",
-      shadowOffset: {
-        width: .2,
-        height: .2,
-      },
-      shadowOpacity: .45,
-      shadowRadius: .84,
-      marginHorizontal:20,
-      marginVertical:20,
-      elevation: 5,
-    }}>
+    <View
+      style={{
+        shadowColor: '#c1c1c1',
+        shadowOffset: {
+          width: 0.2,
+          height: 0.2,
+        },
+        shadowOpacity: 0.45,
+        shadowRadius: 0.84,
+        marginHorizontal: 20,
+        marginVertical: 20,
+        elevation: 5,
+      }}>
       <Image
         style={{
           width: 30,
@@ -47,45 +44,52 @@ function LogoImage() {
           borderWidth: 1,
           resizeMode: 'contain',
           backgroundColor: '#000',
-        
         }}
         source={require('./src/assests/logo.png')}
-        
       />
     </View>
-
   );
 }
-function HeaderLeft(){
-  return(
-    <View style={{marginLeft:20}}>
-      <Text style={{fontSize:16,color:'white',fontWeight:'bold',fontFamily: 'Gill Sans',}}>Shalimar Garden</Text>
-      <Text style={{color:'white',fontFamily: 'Gill Sans',}}>Ghaziabad</Text>
-    </View>
+function HeaderLeft() {
+  // const {navigate} = this.props.navigation;
 
-  )
+  return (
+    <View style={{marginLeft: 20}}>
+      <Text
+        style={{
+          fontSize: 16,
+          color: 'white',
+          fontWeight: 'bold',
+          fontFamily: 'Gill Sans',
+          
+        }}>
+        Shalimar Garden
+      </Text>
+      <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>Ghaziabad</Text>
+    </View>
+  );
 }
 
 export default function HomeStackScreen() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-      <HomeStack.Screen
+        <HomeStack.Screen
           name="onboading"
           component={Onboarding}
           options={{
             headerShown: false,
           }}
         />
-      <HomeStack.Screen
+        <HomeStack.Screen
           name="EnterMobile"
           component={EnterMobile}
           options={{
             headerShown: false,
           }}
         />
-       
-         <HomeStack.Screen
+
+        <HomeStack.Screen
           name="Login"
           component={Login}
           options={{
@@ -96,17 +100,17 @@ export default function HomeStackScreen() {
           name="bottombar"
           component={BottomNavigation}
           options={{
-            headerTitle:'',
+            headerShown:false,
+            headerTitle: '',
             headerStyle: {
               backgroundColor: '#f23535',
             },
-            // headerTitle: props => <LogoImage {...props} />,
-            headerRight: props => <LogoImage {...props}  />,
-            headerLeft: props => <HeaderLeft {...props}   />,
-            
+            headerTitle: props => <LogoImage {...props} />,
+            headerRight: props => <LogoImage {...props} />,
+            headerLeft: props => <HeaderLeft {...props} />,
           }}
         />
-        
+
         <HomeStack.Screen name="Profile" component={Profile} />
         <HomeStack.Screen
           name="Signup"
@@ -116,7 +120,7 @@ export default function HomeStackScreen() {
           }}
         />
         <HomeStack.Screen name="Splash" component={Splash} options={{}} />
-       
+
         <HomeStack.Screen
           name="EnterOTP"
           component={EnterOTP}
@@ -129,14 +133,11 @@ export default function HomeStackScreen() {
           name="home"
           component={Home}
           options={{
-            headerTitle:'',
-            headerStyle: {
-              backgroundColor: '#EA0706',
-            },
+            headerShown: false,
+           
             // headerTitle: props => <LogoImage {...props} />,
-            headerRight: props => <LogoImage {...props}  />,
-            headerLeft: props => <HeaderLeft {...props}   />,
-            
+            // headerRight: props => <LogoImage {...props} />,
+            // headerLeft: props => <HeaderLeft {...props} />,
           }}
         />
 
@@ -144,6 +145,19 @@ export default function HomeStackScreen() {
 
         <HomeStack.Screen name="shop" component={ViewShop} />
         <HomeStack.Screen name="FITCOACH" component={FitCoach} />
+        <HomeStack.Screen
+          name="GymsList"
+          component={GymsList}
+          options={{
+            headerTitle: <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>Gyms In</Text>,
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            // headerTitle: <Text>lkjj</Text>,
+            // headerRight: props => <  />,
+            // headerLeft: props => <HeaderLeft {...props}   />,
+          }}
+        />
       </HomeStack.Navigator>
     </NavigationContainer>
   );

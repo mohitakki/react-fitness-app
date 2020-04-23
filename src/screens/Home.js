@@ -16,15 +16,13 @@ export default class Home extends Component {
     this.state = {};
   }
 
-  static navigationOptions = {
-    title: 'Details',
-  };
+ 
 
   render() {
     return (
       <>
         {/* <StatusBar backgroundColor="blue" /> */}
-      {/* <Header navigation={this.props.navigation} /> */}
+      <Header navigation={this.props.navigation} />
         <LinearGradient
           colors={['#f23535', '#48CCF7']}
           style={{flex: 1}}>

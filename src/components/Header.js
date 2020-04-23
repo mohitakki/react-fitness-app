@@ -3,46 +3,45 @@ import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
 export default class Header extends React.Component {
   render() {
     return (
-        <>
-        <StatusBar backgroundColor="#EA0706" />
-      <View style={styles._header}>
-        <View style={styles._leftSide}>
-          <View style={{marginLeft: 20}}>
-            <Text
-              style={{
-                fontSize: 16,
-                color: 'white',
-                fontWeight: 'bold',
-                fontFamily: 'Gill Sans',
-              }}
-              onPress={() => this.props.navigation.navigate('location')}>
-              Shalimar Garden
-            </Text>
-            <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-              Ghaziabad
-            </Text>
-          </View>
-          <View>
-
-              {this.props.icon ?
-              this.props.icon:
-            
-            <Image
-              style={{
-                width: 30,
-                height: 30,
-                borderRadius: 50,
-                borderColor: '#c1c1c1',
-                borderWidth: 1,
-                resizeMode: 'contain',
-                backgroundColor: '#000',
-              }}
-              source={require('./../assests/logo.png')}
-            />
-  }
+      <>
+        {/* <StatusBar backgroundColor="#EA0706" /> */}
+        <View style={styles._header}>
+          <View style={styles._leftSide}>
+            <View style={{marginLeft: 20}}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontFamily: 'Gill Sans',
+                }}
+                onPress={() => this.props.navigation.navigate('GymsList')}>
+                Shalimar Garden
+              </Text>
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Ghaziabad
+              </Text>
+            </View>
+            <View>
+              {this.props.icon ? (
+                this.props.icon
+              ) : (
+                <Image
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 50,
+                    borderColor: '#c1c1c1',
+                    borderWidth: 1,
+                    resizeMode: 'contain',
+                    backgroundColor: '#000',
+                  }}
+                  source={require('./../assests/logo.png')}
+                />
+              )}
+            </View>
           </View>
         </View>
-      </View>
       </>
     );
   }
@@ -50,15 +49,18 @@ export default class Header extends React.Component {
 
 let styles = StyleSheet.create({
   _header: {
-    backgroundColor: '#F26E38',
-    elevation: 14,
-    shadowOffset: {width: 5, height: 5},
-    shadowColor: 'grey',
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
+    backgroundColor: '#f23535',
+    elevation: 4,
+    paddingTop: 8,
+    paddingBottom: 8,
     paddingRight: 20,
+    shadowColor: '#c1c1c1',
+    shadowOffset: {
+      width: 0.2,
+      height: 0.2,
+    },
+    shadowOpacity: 0.45,
+    shadowRadius: 0.84,
   },
   _leftSide: {
     flexDirection: 'row',
