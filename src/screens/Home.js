@@ -25,7 +25,7 @@ export default class Home extends Component {
   render() {
     return (
       <>
-        {/* <StatusBar backgroundColor="blue" /> */}
+        <StatusBar translucent backgroundColor="transparent"/>
         <LinearGradient colors={['#f23535', '#48CCF7']} style={{flex: 1}}>
             {/* near by GYMS */}
             <Header navigation={this.props.navigation} />

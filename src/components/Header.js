@@ -51,7 +51,7 @@ let styles = StyleSheet.create({
   _header: {
     backgroundColor: '#f23535',
     elevation: 4,
-    paddingTop: 8,
+    paddingTop: 35,
     paddingBottom: 8,
     paddingRight: 20,
     shadowColor: '#c1c1c1',

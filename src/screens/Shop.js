@@ -7,6 +7,7 @@ export default class Shop extends React.Component {
   render() {
     return (
       <View>
+        <Header />
         <Text>hi this is Shop page</Text>
       </View>
     );
