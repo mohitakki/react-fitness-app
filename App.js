@@ -74,6 +74,21 @@ export default function HomeStackScreen() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
+
+      <HomeStack.Screen
+          name="bottombar"
+          component={BottomNavigation}
+          options={{
+            headerShown:false,
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTitle: props => <LogoImage {...props} />,
+            headerRight: props => <LogoImage {...props} />,
+            headerLeft: props => <HeaderLeft {...props} />,
+          }}
+        />
         <HomeStack.Screen
           name="onboading"
           component={Onboarding}
@@ -96,20 +111,7 @@ export default function HomeStackScreen() {
             headerShown: false,
           }}
         />
-        <HomeStack.Screen
-          name="bottombar"
-          component={BottomNavigation}
-          options={{
-            headerShown:false,
-            headerTitle: '',
-            headerStyle: {
-              backgroundColor: '#f23535',
-            },
-            headerTitle: props => <LogoImage {...props} />,
-            headerRight: props => <LogoImage {...props} />,
-            headerLeft: props => <HeaderLeft {...props} />,
-          }}
-        />
+       
 
         <HomeStack.Screen name="Profile" component={Profile} />
         <HomeStack.Screen
