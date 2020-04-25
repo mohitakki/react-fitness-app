@@ -61,7 +61,7 @@ export default class EnterMobile extends Component {
     return (
       <>
         <KeyboardAvoidingView
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height' }
         style={{flex: 1}}>
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}

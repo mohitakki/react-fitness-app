@@ -12,20 +12,20 @@ export default class Loading extends Component {
     this.state = {
     };
   }
-
-//   detectLogin=async () => {
+  
+  detectLogin=async () => {
      
-//     const token = AsyncStorage.getItem('token')
-//     if (token) {
-//       this.navigatation.navigate('Onboarding')
-//     } else {
-//       this.navigatation.navigate('Login')
-//     }
+    const token = AsyncStorage.getItem('token')
+    if (token) {
+      this.navigatation.navigate('Onboarding')
+    } else {
+      this.navigatation.navigate('Login')
+    }
  
-// useEffect(()=>{
-//     detectLogin()
-// }, [])
-// }
+useEffect(()=>{
+    detectLogin()
+}, [])
+}
  
 
   render() 

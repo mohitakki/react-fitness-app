@@ -81,7 +81,7 @@ export default function HomeStackScreen() {
 
   const [isLoggenIn, setLogged] = useState(null)
   const detectLogin = async ()=>{
-    const token = AsyncStorage.getItem('token')
+    const token = await AsyncStorage.getItem('token')
     if (token) {
       setLogged(true)
     } else {
@@ -96,14 +96,14 @@ export default function HomeStackScreen() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-        {isLoggenIn==null ?
+        {isLoggenIn== null ?
         (              <HomeStack.Screen
                 name="Loading"
                 component={Loading}
                 options={{
                   headerShown: false,
                 }}
-              />) : isLoggenIn==true ?
+              />) : isLoggenIn == true ?
           (<>
 
             <HomeStack.Screen
