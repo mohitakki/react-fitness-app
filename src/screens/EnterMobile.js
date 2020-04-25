@@ -5,6 +5,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   BackHandler,
+  AsyncStorage,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
@@ -14,19 +15,45 @@ import MobileDiologBox from '../components/MobileDiologBox';
 export default class EnterMobile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      mobile:""
+    };
   }
 
   sendOTP() {
-    alert('OTP is sent to you mobile number');
-    // const {navigate} = this.props.navigation;
-    // navigate('bottombar')
-    return false;
+   
+    fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
+    {
+      method:'POST',
+      headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        mobile: this.state.mobile
+      })
+    })
+    .then((response) => response.json())
+    .then((res) => {
+      if(res.error === false){
+        // AsyncStorage.getItem('token', token)
+      console.warn(res);
+      this.props.navigation.navigate('EnterOTP')
+      }
+      else{
+        alert('Something went wrong')
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    
   }
 
   render() {
     return (
-      <KeyboardAvoidingView
+      <>
+        <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
         style={{flex: 1}}>
         <LinearGradient
@@ -49,10 +76,12 @@ export default class EnterMobile extends Component {
               placeholder="Enter mobile number"
               placeholderTextColor="white"
               style={styles.inputText}
+              onChangeText={(mobile)=>this.setState({mobile})}
             />
             <TouchableOpacity
               style={styles.sentButon}
-              onPress={() => this.RBSheet.open()}>
+              onPress={() => this.sendOTP()}>
+              {/* onPress={() => this.RBSheet.open()}> */}
               <Text style={styles.sentText}>Send OTP</Text>
             </TouchableOpacity>
 
@@ -76,6 +105,7 @@ export default class EnterMobile extends Component {
           </View>
         </LinearGradient>
       </KeyboardAvoidingView>
+      </>
     );
   }
 }

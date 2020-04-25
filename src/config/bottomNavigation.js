@@ -12,12 +12,11 @@ export default () => (
     tabBarOptions={{
       activeTintColor: '#2F7C6E',
       inactiveTintColor: '#222222',
-      tabBarBackground: '#FCBEB6',
     }}
     tabBar={props => (
       <TabBar
-        activeColors={'#059ff4'}
-        activeTabBackgrounds={'#C1E2FC'}
+        activeColors={'#f23535'}
+        activeTabBackgrounds={'#efd2d2'}
         {...props}
       />
     )}>

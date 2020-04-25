@@ -12,14 +12,34 @@ import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 export default class EnterOTP extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      otp:""
+    };
   }
 
   sendOTP() {
-    alert('OTP is sent to you mobile number');
-    const {navigate} = this.props.navigation;
-    navigate('bottombar');
-    return false;
+  
+    fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
+    {
+      method:'POST',
+      headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        otp: this.state.otp
+      })
+    })
+    .then((response) => response.json())
+    .then((res) => {
+      if(res.error=== false){
+      console.warn(res);
+      this.props.navigation.navigate('bottombar')
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   render() {
@@ -45,6 +65,7 @@ export default class EnterOTP extends Component {
               placeholder="Enter OTP"
               placeholderTextColor="white"
               style={styles.inputText}
+              onChangeText={(otp)=>this.setState({otp})}
             />
             <TouchableOpacity
               style={styles.sentButon}

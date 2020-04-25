@@ -74,7 +74,13 @@ export default function HomeStackScreen() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-
+      <HomeStack.Screen
+          name="onboading"
+          component={Onboarding}
+          options={{
+            headerShown: false,
+          }}
+        />
       <HomeStack.Screen
           name="bottombar"
           component={BottomNavigation}
@@ -89,13 +95,7 @@ export default function HomeStackScreen() {
             headerLeft: props => <HeaderLeft {...props} />,
           }}
         />
-        <HomeStack.Screen
-          name="onboading"
-          component={Onboarding}
-          options={{
-            headerShown: false,
-          }}
-        />
+      
         <HomeStack.Screen
           name="EnterMobile"
           component={EnterMobile}
