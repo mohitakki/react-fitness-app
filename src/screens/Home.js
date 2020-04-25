@@ -5,9 +5,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  Button,
+
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView} from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 import {
   Slider,
   BasicCard,
@@ -21,6 +24,22 @@ export default class Home extends Component {
     super(props);
     this.state = {};
   }
+
+logout= async ()=>{
+  try {
+    await AsyncStorage.removeItem('token');
+    const getItem = await AsyncStorage.getItem('token');
+    //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
+    console.log('Should not be stored:', getItem);
+  } catch (err) {
+    throw new Error(err);
+  }
+  this.props.navigation.navigate('Loading');
+  await logout();
+  }
+  
+
+  
 
   render() {
     return (
@@ -52,7 +71,7 @@ export default class Home extends Component {
                 />
               </Text>
             </TouchableOpacity>
-
+            <Button title="Logout" onPress={()=>this.logout()} />
             {/* BLOG SLIDER */}
             <View style={styles._blog_slider}>
               <Text style={styles._fitShop}>MOTIVATION </Text>

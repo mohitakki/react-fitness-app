@@ -1,7 +1,7 @@
-import * as React from 'react';
-import {Text, View, Image} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import BottomNavigation from './src/config/bottomNavigation';
 import {
   EnterMobile,
@@ -19,7 +19,14 @@ import {
   GymsList,
 } from './src/screens';
 
+import AsyncStorage from '@react-native-community/async-storage';
+import Loading from './src/screens/Loading';
+
+
+
 const HomeStack = createStackNavigator();
+
+
 function LogoImage() {
   return (
     <View
@@ -54,112 +61,136 @@ function HeaderLeft() {
   // const {navigate} = this.props.navigation;
 
   return (
-    <View style={{marginLeft: 20}}>
+    <View style={{ marginLeft: 20 }}>
       <Text
         style={{
           fontSize: 16,
           color: 'white',
           fontWeight: 'bold',
           fontFamily: 'Gill Sans',
-          
+
         }}>
         Shalimar Garden
       </Text>
-      <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>Ghaziabad</Text>
+      <Text style={{ color: 'white', fontFamily: 'Gill Sans' }}>Ghaziabad</Text>
     </View>
   );
 }
 
 export default function HomeStackScreen() {
+
+  const [isLoggenIn, setLogged] = useState(null)
+  const detectLogin = async ()=>{
+    const token = AsyncStorage.getItem('token')
+    if (token) {
+      setLogged(true)
+    } else {
+      setLogged(false)
+    }
+  
+}
+  
+  useEffect(() => {
+   detectLogin()
+  }, [])
   return (
     <NavigationContainer>
       <HomeStack.Navigator>
-      <HomeStack.Screen
-          name="onboading"
-          component={Onboarding}
-          options={{
-            headerShown: false,
-          }}
-        />
-      <HomeStack.Screen
-          name="bottombar"
-          component={BottomNavigation}
-          options={{
-            headerShown:false,
-            headerTitle: '',
-            headerStyle: {
-              backgroundColor: '#f23535',
-            },
-            headerTitle: props => <LogoImage {...props} />,
-            headerRight: props => <LogoImage {...props} />,
-            headerLeft: props => <HeaderLeft {...props} />,
-          }}
-        />
-      
-        <HomeStack.Screen
-          name="EnterMobile"
-          component={EnterMobile}
-          options={{
-            headerShown: false,
-          }}
-        />
+        {isLoggenIn==null ?
+        (              <HomeStack.Screen
+                name="Loading"
+                component={Loading}
+                options={{
+                  headerShown: false,
+                }}
+              />) : isLoggenIn==true ?
+          (<>
 
-        <HomeStack.Screen
-          name="Login"
-          component={Login}
-          options={{
-            headerShown: false,
-          }}
-        />
-       
+            <HomeStack.Screen
+              name="bottombar"
+              component={BottomNavigation}
+              options={{
+                headerShown: false,
+                headerTitle: '',
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+                headerTitle: props => <LogoImage {...props} />,
+                headerRight: props => <LogoImage {...props} />,
+                headerLeft: props => <HeaderLeft {...props} />,
+              }}
+            />
+            <HomeStack.Screen name="blog" component={Blog} />
+            <HomeStack.Screen
+              name="home"
+              component={Home}
+              options={{
+                headerShown: false,
 
-        <HomeStack.Screen name="Profile" component={Profile} />
-        <HomeStack.Screen
-          name="Signup"
-          component={Signup}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <HomeStack.Screen name="Splash" component={Splash} options={{}} />
+                // headerTitle: props => <LogoImage {...props} />,
+                // headerRight: props => <LogoImage {...props} />,
+                // headerLeft: props => <HeaderLeft {...props} />,
+              }}
+            />
 
-        <HomeStack.Screen
-          name="EnterOTP"
-          component={EnterOTP}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <HomeStack.Screen name="blog" component={Blog} />
-        <HomeStack.Screen
-          name="home"
-          component={Home}
-          options={{
-            headerShown: false,
-           
-            // headerTitle: props => <LogoImage {...props} />,
-            // headerRight: props => <LogoImage {...props} />,
-            // headerLeft: props => <HeaderLeft {...props} />,
-          }}
-        />
+            <HomeStack.Screen name="location" component={Location} />
 
-        <HomeStack.Screen name="location" component={Location} />
+            <HomeStack.Screen name="shop" component={ViewShop} />
+            <HomeStack.Screen name="FITCOACH" component={FitCoach} />
+            <HomeStack.Screen
+              name="GymsList"
+              component={GymsList}
+              options={{
+                headerTitle: <Text style={{ color: 'white', fontFamily: 'Gill Sans' }}>Gyms In</Text>,
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+                // headerTitle: <Text>lkjj</Text>,
+                // headerRight: props => <  />,
+                // headerLeft: props => <HeaderLeft {...props}   />,
+              }}
+            />
+          </>
+          ) : (
+            <>
+              <HomeStack.Screen
+                name="Login"
+                component={Login}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <HomeStack.Screen
+                name="EnterMobile"
+                component={EnterMobile}
+                options={{
+                  headerShown: false,
+                }}
+              />
 
-        <HomeStack.Screen name="shop" component={ViewShop} />
-        <HomeStack.Screen name="FITCOACH" component={FitCoach} />
-        <HomeStack.Screen
-          name="GymsList"
-          component={GymsList}
-          options={{
-            headerTitle: <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>Gyms In</Text>,
-            headerStyle: {
-              backgroundColor: '#f23535',
-            },
-            // headerTitle: <Text>lkjj</Text>,
-            // headerRight: props => <  />,
-            // headerLeft: props => <HeaderLeft {...props}   />,
-          }}
-        />
+
+
+
+              <HomeStack.Screen name="Profile" component={Profile} />
+              <HomeStack.Screen
+                name="Signup"
+                component={Signup}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <HomeStack.Screen name="Splash" component={Splash} options={{}} />
+
+              <HomeStack.Screen
+                name="EnterOTP"
+                component={EnterOTP}
+                options={{
+                  headerShown: false,
+                }}
+              />
+
+            </>)
+        }
       </HomeStack.Navigator>
     </NavigationContainer>
   );

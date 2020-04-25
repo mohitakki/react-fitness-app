@@ -17,7 +17,7 @@ export default class EnterOTP extends Component {
     };
   }
 
-  sendOTP() {
+  sendOTP= async () => {
   
     fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
     {
@@ -35,6 +35,7 @@ export default class EnterOTP extends Component {
       if(res.error=== false){
       console.warn(res);
       this.props.navigation.navigate('bottombar')
+      
       }
     })
     .catch((error) => {
@@ -105,16 +106,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'white',
     borderWidth: 0.8,
-    shadowColor: 'white',
+   
     color: 'white',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.55,
-    shadowRadius: 3.84,
-
-    elevation: 15,
+   
   },
   sentButon: {
     backgroundColor: 'white',

@@ -5,12 +5,14 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   BackHandler,
-  AsyncStorage,
+  
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import MobileDiologBox from '../components/MobileDiologBox';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 export default class EnterMobile extends Component {
   constructor(props) {
@@ -20,7 +22,7 @@ export default class EnterMobile extends Component {
     };
   }
 
-  sendOTP() {
+  sendOTP =async =()=> {
    
     fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
     {
@@ -34,15 +36,20 @@ export default class EnterMobile extends Component {
       })
     })
     .then((response) => response.json())
-    .then((res) => {
+    .then( async (res) => {
+      try{
       if(res.error === false){
-        // AsyncStorage.getItem('token', token)
-      console.warn(res);
+      await  AsyncStorage.setItem('token', res.token)
+      console.warn(res.token);
       this.props.navigation.navigate('EnterOTP')
       }
       else{
         alert('Something went wrong')
       }
+      } catch(e){
+
+      }
+     
     })
     .catch((error) => {
       console.error(error);
@@ -131,16 +138,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'white',
     borderWidth: 0.8,
-    shadowColor: 'white',
     color: 'white',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.55,
-    shadowRadius: 3.84,
-
-    elevation: 15,
+   
   },
   sentButon: {
     backgroundColor: 'white',
