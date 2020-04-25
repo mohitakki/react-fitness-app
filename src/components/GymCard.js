@@ -103,6 +103,16 @@ let styles = StyleSheet.create({
     marginTop: 10,
     padding: 15,
     backgroundColor: '#e5e5e5',
+    marginHorizontal:10,
+    borderRadius:5,
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 0.95,
+    shadowRadius: .84,
+    elevation: 5,
   },
   _card: {
     // flex: 1,

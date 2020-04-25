@@ -37,6 +37,10 @@ logout= async ()=>{
   this.props.navigation.navigate('Loading');
   await logout();
   }
+
+  viewAllGym=()=>{
+   this.props.navigation.navigate('ViewAllGym')
+  }
   
 
   
@@ -50,11 +54,17 @@ logout= async ()=>{
             <Header navigation={this.props.navigation} />
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
-            <Slider />
+            <Slider props={this.props.navigation}/>
+            
+            <TouchableOpacity onPress={()=>this.viewAllGym()}>
+            <Text style={styles.viewAll}>View all</Text>
+            </TouchableOpacity>
+
             <View style={styles._basicCard}>
               <BasicCard props={this.props.navigation} />
               <BasicCard props={this.props.navigation} />
             </View>
+
             {/* PRODUCT CARD */}
             <Text style={styles._fitShop}>FITSHOP</Text>
             <TouchableOpacity
@@ -117,6 +127,16 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 0.5,
   },
+  viewAll:{
+    color:'white',
+    textAlign:'right',
+    marginRight:20,
+    marginTop:10,
+    fontWeight: 'bold',
+    fontFamily: 'Gill Sans',
+    letterSpacing: 1,
+    alignItems: 'center',
+  },
   _basicCard: {
     marginTop: 20,
     flexDirection: 'row',
@@ -144,7 +164,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'right',
     width: '90%',
-    letterSpacing: 2,
+    letterSpacing: 1,
     marginTop: 4,
     fontWeight: 'bold',
     alignItems: 'center',

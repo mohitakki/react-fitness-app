@@ -17,10 +17,15 @@ import {
   Location,
   Onboarding,
   GymsList,
+  ViewAllGym,
+  Loading
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import Loading from './src/screens/Loading';
+
+
+// any js module
+import {navigationRef} from './src/config/RootNavigation'
 
 
 
@@ -94,7 +99,7 @@ export default function HomeStackScreen() {
    detectLogin()
   }, [])
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <HomeStack.Navigator>
         {isLoggenIn== null ?
         (              <HomeStack.Screen
@@ -121,6 +126,7 @@ export default function HomeStackScreen() {
               }}
             />
             <HomeStack.Screen name="blog" component={Blog} />
+            {/* <HomeStack.Screen name="ViewAllGym" component={ViewAllGym} /> */}
             <HomeStack.Screen
               name="home"
               component={Home}
@@ -138,13 +144,15 @@ export default function HomeStackScreen() {
             <HomeStack.Screen name="shop" component={ViewShop} />
             <HomeStack.Screen name="FITCOACH" component={FitCoach} />
             <HomeStack.Screen
-              name="GymsList"
-              component={GymsList}
+              name="ViewAllGym"
+              component={ViewAllGym}
               options={{
                 headerTitle: <Text style={{ color: 'white', fontFamily: 'Gill Sans' }}>Gyms In</Text>,
                 headerStyle: {
                   backgroundColor: '#f23535',
                 },
+                headerTintColor:'white',
+              headerBackTitle:''
                 // headerTitle: <Text>lkjj</Text>,
                 // headerRight: props => <  />,
                 // headerLeft: props => <HeaderLeft {...props}   />,

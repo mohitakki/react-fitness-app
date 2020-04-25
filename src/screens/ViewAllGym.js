@@ -4,6 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {GymCard} from './../components';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class GymsList extends React.Component {
   render() {
@@ -35,7 +36,6 @@ export default class GymsList extends React.Component {
     ];
     return (
       <>
-      
         {/* subheader */}
         <View style={styles._subHeader}>
           <View style={styles._tab}>
@@ -55,10 +55,11 @@ export default class GymsList extends React.Component {
         </View>
         {/* <<<<<<<<<<< GYM LIST >>>>>>>>>>>> */}
         <ScrollView>
-        
+        <LinearGradient colors={['#f23535', '#48CCF7']} style={{flex: 1}}>
           {item.map((val, i) => (
             <GymCard data={val} key={i} />
           ))}
+          </LinearGradient>
         </ScrollView>
       </>
     );
@@ -69,20 +70,20 @@ let styles = StyleSheet.create({
   _subHeader: {
     // flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+ 
   },
   _tab: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 10,
+    
     paddingRight: 10,
     padding: 2,
-    backgroundColor: '#e5e5e5',
     opacity: 0.6,
     borderBottomWidth: 1,
     borderColor: 'grey',
+    marginLeft:20
   },
   _text: {
     flex: 1,
@@ -90,6 +91,6 @@ let styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
     paddingLeft: 5,
-    fontSize: 12,
+    fontSize: 10,
   },
 });

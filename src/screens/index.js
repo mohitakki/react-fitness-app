@@ -13,6 +13,8 @@ import Help from './Help';
 import Location from './Location';
 import Onboarding from './Onboarding'
 import GymsList from './GymsList'
+import ViewAllGym from './ViewAllGym'
+import Loading from './Loading'
 export {
   EnterMobile,
   EnterOTP,
@@ -28,5 +30,7 @@ export {
   Help,
   Location,
   Onboarding,
-  GymsList
+  GymsList,
+  ViewAllGym,
+  Loading
 };

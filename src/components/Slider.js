@@ -1,11 +1,16 @@
-import React, {Component} from 'react';
+import React, {Component, useRef} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 import CardSilder from 'react-native-cards-slider';
+
 
 export default class Slider extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+  gymProfile = ()=>{
+    const {navigate} = props.navigation;
+    navigate('Profile');
   }
 
   render() {
@@ -67,7 +72,7 @@ export default class Slider extends Component {
               }}>
               <Text
                 style={styles.exploreText}
-                onPress={() => this.props.navigation.navigate('Login')}>
+                onPress={() => this.props.props.navigate('Profile')}>
                 Explore this GYM
               </Text>
             </View>

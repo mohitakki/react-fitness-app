@@ -76,16 +76,11 @@ export default class Profile extends React.Component {
           <ImageBackground
             style={styles._backgroundImg}
             source={{
-              uri: 'https://i.ytimg.com/vi/ETsekJKsr3M/maxresdefault.jpg',
+              uri: 'https://rukminim1.flixcart.com/image/832/832/jnhs2vk0/poster/t/e/u/medium-gym-posters-gym-posters-motivationa-big-size-18-inches-x-original-imafa5ctrndkcphv.jpeg?q=70',
             }}>
             {/* Ratings row */}
             <View style={styles._ratingRow}>
-              <View style={styles._logo}>
-                <Image
-                  source={require('./../assests/img1.jpg')}
-                  style={styles._logo_img}
-                />
-              </View>
+              
 
               <View style={styles._rating}>
                 <View style={styles._showReview}>
@@ -95,7 +90,7 @@ export default class Profile extends React.Component {
                   </Text>
 
                   <Text style={styles._reviewsText}>
-                    <Text style={{color: '#fad04b'}}>9 </Text>
+                    <Text style={{color: '#f23535'}}>9 </Text>
                     {''}
                     Reviews <Ionicons name="ios-arrow-forward" />
                   </Text>
@@ -106,6 +101,12 @@ export default class Profile extends React.Component {
           </ImageBackground>
         </View>
         <View style={styles.bottom_title}>
+        <View style={styles._logo}>
+                <Image
+                  source={require('./../assests/img1.jpg')}
+                  style={styles._logo_img}
+                />
+              </View>
           <Text style={styles._gymTitle}>True Gym And Spa Shalimar Bagh</Text>
           <View style={styles._detailRow}>
             <Text style={styles._detail_text}>
@@ -356,13 +357,14 @@ export default class Profile extends React.Component {
 
 let styles = StyleSheet.create({
   _profile: {
-    height: 200,
+    height: 300,
   },
   _backgroundImg: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    resizeMode: 'cover',
+    height:300,
+   
     shadowColor: '#f23535',
     shadowOffset: {
       width: 0.5,
@@ -390,7 +392,7 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
   },
   _numbering: {
-    backgroundColor: '#fad04b',
+    backgroundColor: '#f23535',
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
     paddingLeft: 8,
@@ -410,8 +412,8 @@ let styles = StyleSheet.create({
     // color:""
   },
   _logo: {
-    height: 100,
-    width: 100,
+    height: 80,
+    width: 80,
     borderWidth: 2,
     borderColor: 'grey',
     borderRadius: 5,
@@ -443,7 +445,8 @@ let styles = StyleSheet.create({
     fontFamily: 'Gill Sans',
   },
   _seemore: {
-    backgroundColor: '#fad04b',
+    marginTop:20,
+    backgroundColor: '#f23535',
     height: 60,
     padding: 10,
   },
