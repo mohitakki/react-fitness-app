@@ -122,9 +122,9 @@ export default class Profile extends React.Component {
             <Text style={styles.more_text}>
               All fitness centers across the country will remain closed until
               ...{' '}
-              <Text style={{color: 'white', fontWeight: 'bold'}}>
+              {/* <Text style={{color: '#fff', fontWeight: '400',textAlign:'right'}}>
                 READ MORE
-              </Text>
+              </Text> */}
             </Text>
           </View>
 
@@ -377,7 +377,16 @@ let styles = StyleSheet.create({
   _ratingRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 10,
+    marginTop: 15,
+    shadowColor: '#f23535',
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 1.95,
+    shadowRadius: 3.84,
+    elevation: 25,
+    borderRadius:15,
     // alignItems: 'center',
   },
   _rating: {
@@ -386,16 +395,14 @@ let styles = StyleSheet.create({
     height: 40,
   },
   _showReview: {
-    borderRadius: 5,
+    
     backgroundColor: 'white',
     paddingRight: 10,
     flexDirection: 'row',
   },
   _numbering: {
     backgroundColor: '#f23535',
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
-    paddingLeft: 8,
+    borderRadius:5,    paddingLeft: 8,
     paddingRight: 8,
     color: 'white',
     fontFamily: 'Gill Sans',
@@ -425,12 +432,31 @@ let styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     resizeMode: 'cover',
+
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: 0.5,
+      height: 2,
+    },
+    shadowOpacity: 10.5,
+    shadowRadius: 3.84,
+    elevation: 15,
   },
   bottom_title: {
     paddingLeft: '35%',
     backgroundColor: 'white',
-    paddingTop: 5,
-    paddingBottom: 24,
+    paddingTop: 25,
+    paddingBottom:10,
+    
+    shadowColor: '#f23535',
+    shadowOffset: {
+      width: 0.5,
+      height: 2,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3.84,
+    elevation: 15,
+  
   },
   _detailRow: {
     flexDirection: 'row',
@@ -439,20 +465,26 @@ let styles = StyleSheet.create({
   _detail_text: {
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
+    marginTop:5
   },
   _gymTitle: {
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
+    color:'#f23535'
+  
+  
+
   },
   _seemore: {
     marginTop:20,
     backgroundColor: '#f23535',
-    height: 60,
+    height: 50,
     padding: 10,
   },
   more_text: {
     fontFamily: 'Gill Sans',
     fontSize: 15,
+    color:"#fff"
   },
   _about_detail: {
     backgroundColor: '#ffffff',
@@ -484,6 +516,7 @@ let styles = StyleSheet.create({
   _btnSection: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    marginTop:10
   },
   _vediosHeadinBtn: {
     backgroundColor: '#1665c2',
@@ -507,6 +540,7 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 4,
+    backgroundColor:'#efd2d2'
   },
   _dayName: {
     fontWeight: 'bold',

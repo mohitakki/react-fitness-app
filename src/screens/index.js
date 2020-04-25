@@ -15,6 +15,8 @@ import Onboarding from './Onboarding'
 import GymsList from './GymsList'
 import ViewAllGym from './ViewAllGym'
 import Loading from './Loading'
+import Subscription from './Subscription'
+import UserProfile from './UserProfile'
 export {
   EnterMobile,
   EnterOTP,
@@ -32,5 +34,7 @@ export {
   Onboarding,
   GymsList,
   ViewAllGym,
-  Loading
+  Loading,
+  Subscription,
+  UserProfile
 };

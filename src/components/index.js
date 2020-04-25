@@ -6,6 +6,7 @@ import BlogSlider from './BlogSlider';
 import Header from './Header';
 import GymCard from './GymCard';
 import Dropdown from './Dropdown';
+import Subscription from './Subscription';
 export {
   MobileDiologBox,
   Slider,
@@ -15,4 +16,5 @@ export {
   Header,
   GymCard,
   Dropdown,
+  Subscription
 };

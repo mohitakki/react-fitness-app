@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -15,9 +16,9 @@ class Login extends Component {
     this.state = {};
   }
 
-  loginWithMobile(navigation) {
-    const {navigate} = this.props.navigation;
-    navigate('EnterMobile');
+  loginWithMobile = () => {
+     const {navigate} = this.props.navigation;
+  navigate('EnterMobile');
   }
   loginWithFacebook(navigation) {
     // const {navigate} = this.props.navigation;
@@ -120,32 +121,52 @@ const styles = StyleSheet.create({
     backgroundColor: '#0a42ca',
     width: 180,
     height: 50,
-    borderRadius: 25,
-    borderColor: '#f1f1f1',
-    borderWidth: 0.5,
+    borderRadius: 10,
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 0.95,
+    shadowRadius: 1.84,
+    elevation: 5,
   },
   btnGoogle: {
     backgroundColor: 'white',
     width: 180,
     height: 50,
-    borderRadius: 25,
-    borderColor: '#f1f1f1',
-    borderWidth: 0.5,
+    borderRadius: 10,
+    shadowColor: '#f23535',
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 0.95,
+    shadowRadius: 1.84,
+    elevation: 5,
   },
   btnPhone: {
     backgroundColor: '#f23535',
     marginTop: 20,
     height: 50,
-    borderRadius: 25,
+    borderRadius: 10,
+    shadowColor: '#0a42ca',
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 0.95,
+    shadowRadius: 1.84,
+    elevation: 5,
   },
   textFacebook: {
     justifyContent: 'center',
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Gill Sans',
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginVertical: 10,
     color: 'white',
   },
@@ -155,9 +176,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Gill Sans',
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginVertical: 10,
   },
   textPhone: {

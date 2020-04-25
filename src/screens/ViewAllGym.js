@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, ScrollView, Button} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {GymCard} from './../components';
+import {GymCard, Header} from './../components';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class GymsList extends React.Component {
@@ -36,6 +36,7 @@ export default class GymsList extends React.Component {
     ];
     return (
       <>
+      <Header navigation={this.props.navigation} />
         {/* subheader */}
         <View style={styles._subHeader}>
           <View style={styles._tab}>

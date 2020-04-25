@@ -17,6 +17,7 @@ import {
   ProductCard,
   BlogSlider,
   Header,
+  Subscription
 } from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 export default class Home extends Component {
@@ -58,6 +59,14 @@ logout= async ()=>{
             
             <TouchableOpacity onPress={()=>this.viewAllGym()}>
             <Text style={styles.viewAll}>View all</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles._product_card}
+              activeOpacity={0.9}
+              onPress={() => this.props.navigation.navigate('Subscription')}>
+              <Subscription />
+              
             </TouchableOpacity>
 
             <View style={styles._basicCard}>

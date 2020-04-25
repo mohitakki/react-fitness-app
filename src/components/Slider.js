@@ -45,7 +45,7 @@ export default class Slider extends Component {
                     width: 170,
                     height: 25,
                     marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
+                    backgroundColor: '#efd2d2',
                     borderRadius: 5,
                     marginTop: 5,
                   }}
@@ -67,7 +67,7 @@ export default class Slider extends Component {
               style={{
                 height: 10,
                 flex: 2,
-                backgroundColor: '#D9D0EE',
+                backgroundColor: '#efd2d2',
                 marginTop: 20,
               }}>
               <Text
@@ -411,13 +411,14 @@ const styles = StyleSheet.create({
     color: '#f23535',
   },
   exploreText: {
-    // textAlign:'center',
-    // fontFamily: 'Gill Sans',
-    marginVertical:2,
-    // paddingBottom:10
+    textAlign:'center',
+    fontFamily: 'Gill Sans',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignSelf:"center"
+    alignSelf:"center",
+    marginTop:8,
+    fontWeight:'600',
+    color:'#f23535'
   },
 });

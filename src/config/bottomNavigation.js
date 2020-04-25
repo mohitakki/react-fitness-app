@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
-import {Home, Profile, Shop, Help} from './../screens';
+import {Home, Profile, Shop, Help, UserProfile, GymsList, ViewAllGym} from './../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TabBar} from 'react-native-animated-nav-tab-bar';
 
@@ -55,8 +55,8 @@ export default () => (
    
 
     <Tabs.Screen
-      name="Help"
-      component={Help}
+      name="Find Gym"
+      component={ViewAllGym}
       options={{
         tabBarIcon: ({focused, color, size}) => (
           <Icon
@@ -71,7 +71,7 @@ export default () => (
     />
      <Tabs.Screen
       name="Profile"
-      component={Profile}
+      component={UserProfile}
       options={{
         tabBarIcon: ({focused, color, size}) => (
           <Icon

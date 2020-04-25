@@ -64,7 +64,7 @@ export default class EnterMobile extends Component {
         behavior={Platform.OS == 'ios' ? 'padding' : 'height' }
         style={{flex: 1}}>
         <LinearGradient
-          colors={['#F26E38', '#F23873', '#48CCF7']}
+          colors={['#f23535', '#48CCF7']}
           style={styles.linearGradient}>
           <View
             style={{
