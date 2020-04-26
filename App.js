@@ -110,7 +110,7 @@ export default function HomeStackScreen() {
             options={{
               headerShown: false,
             }}
-          />) : isLoggenIn == true ?
+          />) : isLoggenIn == false ?
             (<>
 
 

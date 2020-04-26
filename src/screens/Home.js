@@ -9,8 +9,9 @@ import {
 
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, FlatList} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
+import CardSilder from 'react-native-cards-slider';
 import {
   Slider,
   BasicCard,
@@ -20,11 +21,31 @@ import {
   Subscription
 } from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {getSlider} from '../services/home';
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: true,
+      data : []
+    };
   }
+
+  componentDidMount(){
+    return fetch ('https://fitbook.fit/fitbookadmin/api_v1/home.php', {
+      method: 'POST'
+    })
+    .then((response) => response.json())
+    .then((res) => {
+       
+      this.setState({
+        isLoading:false,
+        data:res.slider,
+      })
+    })
+  }
+
 
 // logout= async ()=>{
 //   try {
@@ -47,6 +68,7 @@ export default class Home extends Component {
   
 
   render() {
+   
     return (
       <>
         <StatusBar translucent backgroundColor="transparent"/>
@@ -55,11 +77,19 @@ export default class Home extends Component {
             <Header navigation={this.props.navigation} />
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
-     
-          <Slider props={this.props.navigation}  />
+            <CardSilder style={{}}>
+            <FlatList
+            data={this.state.data}
+            renderItem={({item})=> {
+              return <Slider data={item} />
+            }}
+      
+        />
         
+
+        </CardSilder>
             
-            <TouchableOpacity onPress={()=>this.viewAllGym()}>
+            <TouchableOpacity onPress={()=>this.viewGym()}>
             <Text style={styles.viewAll}>View all</Text>
             </TouchableOpacity>
 
@@ -143,14 +173,14 @@ const styles = StyleSheet.create({
     color:'white',
     textAlign:'right',
     marginRight:20,
-    marginTop:10,
+    marginTop:-35,
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
     letterSpacing: 1,
     alignItems: 'center',
   },
   _basicCard: {
-    marginTop: 20,
+    marginTop: 0,
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-evenly',
@@ -166,7 +196,7 @@ const styles = StyleSheet.create({
   },
   _fitShop: {
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: 30,
     fontSize: 14,
     color: 'white',
     fontWeight: 'bold',
@@ -188,11 +218,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: -20,
     fontFamily: 'Gill Sans',
   },
   _blog_slider: {
-    marginBottom: 10,
+
     fontFamily: 'Gill Sans',
   },
   _viewBtn: {

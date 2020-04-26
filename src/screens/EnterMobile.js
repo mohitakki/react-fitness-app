@@ -12,6 +12,8 @@ import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import MobileDiologBox from '../components/MobileDiologBox';
 import AsyncStorage from '@react-native-community/async-storage';
+import * as Progress from 'react-native-progress';
+
 
 
 export default class EnterMobile extends Component {
@@ -23,6 +25,7 @@ export default class EnterMobile extends Component {
   }
 
   sendOTP =async =()=> {
+    <Progress.Bar progress={0.3} width={200} />
    
     fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
     {
