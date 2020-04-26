@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  StatusBar
   
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -34,6 +35,7 @@ class Login extends Component {
   render() {
     return (
       <>
+       <StatusBar translucent backgroundColor="transparent"/>
         <View style={{flex: 1}}>
           <LinearGradient
             colors={[ '#090979','#05afd1',]}
@@ -52,7 +54,7 @@ class Login extends Component {
                 style={{
                   flexDirection: 'row',
                   alignSelf: 'center',
-                  justifyContent: 'space-between',
+                  justifyContent: 'space-evenly',
                 }}
               />
               <View
@@ -164,9 +166,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Gill Sans',
-    fontWeight: '600',
+    fontWeight: 'bold',
     marginVertical: 10,
     color: 'white',
   },
@@ -176,9 +178,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Gill Sans',
-    fontWeight: '600',
+    fontWeight: 'bold',
     marginVertical: 10,
   },
   textPhone: {

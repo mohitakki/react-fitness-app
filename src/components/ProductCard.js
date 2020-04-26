@@ -1,72 +1,142 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-export default class ProdcutCard extends React.Component {
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import FoundationIcon from 'react-native-vector-icons/Foundation';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Reviews from './Reviews';
+export default class ProductCard extends React.Component {
   render() {
     return (
-      <View style={styles.shopingCard}>
-        <View style={styles._detail}>
-          <Text style={styles._title}>Dlet Plans, Supplements & More..</Text>
-          <Text style={{fontWeight: 'bold', color: 'grey', marginTop: 20}}>
-            UPTO
-          </Text>
-          <Text style={styles._off}>60% OFF</Text>
+      <>
+        <View style={styles._card}>
+          <View style={styles._imgSection}>
+            <FoundationIcon name="burst-new" size={30} style={styles._badge} />
+            <Image
+              source={{
+                uri:
+                  'https://cdn.goto.com.pk/uploads/products/2019/11/5dbbde06d9b12.webp',
+              }}
+              style={styles._product_Img}
+            />
+          </View>
+          <View style={styles._card_body}>
+            <Text style={styles._title}>Bentan Court B-NOX</Text>
+            {/* <Text style={styles._subTitle}>Flawer watermelon</Text> */}
+            <View style={styles._price_section}>
+              <Text style={styles._price}>
+                <FontAwesome name="rupee" /> 5400
+              </Text>
+              {/* <Text style={styles._old_rate}>8249</Text> */}
+              <Text style={styles._off_sale}>35% off</Text>
+            </View>
+
+            <View style={styles._reviewsRow}>
+              <Reviews /><Text>78</Text>
+            </View>
+          </View>
+          <View style={styles._detail_row}>
+            <TouchableOpacity
+              style={styles._detail_btn}
+              onPress={() => this.props.props.navigation.navigate('Detail')}>
+              <Text style={styles._detail_btn_text}>DETAIL</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={{flex: 1, padding: 20}}>
-          <Image
-            source={{
-              uri:
-                'https://scstylecaster.files.wordpress.com/2018/11/old-school-products.jpg',
-            }}
-            style={styles._image}
-          />
-        </View>
-        <Text />
-      </View>
+      </>
     );
   }
 }
 
 let styles = StyleSheet.create({
-  shopingCard: {
-    height: 150,
+  _card: {
+
     borderRadius: 5,
+    // height: 200,
+    marginTop: 10,
+    width: '47%',
     backgroundColor: 'white',
-    // flex: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal:15,
-    shadowColor: "#f23535",
+    padding: 5,
+    shadowColor: '#fff',
     shadowOffset: {
-      width: 0.5,
+      width: 1,
       height: 2,
     },
-    shadowOpacity: 0.5,
-    shadowRadius: 3.84,
-    elevation: 15,
-    
+    shadowOpacity: 0.95,
+    shadowRadius: 1.84,
+    elevation: 5,
   },
-  _image: {
-    // flex: 1,
-    width: 100,
-    height: 100,
-    // resizeMode: 'cover',
-    borderRadius: 5,
-
-    // justifyContent: 'center',
-  },
-  _detail: {
+  _imgSection: {
     flex: 2,
-    // padding:10,
-    paddingLeft: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
+  _product_Img: {
+    height: 100,
+    width: 100,
+  },
+  _card_body: {
+    flex: 2,
+    borderColor: '#ededed',
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+  },
+  _badge: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    color: '#ea6219',
   },
   _title: {
     fontWeight: 'bold',
-    fontSize: 17,
+    textAlign: 'center',
   },
-  _off: {
-    color: 'red',
+  _subTitle: {
+    textAlign: 'center',
+    color: 'grey',
+    fontSize: 12,
+    fontFamily: 'Gill Sans',
+  },
+  _price_section: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  _reviewsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight:3
+  },
+  _off_sale: {
     fontWeight: 'bold',
-    fontSize: 18,
+    color: 'green',
+    fontFamily: 'Gill Sans',
+  },
+  _price: {
+    color: '#ea6219',
+    fontWeight: 'bold',
+    fontSize: 15,
+    fontFamily: 'Gill Sans',
+  },
+  _detail_row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 5,
+  },
+  _detail_btn: {
+    borderWidth: 2,
+    borderColor: '#ea6219',
+    borderRadius: 5,
+    width: '50%',
+  },
+  _detail_btn_text: {
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 10,
+    padding: 4,
+    color: '#ea6219',
+    fontWeight: 'bold',
   },
 });

@@ -8,7 +8,7 @@ import {
   EnterOTP,
   Home,
   Login,
-  Signup,
+  ProductDetail,
   Splash,
   Profile,
   Blog,
@@ -148,9 +148,18 @@ export default function HomeStackScreen() {
               />
 
               <HomeStack.Screen name="location" component={Location} />
-              <HomeStack.Screen name="UserProfile" component={UserProfile}
+              <HomeStack.Screen name="UserProfile" component={UserProfile}/>
+              <HomeStack.Screen name="Detail" component={ProductDetail}
                 options={{
-                  headerShown: false,
+                  headerTitle: <Text style={{ color: 'white', fontFamily: 'Gill Sans' }}>Product Detail</Text>,
+                  headerStyle: {
+                    backgroundColor: '#f23535',
+                  },
+                  headerTintColor: 'white',
+                  headerBackTitle: ''
+                  // headerTitle: <Text>lkjj</Text>,
+                  // headerRight: props => <  />,
+                  // headerLeft: props => <HeaderLeft {...props}   />,
                 }}
               />
 
@@ -167,7 +176,16 @@ export default function HomeStackScreen() {
                   // headerLeft: props => <HeaderLeft {...props}   />,
                 }}
               />
-              <HomeStack.Screen name="shop" component={ViewShop} />
+              <HomeStack.Screen name="Supplement" component={ViewShop} 
+                  options={{
+                    headerTitle: <Text style={{ color: 'white', fontFamily: 'Gill Sans' }}>Supplement</Text>,
+                  headerStyle: {
+                    backgroundColor: '#f23535',
+                  },
+                  headerTintColor: 'white',
+                  headerBackTitle: ''
+                }}
+              />
               <HomeStack.Screen name="FITCOACH" component={FitCoach} />
               <HomeStack.Screen
                 name="ViewAllGym"

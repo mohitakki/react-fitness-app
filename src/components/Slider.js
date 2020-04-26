@@ -29,10 +29,7 @@ export default class Slider extends Component {
                     borderColor: '#68666C',
                     borderWidth: 1.6,
                   }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
+                  source={require('../assests/gym1.png')}
                 />
               </View>
               <View>
@@ -89,14 +86,11 @@ export default class Slider extends Component {
                     borderColor: '#68666C',
                     borderWidth: 1.6,
                   }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
+                  source={require('../assests/gym2.png')}
                 />
               </View>
               <View>
-                <Text style={styles.gymName}>The Fitness Gym</Text>
+                <Text style={styles.gymName}>New Fitness Gym</Text>
                 <Text style={styles.gymAddress}>
                   Shalimar Garden, Ghaziabad
                 </Text>

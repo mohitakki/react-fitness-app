@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {
   Slider,
   BasicCard,
-  ProductCard,
+  ViewShopCard,
   BlogSlider,
   Header,
   Subscription
@@ -26,20 +26,20 @@ export default class Home extends Component {
     this.state = {};
   }
 
-logout= async ()=>{
-  try {
-    await AsyncStorage.removeItem('token');
-    const getItem = await AsyncStorage.getItem('token');
-    //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
-    console.log('Should not be stored:', getItem);
-  } catch (err) {
-    throw new Error(err);
-  }
-  this.props.navigation.navigate('Loading');
-  await logout();
-  }
+// logout= async ()=>{
+//   try {
+//     await AsyncStorage.removeItem('token');
+//     const getItem = await AsyncStorage.getItem('token');
+//     //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
+//     console.log('Should not be stored:', getItem);
+//   } catch (err) {
+//     throw new Error(err);
+//   }
+//   this.props.navigation.navigate('Loading');
+//   await logout();
+//   }
 
-  viewAllGym=()=>{
+  viewGym=()=>{
    this.props.navigation.navigate('ViewAllGym')
   }
   
@@ -55,7 +55,9 @@ logout= async ()=>{
             <Header navigation={this.props.navigation} />
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
-            <Slider props={this.props.navigation}/>
+     
+          <Slider props={this.props.navigation}  />
+        
             
             <TouchableOpacity onPress={()=>this.viewAllGym()}>
             <Text style={styles.viewAll}>View all</Text>
@@ -79,8 +81,8 @@ logout= async ()=>{
             <TouchableOpacity
               style={styles._product_card}
               activeOpacity={0.9}
-              onPress={() => this.props.navigation.navigate('shop')}>
-              <ProductCard />
+              onPress={() => this.props.navigation.navigate('Supplement')}>
+              <ViewShopCard />
               <Text style={styles._viewshop}>
                 VIEW SHOP
                 <AntDesign
@@ -90,7 +92,7 @@ logout= async ()=>{
                 />
               </Text>
             </TouchableOpacity>
-            <Button title="Logout" onPress={()=>this.logout()} />
+            {/* <Button title="Logout" onPress={()=>this.logout()} /> */}
             {/* BLOG SLIDER */}
             <View style={styles._blog_slider}>
               <Text style={styles._fitShop}>MOTIVATION </Text>
@@ -105,6 +107,7 @@ logout= async ()=>{
                     name="rightcircle"
                     color="white"
                     style={styles._viewBtn}
+                    
                   />
                 </Text>
               </TouchableOpacity>
@@ -155,6 +158,7 @@ const styles = StyleSheet.create({
   _nearBy: {
     marginLeft: 20,
     marginTop: 20,
+    letterSpacing: 1,
     fontSize: 14,
     color: 'white',
     fontWeight: 'bold',
@@ -192,13 +196,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Gill Sans',
   },
   _viewBtn: {
-    height: 20,
+    height: 18,
     borderRadius: 100,
     fontWeight: 'bold',
-    color: '#F26E38',
+    color: '#f23535',
     borderLeftWidth: 2,
     borderColor: 'white',
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: 'Gill Sans',
   },
 });

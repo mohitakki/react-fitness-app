@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Button} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default class Subscription extends React.Component {
@@ -29,7 +30,9 @@ export default class Subscription extends React.Component {
      <Text style={styles.price}>899/ </Text>
      </View>
     <View style={{marginTop:30}}>
-    <Button title="SUBSCRIBE"   color="white" marginTop={20} />
+    <TouchableOpacity style={styles.SubscriptionButton}>
+      <Text style={{color:'red', fontWeight:'600'}}>BUY PASS</Text>
+    </TouchableOpacity>
     </View>
 
      
@@ -136,5 +139,12 @@ price:{
     fontWeight:'700',
     fontFamily: 'Gill Sans',
 },
-  
+  SubscriptionButton:{
+    backgroundColor:'white',
+    borderRadius:10,
+    paddingHorizontal:20,
+    paddingVertical:8,
+    marginHorizontal:10,
+
+  }
 });

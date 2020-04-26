@@ -36,7 +36,7 @@ export default class GymsList extends React.Component {
     ];
     return (
       <>
-      <Header navigation={this.props.navigation} />
+      {/* <Header navigation={this.props.navigation} /> */}
         {/* subheader */}
         <View style={styles._subHeader}>
           <View style={styles._tab}>

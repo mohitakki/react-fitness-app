@@ -17,6 +17,9 @@ import ViewAllGym from './ViewAllGym'
 import Loading from './Loading'
 import Subscription from './Subscription'
 import UserProfile from './UserProfile'
+import ProductDetail from './ProductDetail'
+
+
 export {
   EnterMobile,
   EnterOTP,
@@ -36,5 +39,6 @@ export {
   ViewAllGym,
   Loading,
   Subscription,
-  UserProfile
+  UserProfile,
+  ProductDetail
 };

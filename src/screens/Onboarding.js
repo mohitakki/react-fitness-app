@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ImageBackground, StyleSheet, Image} from 'react-native';
+import {View, Text, ImageBackground, StyleSheet, Image, StatusBar} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import LinearGradient from 'react-native-linear-gradient';
 import {Home} from '../screens';
@@ -44,6 +44,7 @@ export default class Onboarding extends React.Component {
   }
   _renderItem = ({item}) => {
     return (
+      
       <View
         colors={['#F26E38', '#F23873', '#48CCF7']}
         style={{
@@ -72,12 +73,15 @@ export default class Onboarding extends React.Component {
       return <Login />;
     } else {
       return (
+        <>
+          <StatusBar translucent backgroundColor="transparent"/>
         <AppIntroSlider
           renderItem={this._renderItem}
           data={slides}
           showSkipButton={true}
           onDone={this._onDone}
         />
+        </>
       );
     }
   }

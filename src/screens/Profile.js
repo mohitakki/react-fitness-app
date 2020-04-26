@@ -357,13 +357,13 @@ export default class Profile extends React.Component {
 
 let styles = StyleSheet.create({
   _profile: {
-    height: 300,
+    height: 310,
   },
   _backgroundImg: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    height:300,
+    height:310,
    
     shadowColor: '#f23535',
     shadowOffset: {
@@ -399,10 +399,11 @@ let styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingRight: 10,
     flexDirection: 'row',
+    borderRadius:10
   },
   _numbering: {
     backgroundColor: '#f23535',
-    borderRadius:5,    paddingLeft: 8,
+    paddingLeft: 8,
     paddingRight: 8,
     color: 'white',
     fontFamily: 'Gill Sans',
@@ -476,9 +477,9 @@ let styles = StyleSheet.create({
 
   },
   _seemore: {
-    marginTop:20,
+    marginTop:10,
     backgroundColor: '#f23535',
-    height: 50,
+    height: 40,
     padding: 10,
   },
   more_text: {

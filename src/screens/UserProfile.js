@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class UserProfile extends Component {
   constructor(props) {
@@ -8,6 +9,20 @@ export default class UserProfile extends Component {
     this.state = {
     };
   }
+
+
+logout= async ()=>{
+    try {
+      await AsyncStorage.removeItem('token');
+      const getItem = await AsyncStorage.getItem('token');
+      //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
+      console.log('Should not be stored:', getItem);
+    } catch (err) {
+      throw new Error(err);
+    }
+    this.props.navigation.navigate('Loading');
+    await logout();
+    }
 
   render() {
     return (
@@ -20,6 +35,7 @@ export default class UserProfile extends Component {
        </View>
    
        </LinearGradient>
+       <Button title="Logout" onPress={()=>this.logout()} />
       </View>
       </View>
     );

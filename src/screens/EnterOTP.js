@@ -46,7 +46,7 @@ export default class EnterOTP extends Component {
   render() {
     return (
       <KeyboardAvoidingView
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS == 'android' ? 'padding' : 'height' }
         style={{flex: 1}}>
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}
@@ -134,6 +134,6 @@ const styles = StyleSheet.create({
   },
   resendOTP: {
     color: 'white',
-    marginTop: 5,
+    marginTop: 10,
   },
 });
