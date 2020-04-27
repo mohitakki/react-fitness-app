@@ -57,7 +57,7 @@ export default class GymsList extends React.Component {
         <ScrollView>
         
           {item.map((val, i) => (
-            <GymCard data={val} key={i} />
+            <GymCard data={val} key={i} props={this.props.navigation} />
           ))}
         </ScrollView>
       </>

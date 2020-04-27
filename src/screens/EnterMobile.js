@@ -11,9 +11,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import MobileDiologBox from '../components/MobileDiologBox';
-import AsyncStorage from '@react-native-community/async-storage';
 import * as Progress from 'react-native-progress';
-
+import {widthToDp,heightToDp} from '../config/responsive'
 
 
 export default class EnterMobile extends Component {
@@ -24,7 +23,7 @@ export default class EnterMobile extends Component {
     };
   }
 
-  sendOTP =async =()=> {
+  sendOTP = async =()=> {
     <Progress.Bar progress={0.3} width={200} />
    
     fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
@@ -42,12 +41,11 @@ export default class EnterMobile extends Component {
     .then( async (res) => {
       try{
       if(res.error === false){
-      await  AsyncStorage.setItem('token', res.token)
-      console.warn(res.token);
+    
       this.props.navigation.navigate('EnterOTP')
       }
       else{
-        alert('Something went wrong')
+        alert('Enter a valid mobile')
       }
       } catch(e){
 
@@ -79,7 +77,7 @@ export default class EnterMobile extends Component {
               alignItems: 'center',
             }}>
             <Text style={styles.buttonText}>
-              Enter your mobile number to get an OTP.
+              Enter your mobile number to get an OTP
             </Text>
 
             <TextInput
@@ -90,8 +88,8 @@ export default class EnterMobile extends Component {
             />
             <TouchableOpacity
               style={styles.sentButon}
-              onPress={() => this.sendOTP()}>
-              {/* onPress={() => this.RBSheet.open()}> */}
+              // onPress={() => this.sendOTP()}>
+              onPress={() => this.RBSheet.open()}>
               <Text style={styles.sentText}>Send OTP</Text>
             </TouchableOpacity>
 
@@ -99,7 +97,7 @@ export default class EnterMobile extends Component {
               ref={ref => {
                 this.RBSheet = ref;
               }}
-              height={250}
+              height={widthToDp(55)}
               duration={250}
               customStyles={{
                 container: {
@@ -122,23 +120,21 @@ export default class EnterMobile extends Component {
 const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
+   paddingHorizontal:widthToDp(5),
     borderRadius: 5,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: widthToDp(5),
     fontFamily: 'Gill Sans',
-    margin: 10,
     color: '#ffffff',
     backgroundColor: 'transparent',
   },
   inputText: {
-    marginTop: 10,
-    width: 340,
-    height: 50,
-    paddingLeft: 20,
-    borderRadius: 10,
+    marginTop: widthToDp(10),
+    width: widthToDp(80),
+    height: widthToDp(13),
+    paddingLeft: widthToDp(3),
+    borderRadius: 5,
     borderColor: 'white',
     borderWidth: 0.8,
     color: 'white',
@@ -146,10 +142,10 @@ const styles = StyleSheet.create({
   },
   sentButon: {
     backgroundColor: 'white',
-    width: 340,
-    borderRadius: 10,
-    paddingVertical: 15,
-    marginTop: 10,
+    width: widthToDp(80),
+    height: widthToDp(13),
+    borderRadius: 5,
+    marginTop: widthToDp(5),
     shadowColor: '#48CCF7',
     shadowOffset: {
       width: 0,
@@ -162,7 +158,8 @@ const styles = StyleSheet.create({
   },
   sentText: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: widthToDp(5),
+    marginTop:widthToDp(3),
     fontWeight: '700',
     color: '#F23873',
   },

@@ -37,7 +37,7 @@ export default class ProductCard extends React.Component {
             <TouchableOpacity
               style={styles._detail_btn}
               onPress={() => this.props.props.navigation.navigate('Detail')}>
-              <Text style={styles._detail_btn_text}>DETAIL</Text>
+              <Text style={styles._detail_btn_text}>BUY NOW</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -84,7 +84,7 @@ let styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     top: 0,
-    color: '#ea6219',
+    color: '#f23535',
   },
   _title: {
     fontWeight: 'bold',
@@ -114,7 +114,7 @@ let styles = StyleSheet.create({
     fontFamily: 'Gill Sans',
   },
   _price: {
-    color: '#ea6219',
+    color: '#f23535',
     fontWeight: 'bold',
     fontSize: 15,
     fontFamily: 'Gill Sans',
@@ -127,7 +127,7 @@ let styles = StyleSheet.create({
   },
   _detail_btn: {
     borderWidth: 2,
-    borderColor: '#ea6219',
+    borderColor: '#f23535',
     borderRadius: 5,
     width: '50%',
   },
@@ -136,7 +136,7 @@ let styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 10,
     padding: 4,
-    color: '#ea6219',
+    color: '#f23535',
     fontWeight: 'bold',
   },
 });

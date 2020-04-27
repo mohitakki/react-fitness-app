@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
+import { widthToDp } from '../config/responsive';
 
 export default class EnterOTP extends Component {
   constructor(props) {
@@ -17,7 +19,7 @@ export default class EnterOTP extends Component {
     };
   }
 
-  sendOTP= async () => {
+  sendOTP = async = () => {
   
     fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
     {
@@ -31,9 +33,9 @@ export default class EnterOTP extends Component {
       })
     })
     .then((response) => response.json())
-    .then((res) => {
+    .then( async(res) => {
       if(res.error=== false){
-      console.warn(res);
+        await  AsyncStorage.setItem('token', res.token)
       this.props.navigation.navigate('bottombar')
       
       }
@@ -46,7 +48,7 @@ export default class EnterOTP extends Component {
   render() {
     return (
       <KeyboardAvoidingView
-        behavior={Platform.OS == 'android' ? 'padding' : 'height' }
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height' }
         style={{flex: 1}}>
         <LinearGradient
           colors={['#F26E38', '#F23873', '#48CCF7']}
@@ -56,7 +58,7 @@ export default class EnterOTP extends Component {
               flex: 1,
               alignContent: 'center',
               justifyContent: 'center',
-              marginBottom: 100,
+              marginBottom: widthToDp(50),
 
               alignItems: 'center',
             }}>
@@ -71,11 +73,11 @@ export default class EnterOTP extends Component {
             <TouchableOpacity
               style={styles.sentButon}
               onPress={() => this.sendOTP()}>
-              <Text style={styles.sentText}>Submit</Text>
+              <Text style={styles.sentText}>SUBMIT</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.sendOTP()}>
               <Text style={styles.resendOTP}>
-                Don't receive OTP? Click to Resend
+                Resend OTP
               </Text>
             </TouchableOpacity>
           </View>
@@ -87,23 +89,23 @@ export default class EnterOTP extends Component {
 const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: widthToDp(8),
+    paddingRight: widthToDp(8),
     borderRadius: 5,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: widthToDp(7),
     fontFamily: 'Gill Sans',
-    margin: 10,
+    margin: widthToDp(8),
     color: '#ffffff',
     backgroundColor: 'transparent',
   },
   inputText: {
-    marginTop: 10,
-    width: 340,
-    height: 50,
-    paddingLeft: 20,
-    borderRadius: 10,
+    marginTop: widthToDp(8),
+    width: widthToDp(80),
+    height: widthToDp(12),
+    paddingLeft: widthToDp(3),
+    borderRadius: 5,
     borderColor: 'white',
     borderWidth: 0.8,
    
@@ -112,10 +114,10 @@ const styles = StyleSheet.create({
   },
   sentButon: {
     backgroundColor: 'white',
-    width: 340,
-    borderRadius: 10,
-    paddingVertical: 15,
-    marginTop: 10,
+    width: widthToDp(80),
+    borderRadius: 5,
+    paddingVertical: widthToDp(3),
+    marginTop: widthToDp(3),
     shadowColor: '#48CCF7',
     shadowOffset: {
       width: 0,
@@ -128,12 +130,13 @@ const styles = StyleSheet.create({
   },
   sentText: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: widthToDp(4),
     fontWeight: '700',
     color: '#F23873',
   },
   resendOTP: {
     color: 'white',
-    marginTop: 10,
+    marginTop: widthToDp(2),
+   fontSize:widthToDp(3)
   },
 });

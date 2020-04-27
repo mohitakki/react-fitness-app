@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ImageBackground, StyleSheet} from 'react-native';
+import {Text, View, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -73,9 +73,11 @@ export default class GymCard extends React.Component {
                 </View>
                 {/* Detail Row */}
                 <View style={styles._detailRow}>
-                  <Text style={styles._detail_text}>
+                 <TouchableOpacity >
+                 <Text style={styles._detail_text}>
                     <MaterialIcons name="watch-later" /> {data.timing}
                   </Text>
+                 </TouchableOpacity>
                   <Text style={styles._detail}>
                     DETAILS <Ionicons name="ios-arrow-forward" />
                   </Text>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet,Image, ImageBackground,TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {widthToDp,heightToDp} from '../config/responsive'
 
 export default class BasicCard extends React.Component {
   render() {
@@ -34,7 +35,7 @@ export default class BasicCard extends React.Component {
 
 let styles = StyleSheet.create({
   _Card: {
-    height: 200,
+    height: widthToDp(42),
     width: '44%',
     shadowColor: "#f23535",
     shadowOffset: {

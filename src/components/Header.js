@@ -1,16 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import {widthToDp,heightToDp} from '../config/responsive'
 export default class Header extends React.Component {
   render() {
     return (
       <>
-        {/* <StatusBar backgroundColor="#EA0706" /> */}
         <View style={styles._header}>
           <View style={styles._leftSide}>
-            <View style={{marginLeft: 20}}>
+            <View style={{marginLeft: widthToDp(5)}}>
               <Text
                 style={{
-                  fontSize: 16,
+                  fontSize: widthToDp(4),
                   color: 'white',
                   fontWeight: 'bold',
                   fontFamily: 'Gill Sans',
@@ -18,7 +18,7 @@ export default class Header extends React.Component {
                 onPress={() => this.props.navigation.navigate('GymsList')}>
                 Shalimar Garden
               </Text>
-              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+              <Text style={{color: 'white', fontFamily: 'Gill Sans',fontSize: widthToDp(3),}}>
                 Ghaziabad
               </Text>
             </View>
@@ -28,11 +28,11 @@ export default class Header extends React.Component {
               ) : (
                 <Image
                   style={{
-                    width: 30,
-                    height: 30,
+                    width: widthToDp(8),
+                    height: widthToDp(8),
                     borderRadius: 50,
                     borderColor: '#c1c1c1',
-                    borderWidth: 1,
+                    borderWidth: .4,
                     resizeMode: 'contain',
                     backgroundColor: '#000',
                   }}
@@ -51,9 +51,9 @@ let styles = StyleSheet.create({
   _header: {
     backgroundColor: '#f23535',
     elevation: 4,
-    paddingTop: 35,
-    paddingBottom: 8,
-    paddingRight: 20,
+    paddingTop: widthToDp(9),
+    paddingBottom: widthToDp(2),
+    paddingRight: widthToDp(5),
     shadowColor: '#c1c1c1',
     shadowOffset: {
       width: 0.2,
@@ -66,22 +66,5 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-
-  _right_text: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: 'red',
-    borderWidth: 1,
-    shadowColor: '#c1c1c1',
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 2.95,
-    shadowRadius: 3.84,
-    marginHorizontal: 20,
-    marginVertical: 20,
-    elevation: 25,
   },
 });

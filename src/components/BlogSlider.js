@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import CardSilder from 'react-native-cards-slider';
-
+import {widthToDp,heightToDp} from '../config/responsive'
 export default class BlogSlider extends Component {
   // constructor(props) {
   //   super(props);
@@ -61,7 +61,7 @@ export default class BlogSlider extends Component {
 
 let styles = StyleSheet.create({
   _postStyle: {
-    height: 130,
+    height: widthToDp(30),
     borderRadius: 5,
     borderColor: 'white',
     borderWidth:3
@@ -86,6 +86,6 @@ let styles = StyleSheet.create({
   },
   _heading: {
     color: 'white',
-    padding: 20,
+    padding:  widthToDp(10),
   },
 });

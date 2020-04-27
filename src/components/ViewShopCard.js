@@ -1,12 +1,13 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
+import {widthToDp,heightToDp} from '../config/responsive'
 export default class ProductShopCard extends React.Component {
   render() {
     return (
       <View style={styles.shopingCard}>
         <View style={styles._detail}>
           <Text style={styles._title}>Weight Gainer, Supplements & More..</Text>
-          <Text style={{fontWeight: 'bold', color: 'grey', marginTop: 20}}>
+          <Text style={{fontWeight: 'bold', color: 'grey', marginTop: widthToDp(4),fontSize: widthToDp(3),}}>
             UPTO
           </Text>
           <Text style={styles._off}>60% OFF</Text>
@@ -28,14 +29,14 @@ export default class ProductShopCard extends React.Component {
 
 let styles = StyleSheet.create({
   shopingCard: {
-    height: 150,
+    height: widthToDp(30),
     borderRadius: 5,
     backgroundColor: 'white',
     // flex: 1,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal:15,
+    marginHorizontal:widthToDp(3),
     shadowColor: "#f23535",
     shadowOffset: {
       width: 0.5,
@@ -48,8 +49,8 @@ let styles = StyleSheet.create({
   },
   _image: {
     // flex: 1,
-    width: 100,
-    height: 100,
+    width: widthToDp(25),
+    height: widthToDp(25),
     // resizeMode: 'cover',
     borderRadius: 5,
 
@@ -58,15 +59,16 @@ let styles = StyleSheet.create({
   _detail: {
     flex: 2,
     // padding:10,
-    paddingLeft: 15,
+    paddingLeft: widthToDp(5),
+    fontSize:widthToDp(3)
   },
   _title: {
     fontWeight: 'bold',
-    fontSize: 17,
+    fontSize: widthToDp(4),
   },
   _off: {
     color: 'red',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: widthToDp(5),
   },
 });

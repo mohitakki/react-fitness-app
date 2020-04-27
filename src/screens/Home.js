@@ -12,6 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import CardSilder from 'react-native-cards-slider';
+
 import {
   Slider,
   BasicCard,
@@ -22,6 +23,7 @@ import {
 } from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {getSlider} from '../services/home';
+import { widthToDp } from '../config/responsive';
 
 export default class Home extends Component {
   constructor(props) {
@@ -78,10 +80,10 @@ export default class Home extends Component {
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
             <CardSilder style={{}}>
-            <FlatList
+            <FlatList style={{height:widthToDp(35),}}
             data={this.state.data}
             renderItem={({item})=> {
-              return <Slider data={item} />
+              return <Slider data={item} props={this.props.navigation} />
             }}
       
         />
@@ -101,10 +103,10 @@ export default class Home extends Component {
               
             </TouchableOpacity>
 
-            <View style={styles._basicCard}>
+            {/* <View style={styles._basicCard}>
               <BasicCard props={this.props.navigation} />
               <BasicCard props={this.props.navigation} />
-            </View>
+            </View> */}
 
             {/* PRODUCT CARD */}
             <Text style={styles._fitShop}>FITSHOP</Text>
@@ -114,7 +116,7 @@ export default class Home extends Component {
               onPress={() => this.props.navigation.navigate('Supplement')}>
               <ViewShopCard />
               <Text style={styles._viewshop}>
-                VIEW SHOP
+                View all
                 <AntDesign
                   name="rightcircle"
                   color="white"
@@ -122,12 +124,11 @@ export default class Home extends Component {
                 />
               </Text>
             </TouchableOpacity>
-            {/* <Button title="Logout" onPress={()=>this.logout()} /> */}
-            {/* BLOG SLIDER */}
-            <View style={styles._blog_slider}>
+          
+           <View style={styles._blog_slider}>
               <Text style={styles._fitShop}>MOTIVATION </Text>
               <BlogSlider />
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles._product_card}
                 activeOpacity={0.9}
                 onPress={() => this.props.navigation.navigate('blog')}>
@@ -140,8 +141,8 @@ export default class Home extends Component {
                     
                   />
                 </Text>
-              </TouchableOpacity>
-            </View>
+              </TouchableOpacity> */}
+            </View> 
           </ScrollView>
         </LinearGradient>
       </>
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
   },
   header: {
     justifyContent: 'space-between',
-    marginHorizontal: 30,
+    marginHorizontal: widthToDp(10),
     marginVertical: 50,
     flexDirection: 'row',
   },
@@ -172,58 +173,61 @@ const styles = StyleSheet.create({
   viewAll:{
     color:'white',
     textAlign:'right',
-    marginRight:20,
-    marginTop:-35,
-    fontWeight: 'bold',
+    marginRight:widthToDp(5),
+    fontWeight: '600',
     fontFamily: 'Gill Sans',
     letterSpacing: 1,
     alignItems: 'center',
+    fontSize: widthToDp(3),
+    marginTop:widthToDp(1)
   },
   _basicCard: {
-    marginTop: 0,
+
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-evenly',
+    marginTop:widthToDp(5)
   },
   _nearBy: {
-    marginLeft: 20,
-    marginTop: 20,
+    marginLeft: widthToDp(5),
+    marginTop: widthToDp(3),
     letterSpacing: 1,
-    fontSize: 14,
+    fontSize: widthToDp(4),
     color: 'white',
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
   },
   _fitShop: {
-    marginLeft: 20,
-    marginTop: 30,
-    fontSize: 14,
+    marginLeft: widthToDp(5),
+    marginTop: widthToDp(5),
+    fontSize: widthToDp(4),
     color: 'white',
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
-    letterSpacing: 3,
+    letterSpacing: 1,
   },
   _viewshop: {
     color: 'white',
     textAlign: 'right',
-    width: '90%',
-    letterSpacing: 1,
-    marginTop: 4,
-    fontWeight: 'bold',
+    width: widthToDp(95),
+    marginTop: widthToDp(1),
+    fontWeight: '600',
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: 'Gill Sans',
   },
   _product_card: {
-    flex: 1,
+   
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -20,
+    marginTop: widthToDp(7),
     fontFamily: 'Gill Sans',
+    height:widthToDp(25)
   },
   _blog_slider: {
 
     fontFamily: 'Gill Sans',
+   
   },
   _viewBtn: {
     height: 18,
@@ -232,7 +236,7 @@ const styles = StyleSheet.create({
     color: '#f23535',
     borderLeftWidth: 2,
     borderColor: 'white',
-    fontSize: 16,
+    fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
   },
 });

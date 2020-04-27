@@ -1,4 +1,6 @@
 {
   "name": "FitBook",
-  "displayName": "FitBook"
+  "displayName": "FitBook",
+  "orientation": "portrait"
+
 }

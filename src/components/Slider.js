@@ -1,7 +1,6 @@
-import React, {Component, useRef} from 'react';
+import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import CardSilder from 'react-native-cards-slider';
-import Carousel from 'react-native-snap-carousel';
+import {widthToDp,heightToDp} from '../config/responsive'
 
 
 
@@ -20,13 +19,13 @@ export default class Slider extends Component {
       <View>
 
 <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', flex:1}}>
               <View style={styles.innerCard}>
                 <Image
                   style={{
                     resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
+                    width: widthToDp(20),
+                    height: widthToDp(20),
                     borderRadius: 5,
                     borderColor: '#68666C',
                     borderWidth: 1.6,
@@ -41,20 +40,20 @@ export default class Slider extends Component {
                 </Text>
                 <View
                   style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
+                    width: widthToDp(50),
+                    height: widthToDp(5),
+                    marginHorizontal: widthToDp(4),
                     backgroundColor: '#efd2d2',
                     borderRadius: 5,
-                    marginTop: 10,
+                    marginTop: widthToDp(1),
                   }}
                 />
                 <View
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 10,
+                    marginHorizontal: widthToDp(4),
+                    marginTop: widthToDp(3),
                   }}>
                   <Text style={styles.timing}>{this.data.timing}</Text>
                   <Text style={styles.timing}>.{this.data.distance}</Text>
@@ -64,10 +63,9 @@ export default class Slider extends Component {
 
             <View
               style={{
-                height: 10,
-                flex: 2,
+                height: widthToDp(6),
                 backgroundColor: '#efd2d2',
-                marginTop: 10,
+                
               }}>
               <Text
                 style={styles.exploreText}
@@ -75,292 +73,14 @@ export default class Slider extends Component {
                 Explore this GYM
               </Text>
             </View>
-          </View>
-   
-{/*         
-          <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.innerCard}>
-                <Image
-                  style={{
-                    resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 5,
-                    borderColor: '#68666C',
-                    borderWidth: 1.6,
-                  }}
-                  source={require('../assests/gym2.png')}
-                />
-              </View>
-              <View>
-                <Text style={styles.gymName}>New Fitness Gym</Text>
-                <Text style={styles.gymAddress}>
-                  Shalimar Garden, Ghaziabad
-                </Text>
-                <View
-                  style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
-                    borderRadius: 5,
-                    marginTop: 5,
-                  }}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 20,
-                  }}>
-                  <Text style={styles.timing}>06:00 to 22:00</Text>
-                  <Text style={styles.timing}>.89km</Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                height: 10,
-                flex: 2,
-                backgroundColor: '#D9D0EE',
-                marginTop: 20,
-              }}
-            />
-          </View>
-          <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.innerCard}>
-                <Image
-                  style={{
-                    resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 5,
-                    borderColor: '#68666C',
-                    borderWidth: 1.6,
-                  }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.gymName}>The Fitness Gym</Text>
-                <Text style={styles.gymAddress}>
-                  Shalimar Garden, Ghaziabad
-                </Text>
-                <View
-                  style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
-                    borderRadius: 5,
-                    marginTop: 5,
-                  }}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 20,
-                  }}>
-                  <Text style={styles.timing}>06:00 to 22:00</Text>
-                  <Text style={styles.timing}>.89km</Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                height: 10,
-                flex: 2,
-                backgroundColor: '#D9D0EE',
-                marginTop: 20,
-              }}
-            />
-          </View>
-          <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.innerCard}>
-                <Image
-                  style={{
-                    resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 5,
-                    borderColor: '#68666C',
-                    borderWidth: 1.6,
-                  }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.gymName}>The Fitness Gym</Text>
-                <Text style={styles.gymAddress}>
-                  Shalimar Garden, Ghaziabad
-                </Text>
-                <View
-                  style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
-                    borderRadius: 5,
-                    marginTop: 5,
-                  }}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 20,
-                  }}>
-                  <Text style={styles.timing}>06:00 to 22:00</Text>
-                  <Text style={styles.timing}>.89km</Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                height: 10,
-                flex: 2,
-                backgroundColor: '#D9D0EE',
-                marginTop: 20,
-              }}
-            />
-          </View>
-          <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.innerCard}>
-                <Image
-                  style={{
-                    resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 5,
-                    borderColor: '#68666C',
-                    borderWidth: 1.6,
-                  }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.gymName}>The Fitness Gym</Text>
-                <Text style={styles.gymAddress}>
-                  Shalimar Garden, Ghaziabad
-                </Text>
-                <View
-                  style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
-                    borderRadius: 5,
-                    marginTop: 5,
-                  }}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 20,
-                  }}>
-                  <Text style={styles.timing}>06:00 to 22:00</Text>
-                  <Text style={styles.timing}>.89km</Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                height: 10,
-                flex: 2,
-                backgroundColor: '#D9D0EE',
-                marginTop: 20,
-              }}
-            />
-          </View>
-          <View style={styles.cardSlider}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.innerCard}>
-                <Image
-                  style={{
-                    resizeMode: 'cover',
-                    width: 100,
-                    height: 100,
-                    borderRadius: 5,
-                    borderColor: '#68666C',
-                    borderWidth: 1.6,
-                  }}
-                  source={{
-                    url:
-                      'https://cdn1.designhill.com/cache/uploads/pagefile/1552986918-14630458015c90b326ac8835-91581601-500x500.jpg?ver=2.10.80',
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.gymName}>The Fitness Gym</Text>
-                <Text style={styles.gymAddress}>
-                  Shalimar Garden, Ghaziabad
-                </Text>
-                <View
-                  style={{
-                    width: 170,
-                    height: 25,
-                    marginHorizontal: 20,
-                    backgroundColor: '#D9D0EE',
-                    borderRadius: 5,
-                    marginTop: 5,
-                  }}
-                />
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginHorizontal: 20,
-                    marginTop: 20,
-                  }}>
-                  <Text style={styles.timing}>06:00 to 22:00</Text>
-                  <Text style={styles.timing}>.89km</Text>
-                </View>
-              </View>
-            </View>
-
-            <View
-              style={{
-                height: 10,
-                flex: 2,
-                backgroundColor: '#D9D0EE',
-                marginTop: 20,
-              }}
-            />
-          </View>
-        */}
-       
-      
+          </View>  
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
   cardSlider: {
-    height: 150,
-    borderRadius: 10,
+    height: widthToDp(34),
     borderColor: '#D9D0EE',
     borderWidth: 0.8,
     backgroundColor: '#fbfbfb',
@@ -375,11 +95,11 @@ const styles = StyleSheet.create({
     elevation: 25,
   },
   innerCard: {
-    width: 100,
-    height: 100,
+    width: widthToDp(20),
+    height: widthToDp(20),
     backgroundColor: 'white',
-    marginTop: 10,
-    marginLeft: 20,
+    marginTop: widthToDp(2),
+    marginLeft: widthToDp(2),
     borderRadius: 5,
     shadowColor: '#D9D0EE',
     shadowOffset: {
@@ -391,22 +111,21 @@ const styles = StyleSheet.create({
     elevation: 25,
   },
   gymName: {
-    marginTop: 10,
-    marginLeft: 20,
-    fontSize: 20,
-    fontWeight: '600',
+    marginTop: widthToDp(1),
+    marginLeft: widthToDp(5),
+    fontSize: widthToDp(5),
+    fontWeight: '700',
     color: 'black',
     fontFamily: 'Gill Sans',
   },
   gymAddress: {
-    fontSize: 12,
-    marginLeft: 20,
+    fontSize: widthToDp(4),
+    marginLeft: widthToDp(5),
     color: '#68666C',
     fontFamily: 'Gill Sans',
-    marginTop:5
   },
   timing: {
-    fontSize: 14,
+    fontSize: widthToDp(3),
     fontWeight: '500',
     fontFamily: 'Gill Sans',
     color: '#f23535',
@@ -418,8 +137,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignSelf:"center",
-    marginTop:2,
-    fontWeight:'500',
-    color:'#f23535'
+    marginTop:widthToDp(1),
+    fontWeight:'600',
+    color:'#f23535',
+    fontSize:widthToDp(3)
   },
 });

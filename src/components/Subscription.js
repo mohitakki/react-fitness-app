@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, Button} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import {widthToDp,heightToDp} from '../config/responsive'
 
 
 export default class Subscription extends React.Component {
@@ -9,11 +10,11 @@ export default class Subscription extends React.Component {
     return (
       <View style={styles.shopingCard}>
 
-      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' }}>      
+      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between',}}>      
       <LinearGradient colors={[ '#b22193','#f23535',]} style={{flex: 1, flexDirection:'row',}}>
     
       <View style={styles.leftArea}>
-      <View style={{flex:1}}>
+      <View style={{}}>
       <Text style={styles.getText}>GET</Text>
       <Text style={styles.percentText}>40%</Text>
       <Text style={styles.offText}>OFF</Text>
@@ -22,16 +23,16 @@ export default class Subscription extends React.Component {
       </View>
      
       <View style={styles.rightArea}>
-      <View style={{flex:1,}}>
+      <View style={{}}>
       <Text style={styles.textRight}>What are you waiting for?</Text>
      <View style={{flexDirection:'row'}}>
-     <View style={{marginTop:10}}>
+     <View style={{marginTop:widthToDp(2)}}>
      <Text style={styles.fitpass}>FITBOOK PASS </Text>
      <Text style={styles.price}>899/ </Text>
      </View>
-    <View style={{marginTop:30}}>
+    <View style={{marginTop:widthToDp(10)}}>
     <TouchableOpacity style={styles.SubscriptionButton}>
-      <Text style={{color:'red', fontWeight:'600'}}>BUY PASS</Text>
+      <Text style={{color:'red', fontWeight:'600',fontSize:widthToDp(3)}}>BUY PASS</Text>
     </TouchableOpacity>
     </View>
 
@@ -43,9 +44,10 @@ export default class Subscription extends React.Component {
      
   
 </LinearGradient>
-  </View>
+  
    
        
+      </View>
       </View>
     );
   }
@@ -53,11 +55,10 @@ export default class Subscription extends React.Component {
 
 let styles = StyleSheet.create({
   shopingCard: {
-    height: 100,
+    height: widthToDp(25),
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal:15,
     shadowColor: "#fff",
     shadowOffset: {
       width: 0.3,
@@ -66,13 +67,14 @@ let styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 1.84,
     elevation: 15,
-    width:'100%',
+    width:widthToDp(100),
+    flex:1
     
   },
   leftArea:{
-      width:150,
+      width:widthToDp(40),
       backgroundColor:'#f4e6e6',
-      height:'100%',
+      height:widthToDp(25),
       borderTopRightRadius:75,
       borderBottomRightRadius:75,
       shadowColor: "#fff",
@@ -88,24 +90,22 @@ let styles = StyleSheet.create({
   },
   getText:{
       color:'red',
-      marginTop:5,
-      marginLeft:30,
-      fontSize:20,
+      marginLeft:widthToDp(5),
+      fontSize:widthToDp(4),
       fontWeight:'700',
       fontFamily: 'Gill Sans',
   },
   percentText:{
       color:'red',
-      marginTop:1,
-      marginLeft:25,
-      fontSize:36,
+      marginLeft:widthToDp(10),
+      fontSize:widthToDp(10),
       fontWeight:'700',
       fontFamily: 'Gill Sans',
   },
   offText:{
     color:'red',
-    marginLeft:60,
-    fontSize:20,
+    marginLeft:widthToDp(20),
+    fontSize:widthToDp(4),
     fontWeight:'700',
     fontFamily: 'Gill Sans',
 },
@@ -115,36 +115,37 @@ passText:{
 },
 rightArea:{
     backgroundColor:'transparent',  
-    marginTop:10
+    marginTop:widthToDp(1),
+
+
 },
 textRight:{
     color:'white',
-    marginLeft:30,
-    fontSize:16,
+    fontSize:heightToDp(2),
     fontWeight:'500',
     fontFamily: 'Gill Sans',
 },
 fitpass:{
     color:'white',
-    marginTop:5,
-    marginLeft:10,
-    fontSize:14,
+    marginLeft:widthToDp(2),
+    fontSize:widthToDp(4),
     fontWeight:'700',
     fontFamily: 'Gill Sans',
 },
 price:{
     color:'white',
-    marginLeft:20,
-    fontSize:32,
+    marginLeft:widthToDp(3),
+    fontSize:widthToDp(8),
     fontWeight:'700',
     fontFamily: 'Gill Sans',
 },
   SubscriptionButton:{
     backgroundColor:'white',
-    borderRadius:10,
-    paddingHorizontal:20,
-    paddingVertical:8,
-    marginHorizontal:10,
+    borderRadius:20,
+    paddingHorizontal:widthToDp(4),
+    paddingVertical:widthToDp(1),
+    marginVertical:5,
+    marginHorizontal:5
 
   }
 });

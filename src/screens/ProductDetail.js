@@ -76,15 +76,15 @@ export default class ProductDetail extends React.Component {
           </View>
           <View style={styles._detail_row}>
             <TouchableOpacity
-              style={styles._detail_btn}
+              style={{width:'50%'}}
             >
-              <Text style={styles._detail_btn_text}>DONWLOAD</Text>
+              <Text style={styles._detail_price}>Rs. 3400.00</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={styles._detail_btn}
             >
-              <Text style={styles._detail_btn_text}>CHECKOUT</Text>
+              <Text style={styles._detail_btn_text}>BUY NOW</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -123,7 +123,7 @@ let styles = StyleSheet.create({
     color: 'white',
     top: 0,
     fontWeight: 'bold',
-    backgroundColor: '#ea6219',
+    backgroundColor: '#f23535',
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     marginTop: 20,
@@ -171,30 +171,40 @@ let styles = StyleSheet.create({
     fontFamily: 'Gill Sans',
   },
   _price: {
-    color: '#ea6219',
+    color: '#f23535',
     fontWeight: 'bold',
     fontSize: 18,
     fontFamily: 'Gill Sans',
   },
   _detail_row: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
     marginTop: 5,
+    width: '100%',
     marginBottom: 10,
+    height:50,
   },
   _detail_btn: {
-    borderWidth: 2,
-    borderColor: '#ea6219',
-    borderRadius: 5,
-    width: '45%',
+  
+    backgroundColor:'#f23535',
+    width: '50%',
   },
   _detail_btn_text: {
     width: '100%',
     textAlign: 'center',
-    fontSize: 12,
-    padding: 4,
-    color: '#ea6219',
+    fontSize: 15,
+    padding: 3,
+    color: '#fff',
     fontWeight: 'bold',
+    marginVertical:10
+  },
+  _detail_price: {
+    width: '100%',
+    textAlign: 'center',
+    fontSize: 18,
+    padding: 3,
+    color: '#f23535',
+    fontWeight: 'bold',
+    marginVertical:10
   },
   _review_row: {
     flex:1,

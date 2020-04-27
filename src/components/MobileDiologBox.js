@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import {widthToDp,heightToDp} from '../config/responsive'
 
 class MobileDiologBox extends Component {
   constructor(props) {
@@ -19,20 +20,21 @@ class MobileDiologBox extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, marginTop: 60}}>
+      <View style={{flex: 1, marginTop: widthToDp(8)}}>
         <Text style={styles.textPhone}>+91 9876543210</Text>
         <Text
           style={{
             textAlign: 'center',
             color: '#979595',
-            marginTop: 10,
+            fontSize: widthToDp(4),
+            marginTop: widthToDp(2),
           }}>
           Are you sure, you want to send OTP?
         </Text>
         <View
           style={{
             flexDirection: 'row',
-            marginTop: 30,
+            marginTop: widthToDp(8),
             justifyContent: 'space-around',
           }}>
           <TouchableOpacity style={styles.btnEdit} onPress={() => this.edit()}>
@@ -53,16 +55,16 @@ export default MobileDiologBox;
 const styles = StyleSheet.create({
   textPhone: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: widthToDp(6),
     fontWeight: '600',
     color: 'black',
   },
 
   btnEdit: {
     backgroundColor: '#9B9899',
-    width: 150,
-    marginHorizontal: 10,
-    height: 50,
+    width: widthToDp(43),
+    marginHorizontal: widthToDp(2),
+    height: widthToDp(12),
     borderRadius: 5,
     borderColor: '#f1f1f1',
     borderWidth: 0.5,
@@ -70,10 +72,9 @@ const styles = StyleSheet.create({
 
   btnProceed: {
     backgroundColor: '#F95225',
-    width: 150,
-    height: 50,
+    width: widthToDp(43),
+    height: widthToDp(12),
     borderRadius: 5,
-    marginHorizontal: 10,
     borderColor: '#f1f1f1',
     borderWidth: 0.5,
   },
@@ -83,10 +84,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
     fontWeight: 'bold',
-    marginVertical: 10,
+    marginVertical: widthToDp(3),
     color: 'white',
   },
 
@@ -95,10 +96,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignContent: 'center',
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
     fontWeight: 'bold',
-    marginVertical: 10,
+    marginVertical: widthToDp(3),
     color: 'white',
   },
 });

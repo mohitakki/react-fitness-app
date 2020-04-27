@@ -6,10 +6,12 @@ import {
   Image,
   Button,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  SafeAreaView
   
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {widthToDp,heightToDp} from '../config/responsive'
 
 class Login extends Component {
   constructor(props) {
@@ -36,7 +38,8 @@ class Login extends Component {
     return (
       <>
        <StatusBar translucent backgroundColor="transparent"/>
-        <View style={{flex: 1}}>
+       
+        <View style={{flex: 1, }}>
           <LinearGradient
             colors={[ '#090979','#05afd1',]}
             style={styles.linearGradient}>
@@ -44,7 +47,7 @@ class Login extends Component {
               <Image
                 source={require('./../assests/logo.png')}
                 resizeMode="contain"
-                style={{width: 250, height: 250}}
+                style={styles.image}
               />
             </View>
 
@@ -61,7 +64,7 @@ class Login extends Component {
                 style={{
                   justifyContent: 'space-between',
                   flexDirection: 'row',
-                  marginTop: 20,
+                  marginTop: widthToDp(4),
                 }}>
                 <TouchableOpacity
                   style={styles.btnFacebook}
@@ -84,6 +87,7 @@ class Login extends Component {
             </View>
           </LinearGradient>
         </View>
+      
       </>
     );
   }
@@ -94,36 +98,38 @@ export default Login;
 const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5,
+    paddingLeft: widthToDp(5),
+    paddingRight: widthToDp(5),
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
     textAlign: 'center',
-
-    margin: 10,
     color: '#ffffff',
     backgroundColor: 'transparent',
   },
   logoContainer: {
     flex: 4,
-    height: 600,
+    height: heightToDp(100),
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:100
   },
   loginPart: {
     flex: 2,
    
   },
+  image:{
+    width:widthToDp(50),
+    height: heightToDp(50)
+
+  },
+
   btnFacebook: {
     backgroundColor: '#0a42ca',
-    width: 180,
-    height: 50,
-    borderRadius: 10,
+    width: widthToDp(43),
+    height: widthToDp(10),
+    borderRadius: 5,
     shadowColor: '#fff',
     shadowOffset: {
       width: 1,
@@ -135,9 +141,9 @@ const styles = StyleSheet.create({
   },
   btnGoogle: {
     backgroundColor: 'white',
-    width: 180,
-    height: 50,
-    borderRadius: 10,
+    width: widthToDp(43),
+    height: widthToDp(10),
+    borderRadius: 5,
     shadowColor: '#f23535',
     shadowOffset: {
       width: 1,
@@ -149,9 +155,8 @@ const styles = StyleSheet.create({
   },
   btnPhone: {
     backgroundColor: '#f23535',
-    marginTop: 20,
-    height: 50,
-    borderRadius: 10,
+    height: widthToDp(12),
+    borderRadius: 5,
     shadowColor: '#0a42ca',
     shadowOffset: {
       width: 1,
@@ -160,38 +165,32 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.95,
     shadowRadius: 1.84,
     elevation: 5,
+    marginTop:widthToDp(5)
   },
   textFacebook: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
-    fontSize: 20,
+    textAlign:'center',
+    fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
     fontWeight: 'bold',
-    marginVertical: 10,
     color: 'white',
+    marginTop:heightToDp(1)
   },
 
   textGoogle: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
-    fontSize: 20,
+    textAlign:'center',
+    fontSize: widthToDp(4),
+    marginTop:heightToDp(1),
     fontFamily: 'Gill Sans',
     fontWeight: 'bold',
     marginVertical: 10,
   },
   textPhone: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
-    fontSize: 20,
+    textAlign:'center',
+    fontSize: widthToDp(5),
+    marginTop:heightToDp(1),
     fontFamily: 'Gill Sans',
     fontWeight: 'bold',
-    marginVertical: 10,
     color: 'white',
+
   },
 });
