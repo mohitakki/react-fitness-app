@@ -4,24 +4,22 @@ import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Reviews from './Reviews';
 
-
 export default class ProductCard extends React.Component {
   constructor(props) {
     super(props);
-    this.data= props.data
+    this.data = props.data;
   }
 
-  
   render() {
     return (
       <>
+      <TouchableOpacity activeOpacity={0.8} onPress={()=>this.props.onPress()}>
         <View style={styles._card}>
           <View style={styles._imgSection}>
             <FoundationIcon name="burst-new" size={30} style={styles._badge} />
             <Image
               source={{
-                uri:
-                  this.data.image
+                uri: this.data.image,
               }}
               style={styles._product_Img}
             />
@@ -35,13 +33,13 @@ export default class ProductCard extends React.Component {
               <Text style={styles._price}>
                 <FontAwesome name="rupee" /> {this.data.offer_price}
               </Text>
-            
-              <Text style={{color:'#c1c1c1'}}>{this.data.price}</Text>
-            
+
+              <Text style={{color: '#c1c1c1'}}>{this.data.price}</Text>
             </View>
 
             <View style={styles._reviewsRow}>
-              <Reviews /><Text>{this.data.rating}</Text>
+              <Reviews />
+              <Text>{this.data.rating}</Text>
             </View>
           </View>
           <View style={styles._detail_row}>
@@ -52,6 +50,7 @@ export default class ProductCard extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
+        </TouchableOpacity>
       </>
     );
   }
@@ -59,11 +58,12 @@ export default class ProductCard extends React.Component {
 
 let styles = StyleSheet.create({
   _card: {
-
     borderRadius: 5,
-    // height: 200,
+    height: 300,
     marginTop: 10,
     width: '47%',
+    minWidth:170,
+    margin:5,
     backgroundColor: 'white',
     padding: 5,
     shadowColor: '#fff',
@@ -101,9 +101,9 @@ let styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  flavour:{
-textAlign:"center",
-color:'#c1c1c1'
+  flavour: {
+    textAlign: 'center',
+    color: '#c1c1c1',
   },
   _subTitle: {
     textAlign: 'center',
@@ -121,7 +121,7 @@ color:'#c1c1c1'
   _reviewsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginRight:3
+    marginRight: 3,
   },
   _off_sale: {
     fontWeight: 'bold',
@@ -135,10 +135,11 @@ color:'#c1c1c1'
     fontFamily: 'Gill Sans',
   },
   _detail_row: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 5,
+    // height:20
   },
   _detail_btn: {
     borderWidth: 2,

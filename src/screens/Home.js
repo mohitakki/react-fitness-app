@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StatusBar,
   Button,
-
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
@@ -20,92 +19,81 @@ import {
   ViewShopCard,
   BlogSlider,
   Header,
-  Subscription
+  Subscription,
 } from './../components';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {getSlider} from '../services/home';
-import { widthToDp } from '../config/responsive';
+import {widthToDp} from '../config/responsive';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      data : []
+      data: [],
     };
   }
 
-  componentDidMount(){
-    return fetch ('https://fitbook.fit/fitbookadmin/api_v1/home.php', {
-      method: 'POST'
+  componentDidMount() {
+    return fetch('https://fitbook.fit/fitbookadmin/api_v1/home.php', {
+      method: 'POST',
     })
-    .then((response) => response.json())
-    .then((res) => {
-       
-      this.setState({
-        isLoading:false,
-        data:res.slider,
-      })
-    })
+      .then(response => response.json())
+      .then(res => {
+        this.setState({
+          isLoading: false,
+          data: res.slider,
+        });
+      });
   }
 
+  // logout= async ()=>{
+  //   try {
+  //     await AsyncStorage.removeItem('token');
+  //     const getItem = await AsyncStorage.getItem('token');
+  //     //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
+  //     console.log('Should not be stored:', getItem);
+  //   } catch (err) {
+  //     throw new Error(err);
+  //   }
+  //   this.props.navigation.navigate('Loading');
+  //   await logout();
+  //   }
 
-// logout= async ()=>{
-//   try {
-//     await AsyncStorage.removeItem('token');
-//     const getItem = await AsyncStorage.getItem('token');
-//     //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
-//     console.log('Should not be stored:', getItem);
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-//   this.props.navigation.navigate('Loading');
-//   await logout();
-//   }
-
-  viewGym=()=>{
-   this.props.navigation.navigate('ViewAllGym')
-  }
-  
-
-  
+  viewGym = () => {
+    this.props.navigation.navigate('ViewAllGym');
+  };
 
   render() {
-   console.log(this.state.data);
-   
+    console.log(this.state.data);
+
     return (
       <>
-        <StatusBar translucent backgroundColor="transparent"/>
+        <StatusBar translucent backgroundColor="transparent" />
         <LinearGradient colors={['#f23535', '#48CCF7']} style={{flex: 1}}>
-            {/* near by GYMS */}
-            <Header navigation={this.props.navigation} />
+          {/* near by GYMS */}
+          {/* <Header navigation={this.props.navigation} /> */}
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
-           
-      
-              <FlatList style={{height:widthToDp(34),marginHorizontal:5}} 
-             horizontal
-  pagingEnabled={true}
-  showsHorizontalScrollIndicator={false}
-  legacyImplementation={false} 
-            data={this.state.data}
-            renderItem={({item})=> {
-              return (<>
-                <Slider data={item} props={this.props.navigation}
-                
-                 />
-                              </>)
-            }}
-      
-        />
-       
-           
-        
 
-   
-            
-            <TouchableOpacity onPress={()=>this.viewGym()}>
-            <Text style={styles.viewAll}>View all</Text>
+            <FlatList
+              style={{height: widthToDp(34), marginHorizontal: 5}}
+              horizontal
+              pagingEnabled={true}
+              showsHorizontalScrollIndicator={false}
+              legacyImplementation={false}
+              data={this.state.data}
+              renderItem={({item}) => {
+                return (
+                  <>
+                    <Slider data={item} props={this.props.navigation} />
+                  </>
+                );
+              }}
+            />
+
+            <TouchableOpacity onPress={() => this.viewGym()}>
+              <Text style={styles.viewAll}>View all</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -113,7 +101,6 @@ export default class Home extends Component {
               activeOpacity={0.9}
               onPress={() => this.props.navigation.navigate('Subscription')}>
               <Subscription />
-              
             </TouchableOpacity>
 
             {/* <View style={styles._basicCard}>
@@ -137,8 +124,8 @@ export default class Home extends Component {
                 />
               </Text>
             </TouchableOpacity>
-          
-           <View style={styles._blog_slider}>
+
+            <View style={styles._blog_slider}>
               <Text style={styles._fitShop}>MOTIVATION </Text>
               <BlogSlider />
               {/* <TouchableOpacity
@@ -155,9 +142,7 @@ export default class Home extends Component {
                   />
                 </Text>
               </TouchableOpacity> */}
-              
-            </View> 
-
+            </View>
           </ScrollView>
         </LinearGradient>
       </>
@@ -185,23 +170,22 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 0.5,
   },
-  viewAll:{
-    color:'white',
-    textAlign:'right',
-    marginRight:widthToDp(5),
+  viewAll: {
+    color: 'white',
+    textAlign: 'right',
+    marginRight: widthToDp(5),
     fontWeight: '600',
     fontFamily: 'Gill Sans',
     letterSpacing: 1,
     alignItems: 'center',
     fontSize: widthToDp(3),
-    marginTop:widthToDp(1)
+    marginTop: widthToDp(1),
   },
   _basicCard: {
-
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-evenly',
-    marginTop:widthToDp(5)
+    marginTop: widthToDp(5),
   },
   _nearBy: {
     marginLeft: widthToDp(5),
@@ -232,17 +216,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Gill Sans',
   },
   _product_card: {
-   
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: widthToDp(7),
     fontFamily: 'Gill Sans',
-    height:widthToDp(25)
+    height: widthToDp(25),
   },
   _blog_slider: {
-
     fontFamily: 'Gill Sans',
-   
   },
   _viewBtn: {
     height: 18,
@@ -254,8 +235,7 @@ const styles = StyleSheet.create({
     fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
   },
-  sliderStyle:{
-    paddingHorizontal:40
-
-  }
+  sliderStyle: {
+    paddingHorizontal: 40,
+  },
 });

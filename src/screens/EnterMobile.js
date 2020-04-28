@@ -89,7 +89,8 @@ export default class EnterMobile extends Component {
             <TouchableOpacity
               style={styles.sentButon}
               // onPress={() => this.sendOTP()}>
-              onPress={() => this.RBSheet.open()}>
+              onPress={() => this.RBSheet.open()}
+              >
               <Text style={styles.sentText}>Send OTP</Text>
             </TouchableOpacity>
 

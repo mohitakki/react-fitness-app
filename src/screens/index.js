@@ -4,7 +4,6 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import Splash from './Splash';
-import Profile from './Profile';
 import Blog from './Blog';
 import ViewShop from './ViewShop';
 import FitCoach from './FitCoach';
@@ -27,7 +26,6 @@ export {
   Login,
   Signup,
   Splash,
-  Profile,
   Blog,
   ViewShop,
   FitCoach,

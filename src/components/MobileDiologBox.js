@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {widthToDp,heightToDp} from '../config/responsive'
+import {widthToDp, heightToDp} from '../config/responsive';
 
 class MobileDiologBox extends Component {
   constructor(props) {
@@ -14,8 +14,8 @@ class MobileDiologBox extends Component {
   };
 
   proceed = () => {
-    this.props.onpress();
     this.props.props.navigation.navigate('bottombar');
+    this.props.onpress();
   };
 
   render() {
