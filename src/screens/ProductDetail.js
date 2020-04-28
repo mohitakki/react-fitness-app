@@ -4,27 +4,59 @@ import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Reviews from './../components/Reviews';
+import { FlatList } from 'react-native-gesture-handler';
 export default class ProductDetail extends React.Component {
+
+constructor(props) {
+  super(props);
+  this.state={
+    isLoading:true,
+    data: null
+  }
+}
+
+
+componentDidMount(){
+  return fetch ('https://fitbook.fit/fitbookadmin/api_v1/product_list.php', {
+    method: 'GET'
+  })
+  .then((response) => response.json())
+  .then((res) => {
+     
+    this.setState({
+      isLoading:false,
+      data:res.product_list,
+    })
+  })
+}
+
+
   render() {
+    console.log(this.state.data);
+    
     return (
       <>
+      <View style={styles._card}>
+      <FlatList data={this.state.data}
+      keyExtractor={(x, i) => i }
+      renderItem={({item}) =>
       
-        <View style={styles._card}>
-          <View style={styles._imgSection}>
-            <Text style={styles._badge}>40% OFF</Text>
+      <>
+        <View style={styles._imgSection}>
+            <Text style={styles._badge}>{item.offer}</Text>
             <Image
               source={{
                 uri:
-                  'https://cdn.goto.com.pk/uploads/products/2019/11/5dbbde06d9b12.webp',
+                  item.image
               }}
               style={styles._product_Img}
             />
           </View>
           <View style={styles._card_body}>
           <ScrollView>
-            <Text style={styles._title}>Bentan Court B-NOX</Text>
+            <Text style={styles._title}>{item.title}</Text>
             <View style={styles._review_row}>
-              <Reviews /><Text>(1)</Text>
+              <Reviews /><Text>{item.rating}</Text>
             </View>
 
             <View style={styles._Icon_section}>
@@ -59,7 +91,10 @@ export default class ProductDetail extends React.Component {
                 PRICE:
               </Text>
               <Text style={styles._price}>
-                <FontAwesome name="rupee" size={17} /> 5400
+                <FontAwesome name="rupee" size={17} /> {item.offer_price}
+              </Text>
+              <Text style={{}}>
+                {item.price}
               </Text>
             </View>
 
@@ -87,7 +122,12 @@ export default class ProductDetail extends React.Component {
               <Text style={styles._detail_btn_text}>BUY NOW</Text>
             </TouchableOpacity>
           </View>
-        </View>
+      </>
+          
+      }>
+       
+      </FlatList>
+         </View>
       </>
     );
   }

@@ -3,7 +3,15 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Reviews from './Reviews';
+
+
 export default class ProductCard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.data= props.data
+  }
+
+  
   render() {
     return (
       <>
@@ -13,24 +21,27 @@ export default class ProductCard extends React.Component {
             <Image
               source={{
                 uri:
-                  'https://cdn.goto.com.pk/uploads/products/2019/11/5dbbde06d9b12.webp',
+                  this.data.image
               }}
               style={styles._product_Img}
             />
           </View>
           <View style={styles._card_body}>
-            <Text style={styles._title}>Bentan Court B-NOX</Text>
+            <Text style={styles._title}>{this.data.title}</Text>
+            <Text style={styles._subTitle}>{this.data.title_flawer}</Text>
             {/* <Text style={styles._subTitle}>Flawer watermelon</Text> */}
+
             <View style={styles._price_section}>
               <Text style={styles._price}>
-                <FontAwesome name="rupee" /> 5400
+                <FontAwesome name="rupee" /> {this.data.offer_price}
               </Text>
-              {/* <Text style={styles._old_rate}>8249</Text> */}
-              <Text style={styles._off_sale}>35% off</Text>
+            
+              <Text style={{color:'#c1c1c1'}}>{this.data.price}</Text>
+            
             </View>
 
             <View style={styles._reviewsRow}>
-              <Reviews /><Text>78</Text>
+              <Reviews /><Text>{this.data.rating}</Text>
             </View>
           </View>
           <View style={styles._detail_row}>
@@ -90,6 +101,10 @@ let styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  flavour:{
+textAlign:"center",
+color:'#c1c1c1'
+  },
   _subTitle: {
     textAlign: 'center',
     color: 'grey',
@@ -116,7 +131,7 @@ let styles = StyleSheet.create({
   _price: {
     color: '#f23535',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: 'Gill Sans',
   },
   _detail_row: {

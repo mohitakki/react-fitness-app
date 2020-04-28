@@ -12,6 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import CardSilder from 'react-native-cards-slider';
+import RazorpayCheckout from 'react-native-razorpay';
 
 import {
   Slider,
@@ -70,6 +71,7 @@ export default class Home extends Component {
   
 
   render() {
+   console.log(this.state.data);
    
     return (
       <>
@@ -79,17 +81,28 @@ export default class Home extends Component {
             <Header navigation={this.props.navigation} />
           <ScrollView>
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
-            <CardSilder style={{}}>
-            <FlatList style={{height:widthToDp(35),}}
+           
+      
+              <FlatList style={{height:widthToDp(34),marginHorizontal:5}} 
+             horizontal
+  pagingEnabled={true}
+  showsHorizontalScrollIndicator={false}
+  legacyImplementation={false} 
             data={this.state.data}
             renderItem={({item})=> {
-              return <Slider data={item} props={this.props.navigation} />
+              return (<>
+                <Slider data={item} props={this.props.navigation}
+                
+                 />
+                              </>)
             }}
       
         />
+       
+           
         
 
-        </CardSilder>
+   
             
             <TouchableOpacity onPress={()=>this.viewGym()}>
             <Text style={styles.viewAll}>View all</Text>
@@ -142,7 +155,9 @@ export default class Home extends Component {
                   />
                 </Text>
               </TouchableOpacity> */}
+              
             </View> 
+
           </ScrollView>
         </LinearGradient>
       </>
@@ -239,4 +254,8 @@ const styles = StyleSheet.create({
     fontSize: widthToDp(4),
     fontFamily: 'Gill Sans',
   },
+  sliderStyle:{
+    paddingHorizontal:40
+
+  }
 });
