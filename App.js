@@ -6,7 +6,6 @@ import BottomNavigation from './src/config/bottomNavigation';
 import {
   EnterMobile,
   EnterOTP,
-  Home,
   Login,
   ProductDetail,
   Splash,
@@ -19,6 +18,9 @@ import {
   Loading,
   Subscription,
   UserProfile,
+  GymProfile,
+  Cart,
+  Payment,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -28,7 +30,7 @@ import {navigationRef} from './src/config/RootNavigation';
 const HomeStack = createStackNavigator();
 
 export default function HomeStackScreen() {
-  const [isLoggenIn, setLogged] = useState(true);
+  const [isLoggenIn, setLogged] = useState(null);
   const detectLogin = async () => {
     const token = await AsyncStorage.getItem('token');
     if (token) {
@@ -119,6 +121,48 @@ export default function HomeStackScreen() {
                 headerBackTitle: '',
               }}
             />
+
+            <HomeStack.Screen
+              name="Payment"
+              component={Payment}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+
+                headerTintColor: 'white',
+              }}
+            />
+
+            <HomeStack.Screen
+              name="gymprofile"
+              component={GymProfile}
+              options={{
+                headerTitle: (
+                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                    Profile
+                  </Text>
+                ),
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+
+                headerTintColor: 'white',
+                headerBackTitle: '',
+              }}
+            />
+
+            <HomeStack.Screen
+              name="cart"
+              component={Cart}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+                headerTintColor: 'white',
+              }}
+            />
+
             <HomeStack.Screen name="FITCOACH" component={FitCoach} />
             <HomeStack.Screen
               name="ViewAllGym"
@@ -161,13 +205,6 @@ export default function HomeStackScreen() {
               }}
             />
 
-            <HomeStack.Screen
-              name="home"
-              component={Home}
-              options={{
-                headerShown: false,
-              }}
-            />
             <HomeStack.Screen name="Splash" component={Splash} options={{}} />
             <HomeStack.Screen
               name="EnterOTP"

@@ -4,17 +4,19 @@ import ProductCard from './..//components/ProductCard';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {widthToDp} from '../config/responsive';
 import {Header} from './../components';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 export default class ViewShop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
       data: null,
+      quantity: 0,
     };
   }
 
   componentDidMount() {
-    return fetch('https://fitbook.fit/fitbookadmin/api_v1/product_list.php', {
+    fetch('https://fitbook.fit/fitbookadmin/api_v1/product_list.php', {
       method: 'GET',
     })
       .then(response => response.json())
@@ -24,15 +26,32 @@ export default class ViewShop extends React.Component {
           data: res.product_list,
         });
       });
+    // this.setQuantity();
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    props.navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles._headerLeft}
+          // onPress={() => this.logout()}
+          >
+          <Icon
+            name="shopping-cart"
+            size={20}
+            color="white"
+            style={{zIndex: -1}}
+          />
+        </TouchableOpacity>
+      ),
+    });
   }
 
   ViewProduct = () => {
-    this.props.navigation.navigate('Detail');
+    this.props.navigation.navigate('Detail', {});
   };
 
   render() {
-    console.log(this.state.data);
-
     return (
       <>
         <StatusBar translucent backgroundColor="transparent" />
@@ -46,9 +65,11 @@ export default class ViewShop extends React.Component {
               renderItem={({item}) => {
                 return (
                   <>
-                    {/* <TouchableOpacity onPress={() => this.ViewProduct()} style={{flex:1}}>  */}
-                      <ProductCard data={item} props={this.props.navigation} onPress={() => this.ViewProduct()} />
-                    {/* </TouchableOpacity> */}
+                    <ProductCard
+                      data={item}
+                      props={this.props.navigation}
+                      onPress={() => this.ViewProduct()}
+                    />
                   </>
                 );
               }}
@@ -61,10 +82,33 @@ export default class ViewShop extends React.Component {
 }
 
 let styles = StyleSheet.create({
-  _cardGrid: {
-    // flex: 1,
-    // justifyContent: 'space-evenly',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+  _cardGrid: {},
+  _label: {
+    height: 20,
+    width: 20,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'green',
+    borderRadius: 100,
+    position: 'absolute',
+  },
+  _numbering: {
+    color: 'white',
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+  _labelView: {
+    marginRight: -20,
+    marginBottom: -10,
+    width: 20,
+    height: 20,
+    position: 'relative',
+  },
+  _headerLeft: {
+    flexDirection: 'column',
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

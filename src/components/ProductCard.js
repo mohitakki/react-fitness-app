@@ -45,7 +45,8 @@ export default class ProductCard extends React.Component {
           <View style={styles._detail_row}>
             <TouchableOpacity
               style={styles._detail_btn}
-              onPress={() => this.props.props.navigation.navigate('Detail')}>
+              onPress={() => this.props.props.navigate('Detail')}
+              >
               <Text style={styles._detail_btn_text}>BUY NOW</Text>
             </TouchableOpacity>
           </View>

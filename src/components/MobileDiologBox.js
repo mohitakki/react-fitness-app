@@ -14,7 +14,7 @@ class MobileDiologBox extends Component {
   };
 
   proceed = () => {
-    this.props.props.navigation.navigate('bottombar');
+    this.props.props.navigation.navigate('EnterOTP');
     this.props.onpress();
   };
 

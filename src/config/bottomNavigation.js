@@ -88,6 +88,7 @@ function ShopStack() {
 
           headerTintColor: 'white',
           headerBackTitle: '',
+          
         }}
       />
     </Stack.Navigator>
@@ -179,7 +180,7 @@ export default () => (
       options={{
         tabBarIcon: ({focused, color, size}) => (
           <Icon
-            name="shopping-cart"
+            name="home"
             size={size ? size : 24}
             color={focused ? color : '#222222'}
             focused={focused}

@@ -20,7 +20,6 @@ export default class EnterOTP extends Component {
   }
 
   sendOTP = async = () => {
-  
     fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
     {
       method:'POST',
@@ -34,15 +33,18 @@ export default class EnterOTP extends Component {
     })
     .then((response) => response.json())
     .then( async(res) => {
-      if(res.error=== false){
+      alert("success")
+
+      if(res.error === false){
         await  AsyncStorage.setItem('token', res.token)
       this.props.navigation.navigate('bottombar')
-      
       }
     })
     .catch((error) => {
+      alert("error")
       console.error(error);
     });
+
   }
 
   render() {
@@ -75,6 +77,7 @@ export default class EnterOTP extends Component {
               onPress={() => this.sendOTP()}>
               <Text style={styles.sentText}>SUBMIT</Text>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => this.sendOTP()}>
               <Text style={styles.resendOTP}>
                 Resend OTP

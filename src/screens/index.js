@@ -10,15 +10,16 @@ import FitCoach from './FitCoach';
 import Shop from './Shop';
 import Help from './Help';
 import Location from './Location';
-import Onboarding from './Onboarding'
-import GymsList from './GymsList'
-import ViewAllGym from './ViewAllGym'
-import Loading from './Loading'
-import Subscription from './Subscription'
-import UserProfile from './UserProfile'
-import ProductDetail from './ProductDetail'
-
-
+import Onboarding from './Onboarding';
+import GymsList from './GymsList';
+import ViewAllGym from './ViewAllGym';
+import Loading from './Loading';
+import Subscription from './Subscription';
+import UserProfile from './UserProfile';
+import GymProfile from './GymProfile';
+import ProductDetail from './ProductDetail';
+import Cart from './Cart'
+import Payment from './Payment'
 export {
   EnterMobile,
   EnterOTP,
@@ -38,5 +39,8 @@ export {
   Loading,
   Subscription,
   UserProfile,
-  ProductDetail
+  GymProfile,
+  ProductDetail,
+  Cart,
+  Payment
 };
