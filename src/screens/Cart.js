@@ -1,9 +1,18 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  TouchableHighlight,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Reviews from './../components/Reviews';
+import RazorpayCheckout from 'react-native-razorpay';
+
 export default class Cart extends React.Component {
   constructor() {
     super();
@@ -155,14 +164,38 @@ export default class Cart extends React.Component {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
+          <TouchableHighlight
             style={styles._proceed}
-            activeOpacity={0.8}
-            onPress={() => this.props.navigation.navigate('Payment',{total:this.state.total})}>
+            disabled={this.state.total === 0? true:false}
+            onPress={() => {
+              var options = {
+                description: 'Credits towards consultation',
+                image: 'https://i.imgur.com/3g7nmJC.png',
+                currency: 'INR',
+                key: 'rzp_test_1OaQM6M6lY56GN',
+                amount: this.state.total,
+                name: 'Fit Book',
+                prefill: {
+                  email: 'void@razorpay.com',
+                  contact: '9191919191',
+                  name: 'Razorpay Software',
+                },
+                theme: {color: 'green'},
+              };
+              RazorpayCheckout.open(options)
+                .then(data => {
+                  // handle success
+                  alert(`Success: ${data.razorpay_payment_id}`);
+                })
+                .catch(error => {
+                  // handle failure
+                  // alert(`Error: ${error.code} | ${error.description}`);
+                });
+            }}>
             <Text style={{fontSize: 16, fontWeight: 'bold', color: 'white'}}>
               PROCEED
             </Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
       </>
     );
