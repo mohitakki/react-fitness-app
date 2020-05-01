@@ -47,8 +47,8 @@ export default class ViewShop extends React.Component {
     });
   }
 
-  ViewProduct = () => {
-    this.props.navigation.navigate('Detail', {});
+  ViewProduct = (id) => {
+    this.props.navigation.navigate('Detail', {id:id});
   };
 
   render() {
@@ -68,7 +68,7 @@ export default class ViewShop extends React.Component {
                     <ProductCard
                       data={item}
                       props={this.props.navigation}
-                      onPress={() => this.ViewProduct()}
+                      onPress={() => this.ViewProduct(item.id)}
                     />
                   </>
                 );

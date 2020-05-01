@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StatusBar,
   Button,
+  Dimensions
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
@@ -65,7 +66,7 @@ export default class Home extends Component {
   };
 
   render() {
-    console.log(this.state.data);
+    var width = Dimensions.get('window').width; //full width
 
     return (
       <>
@@ -77,17 +78,18 @@ export default class Home extends Component {
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
 
             <FlatList
-              style={{height: widthToDp(34), marginHorizontal: 5}}
+              style={{height: widthToDp(34)}}
               horizontal
               pagingEnabled={true}
+              style={{height:130}}
               showsHorizontalScrollIndicator={false}
               legacyImplementation={false}
               data={this.state.data}
               renderItem={({item}) => {
                 return (
-                  <>
+                  <View style={{padding:10,width:width,paddingBottom:0,paddingTop:0}}>
                     <Slider data={item} props={this.props.navigation} />
-                  </>
+                  </View>
                 );
               }}
             />
@@ -127,6 +129,7 @@ export default class Home extends Component {
 
             <View style={styles._blog_slider}>
               <Text style={styles._fitShop}>MOTIVATION </Text>
+
               <BlogSlider />
               {/* <TouchableOpacity
                 style={styles._product_card}

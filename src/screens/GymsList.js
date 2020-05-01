@@ -3,10 +3,12 @@ import {Text, View, StyleSheet, ScrollView, Button} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {GymCard} from './../components';
+// import {GymCard} from './../components';
 
 export default class GymsList extends React.Component {
+  
   render() {
+
     let item = [
       {
         heading: 'PROFITNESS',
@@ -33,6 +35,7 @@ export default class GymsList extends React.Component {
         timing: '06:00-22:00',
       },
     ];
+
     return (
       <>
       
@@ -56,9 +59,9 @@ export default class GymsList extends React.Component {
         {/* <<<<<<<<<<< GYM LIST >>>>>>>>>>>> */}
         <ScrollView>
         
-          {item.map((val, i) => (
-            <GymCard data={val} key={i} props={this.props.navigation} />
-          ))}
+          {/* {item.map((val, i) => (
+            <GymCard data={val} key={i} props={this.props} />
+          ))} */}
         </ScrollView>
       </>
     );

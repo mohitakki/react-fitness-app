@@ -25,18 +25,22 @@ export default class ProductDetail extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://fitbook.fit/fitbookadmin/api_v1/product_list.php', {
-      method: 'GET',
-    })
+    // fetch('https://fitbook.fit/fitbookadmin/api_v1/product_list.php', {
+    let productId = this.props.route.params.id;
+    fetch(
+      `http://fitbook.fit/fitbookadmin/api_v1/product_detail.php?id=${productId}`,
+      {
+        method: 'GET',
+      },
+    )
       .then(response => response.json())
       .then(res => {
+        console.log(res);
         this.setState({
           isLoading: false,
           data: res.product_list,
         });
       });
-      
-
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -61,18 +65,10 @@ export default class ProductDetail extends React.Component {
     });
   }
 
-  setCartNumber = num => {
-    this.setState({quantity: num});
-  };
-
-  buyNow = item => {
-    let cartArray = this.state.cart;
-    cartArray.push(item);
-    this.setState({cart: cartArray});
-    this.props.navigation.navigate('cart', {
-      setQuantity: this.setCartNumber,
-      cart: this.state.cart,
-    });
+  buyNow = () => {
+    let product_id = this.props.route.params.id;
+    //  fetch Api
+    this.props.navigation.navigate('cart');
   };
 
   render() {

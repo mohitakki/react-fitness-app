@@ -1,5 +1,11 @@
 import React from 'react';
-import {Text, View, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  ImageBackground,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,7 +27,8 @@ export default class GymCard extends React.Component {
             {/* left side */}
             <View style={styles.imgBox}>
               <ImageBackground
-                source={require('./../assests/img1.jpg')}
+                source={{uri: data.image}}
+                // source={require('./../assests/img1.jpg')}
                 style={styles._image}>
                 {this.state.favourite ? (
                   <FontAwesome
@@ -41,11 +48,11 @@ export default class GymCard extends React.Component {
             {/* right side */}
 
             <View style={styles._rightSide}>
-              <Text style={styles._heading}>{data.heading}</Text>
-              <Text style={styles._description}>{data.desc}</Text>
+              <Text style={styles._heading}>{data.title}</Text>
+              <Text style={styles._description}>{data.address}</Text>
               <View>
-                {/* Ratings row */}
-                <View style={styles._ratingRow}>
+                {/* Ratings row  */}
+                {/* <View style={styles._ratingRow}>
                   <View style={styles._rating}>
                     <View style={styles._showReview}>
                       <Text style={styles._numbering}>4.5</Text>
@@ -73,12 +80,16 @@ export default class GymCard extends React.Component {
                 </View>
                 {/* Detail Row */}
                 <View style={styles._detailRow}>
-                 <TouchableOpacity >
-                 <Text style={styles._detail_text}>
-                    <MaterialIcons name="watch-later" /> {data.timing}
-                  </Text>
-                 </TouchableOpacity>
-                  <Text style={styles._detail}>
+                  <TouchableOpacity>
+                    <Text style={styles._detail_text}>
+                      <MaterialIcons name="watch-later" /> {data.timing}
+                    </Text>
+                  </TouchableOpacity>
+                  <Text
+                    style={styles._detail}
+                    onPress={() =>
+                      this.props.navigation.navigate('gymprofile')
+                    }>
                     DETAILS <Ionicons name="ios-arrow-forward" />
                   </Text>
                 </View>
@@ -88,9 +99,9 @@ export default class GymCard extends React.Component {
           {/* footer */}
           <View style={styles._footer}>
             <Text style={styles.left_tab}>
-              <Ionicons name="md-resize" />
+              <Ionicons name="md-pin" />
             </Text>
-            <Text style={styles._workout}>Gym Workout</Text>
+            <Text style={styles._workout}>{data.distance}</Text>
           </View>
           <View />
         </View>
@@ -105,15 +116,15 @@ let styles = StyleSheet.create({
     marginTop: 10,
     padding: 15,
     backgroundColor: '#e5e5e5',
-    marginHorizontal:10,
-    borderRadius:5,
+    marginHorizontal: 10,
+    borderRadius: 5,
     shadowColor: '#fff',
     shadowOffset: {
       width: 1,
       height: 2,
     },
     shadowOpacity: 0.95,
-    shadowRadius: .84,
+    shadowRadius: 0.84,
     elevation: 5,
   },
   _card: {
@@ -202,6 +213,6 @@ let styles = StyleSheet.create({
   },
   _workout: {
     fontWeight: 'bold',
-    paddingLeft: 10,
+    paddingLeft: 20,
   },
 });

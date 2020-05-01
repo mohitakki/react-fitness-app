@@ -15,6 +15,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 export default class Profile extends React.Component {
   render() {
+    console.log('========>', this.props);
+
     let shedule = [
       {work: 'Gym Workout', time: '07:30'},
       {work: 'Gym Workout For Women', time: '07:30'},
@@ -76,12 +78,11 @@ export default class Profile extends React.Component {
           <ImageBackground
             style={styles._backgroundImg}
             source={{
-              uri: 'https://rukminim1.flixcart.com/image/832/832/jnhs2vk0/poster/t/e/u/medium-gym-posters-gym-posters-motivationa-big-size-18-inches-x-original-imafa5ctrndkcphv.jpeg?q=70',
+              uri:
+                'https://rukminim1.flixcart.com/image/832/832/jnhs2vk0/poster/t/e/u/medium-gym-posters-gym-posters-motivationa-big-size-18-inches-x-original-imafa5ctrndkcphv.jpeg?q=70',
             }}>
             {/* Ratings row */}
             <View style={styles._ratingRow}>
-              
-
               <View style={styles._rating}>
                 <View style={styles._showReview}>
                   <Text style={styles._numbering}>
@@ -101,12 +102,12 @@ export default class Profile extends React.Component {
           </ImageBackground>
         </View>
         <View style={styles.bottom_title}>
-        <View style={styles._logo}>
-                <Image
-                  source={require('./../assests/img1.jpg')}
-                  style={styles._logo_img}
-                />
-              </View>
+          <View style={styles._logo}>
+            <Image
+              source={require('./../assests/img1.jpg')}
+              style={styles._logo_img}
+            />
+          </View>
           <Text style={styles._gymTitle}>True Gym And Spa Shalimar Bagh</Text>
           <View style={styles._detailRow}>
             <Text style={styles._detail_text}>
@@ -357,14 +358,14 @@ export default class Profile extends React.Component {
 
 let styles = StyleSheet.create({
   _profile: {
-    height: 310,
+    height: 250,
   },
   _backgroundImg: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    height:310,
-   
+    height: 250,
+
     shadowColor: '#f23535',
     shadowOffset: {
       width: 0.5,
@@ -377,7 +378,7 @@ let styles = StyleSheet.create({
   _ratingRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 15,
+    marginBottom: 15,
     shadowColor: '#f23535',
     shadowOffset: {
       width: 1,
@@ -386,7 +387,7 @@ let styles = StyleSheet.create({
     shadowOpacity: 1.95,
     shadowRadius: 3.84,
     elevation: 25,
-    borderRadius:15,
+    borderRadius: 15,
     // alignItems: 'center',
   },
   _rating: {
@@ -395,11 +396,10 @@ let styles = StyleSheet.create({
     height: 40,
   },
   _showReview: {
-    
     backgroundColor: 'white',
     paddingRight: 10,
     flexDirection: 'row',
-    borderRadius:10
+    borderRadius: 10,
   },
   _numbering: {
     backgroundColor: '#f23535',
@@ -447,8 +447,8 @@ let styles = StyleSheet.create({
     paddingLeft: '35%',
     backgroundColor: 'white',
     paddingTop: 25,
-    paddingBottom:10,
-    
+    paddingBottom: 10,
+
     shadowColor: '#f23535',
     shadowOffset: {
       width: 0.5,
@@ -457,7 +457,6 @@ let styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3.84,
     elevation: 15,
-  
   },
   _detailRow: {
     flexDirection: 'row',
@@ -466,26 +465,24 @@ let styles = StyleSheet.create({
   _detail_text: {
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
-    marginTop:5
+    marginTop: 5,
   },
   _gymTitle: {
     fontWeight: 'bold',
     fontFamily: 'Gill Sans',
-    color:'#f23535'
-  
-  
-
+    color: '#f23535',
   },
   _seemore: {
-    marginTop:10,
+    marginTop: 10,
     backgroundColor: '#f23535',
-    height: 40,
+    // height: 40,
     padding: 10,
+    flex: 1,
   },
   more_text: {
     fontFamily: 'Gill Sans',
     fontSize: 15,
-    color:"#fff"
+    color: '#fff',
   },
   _about_detail: {
     backgroundColor: '#ffffff',
@@ -517,7 +514,7 @@ let styles = StyleSheet.create({
   _btnSection: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop:10
+    marginTop: 10,
   },
   _vediosHeadinBtn: {
     backgroundColor: '#1665c2',
@@ -541,7 +538,7 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 4,
-    backgroundColor:'#efd2d2'
+    backgroundColor: '#efd2d2',
   },
   _dayName: {
     fontWeight: 'bold',

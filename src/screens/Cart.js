@@ -23,24 +23,6 @@ export default class Cart extends React.Component {
     };
   }
   componentDidMount() {
-    // remove duplicate object in array
-    let array = this.props.route.params.cart;
-    let jsonObject = array.map(JSON.stringify);
-    let uniqueSet = new Set(jsonObject);
-    let cartArray = Array.from(uniqueSet).map(JSON.parse);
-    this.setState({cart: cartArray});
-    this.props.route.params.setQuantity(cartArray.length);
-
-    // total price
-    let total = 0;
-    for (var i = 0; i < cartArray.length; i++) {
-      let price = cartArray[i].offer_price;
-      price = price.replace(/\,/g, '');
-      price = Number(price);
-      total = total + price;
-      this.setState({total});
-    }
-    // cart icon with label in header
     this.props.navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
@@ -48,7 +30,7 @@ export default class Cart extends React.Component {
           onPress={() => this.logout()}>
           <View style={styles._labelView}>
             <View style={styles._label}>
-              <Text style={styles._numbering}>{this.state.cart.length}</Text>
+              <Text style={styles._numbering}>0</Text>
             </View>
           </View>
           <Icon
@@ -62,18 +44,18 @@ export default class Cart extends React.Component {
     });
   }
 
-  addQuantity = (data, i) => {
+  addQuantity = (data) => {
     let arr = this.state.cart;
     let total = this.state.total;
     let itemPrice = data.offer_price;
     itemPrice = itemPrice.replace(/\,/g, '');
     itemPrice = Number(itemPrice);
-    arr[i].num = this.state.num;
-    if (this.state[i]) {
-      let n = this.state[i];
-      this.setState({[i]: n + 1, total: total + itemPrice});
+    arr[0].num = this.state.num;
+    if (this.state[0]) {
+      let n = this.state[0];
+      this.setState({[0]: n + 1, total: total + itemPrice});
     } else {
-      this.setState({[i]: 1, total: total + itemPrice});
+      this.setState({[0]: 1, total: total + itemPrice});
     }
   };
 
@@ -85,11 +67,11 @@ export default class Cart extends React.Component {
       itemPrice = itemPrice.replace(/\,/g, '');
       itemPrice = Number(itemPrice);
       arr[i].num = this.state.num;
-      if (this.state[i]) {
-        let n = this.state[i];
-        this.setState({[i]: n - 1, total: total - itemPrice});
+      if (this.state[0]) {
+        let n = this.state[0];
+        this.setState({[0]: n - 1, total: total - itemPrice});
       } else {
-        this.setState({[i]: 0, total: total - itemPrice});
+        this.setState({[0]: 0, total: total - itemPrice});
       }
     }
   };
@@ -99,64 +81,56 @@ export default class Cart extends React.Component {
 
     return (
       <>
-        {cart.map((data, i) => {
-          return (
-            <View style={styles._card}>
-              <View style={styles._imgSection}>
-                <FoundationIcon
-                  name="burst-new"
-                  size={30}
-                  style={styles._badge}
-                />
-                <Image
-                  source={{
-                    uri: data.image,
-                  }}
-                  style={styles._product_Img}
-                />
-              </View>
-              <View style={styles._card_body}>
-                <Text style={styles._title}>{data.title}</Text>
-                <Text style={styles._subTitle}>{data.title_flawer}</Text>
+        <View style={styles._card}>
+          <View style={styles._imgSection}>
+            <FoundationIcon name="burst-new" size={30} style={styles._badge} />
+            <Image
+              // source={{
+              //   uri: data.image,
+              // }}
+              source={require('./../assests/img1.jpg')}
+              style={styles._product_Img}
+            />
+          </View>
+          <View style={styles._card_body}>
+            <Text style={styles._title}>New India Power</Text>
+            <Text style={styles._subTitle}>Chocolate</Text>
 
-                <View style={styles._price_section}>
-                  <Text style={styles._price}>
-                    <FontAwesome name="rupee" /> {data.offer_price}
-                  </Text>
+            <View style={styles._price_section}>
+              <Text style={styles._price}>
+                <FontAwesome name="rupee" /> 2313
+              </Text>
 
-                  <Text style={{color: '#c1c1c1', marginLeft: 10}}>
-                    {data.price}
-                  </Text>
-                </View>
-
-                <View style={styles._reviewsRow}>
-                  <Reviews />
-                  <Text>({data.rating})</Text>
-                </View>
-              </View>
-              <View style={styles._detail_row}>
-                <TouchableOpacity
-                  style={styles._detail_btn}
-                  onPress={() => this.addQuantity(data, i)}>
-                  <Text style={styles._detail_btn_plus}>+</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles._detail_btn}>
-                  <Text style={styles._detail_btn_text}>
-                    {this.state[i] !== undefined ? this.state[i] : 1}
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  disabled={this.state[i] <= 0 ? true : false}
-                  style={styles._detail_btn}
-                  onPress={() => this.removeItem(data, i)}>
-                  <Text style={styles._detail_btn_minus}>-</Text>
-                </TouchableOpacity>
-              </View>
+              <Text style={{color: '#c1c1c1', marginLeft: 10}}>4350</Text>
             </View>
-          );
-        })}
+
+            <View style={styles._reviewsRow}>
+              <Reviews />
+              <Text>6</Text>
+            </View>
+          </View>
+          <View style={styles._detail_row}>
+            <TouchableOpacity
+              style={styles._detail_btn}
+              onPress={() => this.addQuantity(data, 1)}>
+              <Text style={styles._detail_btn_plus}>+</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles._detail_btn}>
+              <Text style={styles._detail_btn_text}>
+                {this.state[0] !== undefined ? this.state[0] : 1}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              disabled={this.state[0] <= 0 ? true : false}
+              style={styles._detail_btn}
+              onPress={() => this.removeItem(data, 1)}>
+              <Text style={styles._detail_btn_minus}>-</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
         <View style={styles._proceedSection}>
           <TouchableOpacity style={styles.total_price} activeOpacity={0.8}>
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>
@@ -166,7 +140,7 @@ export default class Cart extends React.Component {
 
           <TouchableHighlight
             style={styles._proceed}
-            disabled={this.state.total === 0? true:false}
+            disabled={this.state.total === 0 ? true : false}
             onPress={() => {
               var options = {
                 description: 'Credits towards consultation',

@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BottomNavigation from './src/config/bottomNavigation';
+import Icon from 'react-native-vector-icons/Feather';
+Ionicons;
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import {
   EnterMobile,
   EnterOTP,
@@ -10,6 +15,7 @@ import {
   ProductDetail,
   Splash,
   Blog,
+  GymsList,
   ViewShop,
   FitCoach,
   Location,
@@ -21,6 +27,7 @@ import {
   GymProfile,
   Cart,
   Payment,
+  Help,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -28,6 +35,167 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {navigationRef} from './src/config/RootNavigation';
 
 const HomeStack = createStackNavigator();
+const Tabs = createBottomTabNavigator();
+import {TabBar} from 'react-native-animated-nav-tab-bar';
+
+function ViewAllGymTab() {
+  return (
+    <Tabs.Navigator
+      tabBarOptions={{
+        activeTintColor: '#2F7C6E',
+        inactiveTintColor: '#222222',
+      }}
+      tabBar={props => (
+        <TabBar
+          activeColors={'#f23535'}
+          activeTabBackgrounds={'#efd2d2'}
+          {...props}
+        />
+      )}>
+      <Tabs.Screen
+        name="Gym"
+        component={ViewAllGym}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons
+              name="ios-fitness"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Shop"
+        component={ViewShop}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="shopping-cart"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Help"
+        component={Help}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="help-circle"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Account"
+        component={UserProfile}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="user"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs.Navigator>
+  );
+}
+
+function GymProfileTab() {
+  return (
+    <Tabs.Navigator
+      tabBarOptions={{
+        activeTintColor: '#2F7C6E',
+        inactiveTintColor: '#222222',
+      }}
+      tabBar={props => (
+        <TabBar
+          activeColors={'#f23535'}
+          activeTabBackgrounds={'#efd2d2'}
+          {...props}
+        />
+      )}>
+      <Tabs.Screen
+        name="Profile"
+        component={GymProfile}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="user"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Shop"
+        component={ViewShop}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="shopping-cart"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="Help"
+        component={Help}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="help-circle"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Account"
+        component={UserProfile}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon
+              name="user"
+              size={size ? size : 24}
+              color={focused ? color : '#222222'}
+              focused={focused}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs.Navigator>
+  );
+}
 
 export default function HomeStackScreen() {
   const [isLoggenIn, setLogged] = useState(null);
@@ -136,7 +304,7 @@ export default function HomeStackScreen() {
 
             <HomeStack.Screen
               name="gymprofile"
-              component={GymProfile}
+              component={GymProfileTab}
               options={{
                 headerTitle: (
                   <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
@@ -163,10 +331,21 @@ export default function HomeStackScreen() {
               }}
             />
 
+            <HomeStack.Screen
+              name="gymList"
+              component={GymsList}
+              options={{
+                headerStyle: {
+                  backgroundColor: '#f23535',
+                },
+                headerTintColor: 'white',
+              }}
+            />
+
             <HomeStack.Screen name="FITCOACH" component={FitCoach} />
             <HomeStack.Screen
               name="ViewAllGym"
-              component={ViewAllGym}
+              component={ViewAllGymTab}
               options={{
                 headerTitle: (
                   <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
