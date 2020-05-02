@@ -214,16 +214,15 @@ export default function HomeStackScreen() {
   return (
     <NavigationContainer ref={navigationRef}>
       <HomeStack.Navigator>
-        {isLoggenIn == null ? (
+        
           <HomeStack.Screen
-            name="Loading"
-            component={Loading}
+            name="Splash"
+            component={Splash}
             options={{
               headerShown: false,
             }}
           />
-        ) : isLoggenIn == true ? (
-          <>
+      
             <HomeStack.Screen
               name="bottombar"
               component={BottomNavigation}
@@ -238,7 +237,15 @@ export default function HomeStackScreen() {
 
             <HomeStack.Screen name="blog" component={Blog} />
             <HomeStack.Screen name="location" component={Location} />
-            <HomeStack.Screen name="UserProfile" component={UserProfile} />
+            <HomeStack.Screen name="UserProfile" 
+            component={UserProfile} 
+              options={{
+headerStyle: {
+  backgroundColor: 'transparent'
+}
+              }}
+            />
+            <HomeStack.Screen name="GymProfile" component={GymProfile} />
             <HomeStack.Screen
               name="Detail"
               component={ProductDetail}
@@ -308,7 +315,7 @@ export default function HomeStackScreen() {
               options={{
                 headerTitle: (
                   <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Profile
+                    Gym Profile
                   </Text>
                 ),
                 headerStyle: {
@@ -341,6 +348,11 @@ export default function HomeStackScreen() {
                 headerTintColor: 'white',
               }}
             />
+            <HomeStack.Screen
+              name="GymProfie"
+              component={GymProfile}
+              
+            />
 
             <HomeStack.Screen name="FITCOACH" component={FitCoach} />
             <HomeStack.Screen
@@ -359,9 +371,7 @@ export default function HomeStackScreen() {
                 headerBackTitle: '',
               }}
             />
-          </>
-        ) : (
-          <>
+       
             <HomeStack.Screen
               name="Onboarding"
               component={Onboarding}
@@ -384,7 +394,7 @@ export default function HomeStackScreen() {
               }}
             />
 
-            <HomeStack.Screen name="Splash" component={Splash} options={{}} />
+            {/* <HomeStack.Screen name="Splash" component={Splash} options={{}} /> */}
             <HomeStack.Screen
               name="EnterOTP"
               component={EnterOTP}
@@ -393,8 +403,7 @@ export default function HomeStackScreen() {
                 animationTypeForReplace: isLoggenIn ? 'pop' : 'push',
               }}
             />
-          </>
-        )}
+       
       </HomeStack.Navigator>
     </NavigationContainer>
   );

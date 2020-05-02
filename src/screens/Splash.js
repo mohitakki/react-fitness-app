@@ -2,22 +2,41 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Login from './Login';
+import AsyncStorage from '@react-native-community/async-storage';
+import NetInfo from '@react-native-community/netinfo';
+
 
 
 
 export default class Splash extends Component {
   constructor(){
     super()
-    this.state= ''
+    this.state = {
+      
+    };
   }
 
+  detectLogin = async () => {
+     
+    const token = await AsyncStorage.getItem('token')
+    if (token) {
+      this.props.navigation.navigate('bottombar')
+    } else {
+      this.props.navigation.navigate('Onboarding')
+    }
+ 
+
+}
+
   componentDidMount(){
+   
+     this.detectLogin()
     // Start counting when the page is loaded
     const {navigate} = this.props.navigation;
 
     this.timeoutHandle = setTimeout(()=>{
          // Add your logic for the transition
-         navigate('EnterMobile');
+        
         
 
     }, 1000);

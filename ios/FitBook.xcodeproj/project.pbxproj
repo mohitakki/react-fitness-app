@@ -195,7 +195,6 @@
 				3AB2853AFD1408551B730780 /* Pods-FitBook-tvOSTests.debug.xcconfig */,
 				7F61BD5DB31F02CE240EE0D8 /* Pods-FitBook-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -204,7 +203,6 @@
 			children = (
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

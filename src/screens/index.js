@@ -2,7 +2,6 @@ import EnterMobile from './EnterMobile';
 import EnterOTP from './EnterOTP';
 import Home from './Home';
 import Login from './Login';
-import Signup from './Signup';
 import Splash from './Splash';
 import Blog from './Blog';
 import ViewShop from './ViewShop';
@@ -25,7 +24,6 @@ export {
   EnterOTP,
   Home,
   Login,
-  Signup,
   Splash,
   Blog,
   ViewShop,

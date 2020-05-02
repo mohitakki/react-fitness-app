@@ -24,7 +24,6 @@ export default class EnterMobile extends Component {
   }
 
   sendOTP = async =()=> {
-    <Progress.Bar progress={0.3} width={200} />
    
     fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
     {
@@ -41,6 +40,7 @@ export default class EnterMobile extends Component {
     .then( async (res) => {
       try{
       if(res.error === false){
+    console.log(res.message);
     
       this.props.navigation.navigate('EnterOTP')
       }
@@ -88,9 +88,9 @@ export default class EnterMobile extends Component {
             />
             <TouchableOpacity
               style={styles.sentButon}
-              // onPress={() => this.sendOTP()}>
-              onPress={() => this.RBSheet.open()}
-              >
+              onPress={() => this.sendOTP()}>
+              {/* onPress={() => this.RBSheet.open()}
+              > */}
               <Text style={styles.sentText}>Send OTP</Text>
             </TouchableOpacity>
 

@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ScrollView, FlatList} from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-community/async-storage';
-import CardSilder from 'react-native-cards-slider';
-import RazorpayCheckout from 'react-native-razorpay';
+
 
 import {
   Slider,
@@ -78,7 +76,7 @@ export default class Home extends Component {
             <Text style={styles._nearBy}>NEARBY GYMS</Text>
 
             <FlatList
-              style={{height: widthToDp(34)}}
+              style={{height: widthToDp(36)}}
               horizontal
               pagingEnabled={true}
               style={{height:130}}
@@ -191,7 +189,7 @@ const styles = StyleSheet.create({
     marginTop: widthToDp(5),
   },
   _nearBy: {
-    marginLeft: widthToDp(5),
+    marginLeft: widthToDp(3),
     marginTop: widthToDp(3),
     letterSpacing: 1,
     fontSize: widthToDp(4),

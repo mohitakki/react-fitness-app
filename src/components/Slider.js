@@ -9,7 +9,7 @@ export default class Slider extends Component {
   }
   gymProfile = () => {
     const {navigate} = props.navigation;
-    navigate('Profile');
+    navigate('GymProfile');
   };
 
   render() {
@@ -65,7 +65,7 @@ export default class Slider extends Component {
           }}>
           <Text
             style={styles.exploreText}
-            onPress={() => this.props.props.navigate('Profile')}>
+            onPress={() => this.props.props.navigate('GymProfile')}>
             Explore this GYM
           </Text>
         </View>
@@ -76,7 +76,7 @@ export default class Slider extends Component {
 }
 const styles = StyleSheet.create({
   cardSlider: {
-    height: widthToDp(34),
+    height: widthToDp(33),
     borderColor: '#D9D0EE',
     borderWidth: 0.8,
     borderWidth: 4,

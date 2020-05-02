@@ -24,7 +24,7 @@ export default class EnterOTP extends Component {
     {
       method:'POST',
       headers: {
-       'Accept': 'application/json',
+       'Accept': 'application/json, text/plain',
        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -33,18 +33,21 @@ export default class EnterOTP extends Component {
     })
     .then((response) => response.json())
     .then( async(res) => {
-      alert("success")
 
       if(res.error === false){
         await  AsyncStorage.setItem('token', res.token)
       this.props.navigation.navigate('bottombar')
+      console.warn('done');
+      
+      }
+      else{
+        alert("OTP to Sahi daal Bhai")
       }
     })
     .catch((error) => {
-      alert("error")
       console.error(error);
     });
-
+  
   }
 
   render() {

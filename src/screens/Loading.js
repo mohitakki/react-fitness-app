@@ -15,18 +15,19 @@ export default class Loading extends Component {
   
   detectLogin=async () => {
      
-    const token = AsyncStorage.getItem('token')
+    const token = await AsyncStorage.getItem('token')
     if (token) {
-      this.navigatation.navigate('Onboarding')
+      this.props.navigation.navigate('bottombar')
     } else {
-      this.navigatation.navigate('Login')
+      this.props.navigation.navigate('Login')
     }
  
-useEffect(()=>{
-    detectLogin()
-}, [])
+
 }
- 
+async componentDidMount(){
+ await this.detectLogin()
+
+ }
 
   render() 
   

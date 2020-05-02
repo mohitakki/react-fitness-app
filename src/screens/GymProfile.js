@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-export default class Profile extends React.Component {
+export default class GymProfile extends React.Component {
   render() {
     console.log('========>', this.props);
 

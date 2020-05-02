@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Button ,TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, Button } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AsyncStorage from '@react-native-community/async-storage';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {widthToDp, heightToDp} from '../config/responsive';
+
 export default class UserProfile extends Component {
   constructor(props) {
     super(props);
@@ -11,31 +12,21 @@ export default class UserProfile extends Component {
   }
 
 
-logout= async ()=>{
+logout = async () =>{
     try {
-      await AsyncStorage.removeItem('token');
-      const getItem = await AsyncStorage.getItem('token');
+      // await AsyncStorage.removeItem('token');
+      const getItem = await AsyncStorage.removeItem('token');
+
       //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
       console.log('Should not be stored:', getItem);
+      this.props.navigation.navigate('Login')
+      
     } catch (err) {
       throw new Error(err);
     }
-    this.props.navigation.navigate('Loading');
-    await logout();
+  
     }
-
-    componentDidMount() {
-      this.props.navigation.setOptions({
-        headerRight: () => (
-          <TouchableOpacity
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-            <TouchableOpacity style={{marginRight: 5}} onPress={()=>this.logout()}>
-              <MaterialCommunityIcons name="logout" size={30} color="white" />
-            </TouchableOpacity>
-          </TouchableOpacity>
-        ),
-      });
-    }
+   
 
   render() {
     return (

@@ -18,6 +18,7 @@
     "@react-navigation/native": "^5.1.6",
     "@react-navigation/stack": "^5.2.11",
     "react": "16.11.0",
+    "react-feather": "^2.0.8",
     "react-native": "0.62.2",
     "react-native-animated-nav-tab-bar": "^2.0.3",
     "react-native-app-intro": "^1.1.5",
