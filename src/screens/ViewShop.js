@@ -30,21 +30,24 @@ export default class ViewShop extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    props.navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          style={styles._headerLeft}
-          // onPress={() => this.logout()}
-          >
-          <Icon
-            name="shopping-cart"
-            size={20}
-            color="white"
-            style={{zIndex: -1}}
-          />
-        </TouchableOpacity>
-      ),
-    });
+    return(
+
+      props.navigation.setOptions({
+        headerRight: () => (
+          <TouchableOpacity
+            style={styles._headerLeft}
+            // onPress={() => this.logout()}
+            >
+            <Icon
+              name="shopping-cart"
+              size={20}
+              color="white"
+              style={{zIndex: -1}}
+            />
+          </TouchableOpacity>
+        ),
+      })
+    )
   }
 
   ViewProduct = (id) => {

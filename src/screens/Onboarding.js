@@ -55,10 +55,11 @@ export default class Onboarding extends React.Component {
     };
   }
 
-  _renderItem = ({item}) => {
+  _renderItem = ({item,index}) => {
     return (
       <View
         colors={['#F26E38', '#F23873', '#48CCF7']}
+        key={index}
         style={{
           flex: 1,
           flexDirection: 'column',
@@ -136,6 +137,9 @@ export default class Onboarding extends React.Component {
           <AppIntroSlider
             renderItem={this._renderItem}
             data={slides}
+            keyExtractor = { (item, index) => index.toString() }
+
+
             showSkipButton={true}
             onDone={this._onDone}
           />

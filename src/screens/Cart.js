@@ -30,8 +30,7 @@ export default class Cart extends React.Component {
   
       .then(response =>response.json())
       .then(res => {
-        console.log(res)
-        let total = []
+                let total = []
         let card = []
         res.cart_list.map((val)=>{
           val.quantity = 1
@@ -81,10 +80,37 @@ this.setState({cart:newa,total: newtotal})
   };
 
   removeItem = (index) => { 
-  let newa = this.state.cart
-  newa[index].quantity = newa[index].quantity-1
-  let newtotal =  this.state.total - Number(this.state.cart[index].offer_price)
-  this.setState({cart:newa,total: newtotal})
+    let newa = this.state.cart
+  
+
+    if (newa[index].quantity == 1){
+    
+       fetch ('http://fitbook.fit/fitbookadmin/api_v1/cart.php',{
+        method: 'POST',
+        body:{
+          "product_id": newa[index].product_id,
+          "type":"0"
+       
+       }
+      }
+      ).then(response =>response.json())
+      .then(res => {
+        const filteredItems1 = newa.slice(0, index)
+        let newtotal =  this.state.total - Number(this.state.cart[index].offer_price)
+
+        this.setState({
+          cart : filteredItems1,
+          total: newtotal
+        })
+      }).catch(error=>console.log(error))
+
+    }
+    else{
+      newa[index].quantity = newa[index].quantity-1
+      let newtotal =  this.state.total - Number(this.state.cart[index].offer_price)
+      this.setState({cart:newa,total: newtotal})
+    
+    }
 
   };
   
@@ -153,7 +179,7 @@ this.setState({cart:newa,total: newtotal})
           </TouchableOpacity>
       
           <TouchableOpacity
-            disabled={item.quantity < 2 ? true: false}
+            // disabled={item.quantity < 2 ? true: false}
             style={styles._detail_btn}
             onPress={() => this.removeItem( index)}>
             <Text style={styles._detail_btn_minus}>-</Text>

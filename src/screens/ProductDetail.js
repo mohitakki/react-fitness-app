@@ -44,25 +44,28 @@ export default class ProductDetail extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    props.navigation.setOptions({
-      headerRight: () => (
-        <TouchableOpacity
-          style={styles._headerLeft}
-          onPress={() => this.logout()}>
-          <View style={styles._labelView}>
-            <View style={styles._label}>
-              <Text style={styles._numbering}>{state.quantity}</Text>
+    return(
+
+      props.navigation.setOptions({
+        headerRight: () => (
+          <TouchableOpacity
+            style={styles._headerLeft}
+            onPress={() => this.logout()}>
+            <View style={styles._labelView}>
+              <View style={styles._label}>
+                <Text style={styles._numbering}>{state.quantity}</Text>
+              </View>
             </View>
-          </View>
-          <Icon
-            name="shopping-cart"
-            size={20}
-            color="white"
-            style={{zIndex: -1}}
-          />
-        </TouchableOpacity>
-      ),
-    });
+            <Icon
+              name="shopping-cart"
+              size={20}
+              color="white"
+              style={{zIndex: -1}}
+            />
+          </TouchableOpacity>
+        ),
+      })
+    )
   }
 
   buyNow = () => {
