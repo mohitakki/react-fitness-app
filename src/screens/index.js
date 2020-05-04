@@ -19,6 +19,7 @@ import GymProfile from './GymProfile';
 import ProductDetail from './ProductDetail';
 import Cart from './Cart'
 import Payment from './Payment'
+import ViewStudios from './ViewStudios'
 export {
   EnterMobile,
   EnterOTP,
@@ -40,5 +41,6 @@ export {
   GymProfile,
   ProductDetail,
   Cart,
-  Payment
+  Payment,
+  ViewStudios
 };

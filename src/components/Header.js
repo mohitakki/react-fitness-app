@@ -1,45 +1,56 @@
 import React from 'react';
-import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
-import {widthToDp,heightToDp} from '../config/responsive'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
+import {widthToDp} from '../config/responsive';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+const windowWidth = Dimensions.get('window').width;
+import HeaderMenue from './HeaderMenue';
 export default class Header extends React.Component {
+  menuItem = item => {
+    this.props.selectedItem(item);
+  };
   render() {
     return (
       <>
+        {/* header Component is only used in subscription screen  */}
         <View style={styles._header}>
-          <View style={styles._leftSide}>
-            <View style={{marginLeft: widthToDp(5)}}>
+          <TouchableOpacity
+            onPress={() => this.props.props.navigation.navigate('bottombar')}>
+            <FeatherIcon name="arrow-left" size={25} color="white" />
+          </TouchableOpacity>
+          <View style={styles._headerLeft}>
+            <TouchableOpacity
+              onPress={() => this.props.dropdown()}
+              style={{
+                alignItems: 'center',
+                flex: 1,
+                justifyContent: 'center',
+                flexDirection: 'row',
+              }}>
               <Text
                 style={{
-                  fontSize: widthToDp(4),
                   color: 'white',
                   fontWeight: 'bold',
-                  fontFamily: 'Gill Sans',
-                }}
-                onPress={() => this.props.navigation.navigate('GymsList')}>
-                Shalimar Garden
+                  paddingRight: 10,
+                }}>
+                {this.props.city}
               </Text>
-              <Text style={{color: 'white', fontFamily: 'Gill Sans',fontSize: widthToDp(3),}}>
-                Ghaziabad
-              </Text>
-            </View>
-            <View>
-              {this.props.icon ? (
-                this.props.icon
-              ) : (
-                <Image
-                  style={{
-                    width: widthToDp(8),
-                    height: widthToDp(8),
-                    borderRadius: 50,
-                    borderColor: '#c1c1c1',
-                    borderWidth: .4,
-                    resizeMode: 'contain',
-                    backgroundColor: '#000',
-                  }}
-                  source={require('./../assests/logo.png')}
-                />
-              )}
-            </View>
+              <Ionicons name="md-arrow-dropdown" size={20} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
+              <HeaderMenue getItem={this.menuItem} />
+            </TouchableOpacity>
           </View>
         </View>
       </>
@@ -49,10 +60,13 @@ export default class Header extends React.Component {
 
 let styles = StyleSheet.create({
   _header: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#f23535',
     elevation: 4,
     paddingTop: widthToDp(9),
     paddingBottom: widthToDp(2),
+    paddingLeft: 10,
     paddingRight: widthToDp(5),
     shadowColor: '#c1c1c1',
     shadowOffset: {
@@ -66,5 +80,12 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  _headerLeft: {
+    paddingTop: 15,
+    flexDirection: 'row',
+    width: windowWidth - 50,
+    borderColor: 'white',
+    justifyContent: 'center',
   },
 });

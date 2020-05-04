@@ -5,7 +5,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import BottomNavigation from './src/config/bottomNavigation';
 import Icon from 'react-native-vector-icons/Feather';
-Ionicons;
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {
@@ -28,6 +27,7 @@ import {
   Cart,
   Payment,
   Help,
+  ViewStudios,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -214,196 +214,199 @@ export default function HomeStackScreen() {
   return (
     <NavigationContainer ref={navigationRef}>
       <HomeStack.Navigator>
-        
-          <HomeStack.Screen
-            name="Splash"
-            component={Splash}
-            options={{
-              headerShown: false,
-            }}
-          />
-      
-            <HomeStack.Screen
-              name="bottombar"
-              component={BottomNavigation}
-              options={{
-                headerShown: false,
-                headerTitle: '',
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-              }}
-            />
+        <HomeStack.Screen
+          name="Splash"
+          component={Splash}
+          options={{
+            headerShown: false,
+          }}
+        />
 
-            <HomeStack.Screen name="blog" component={Blog} />
-            <HomeStack.Screen name="location" component={Location} />
-            <HomeStack.Screen name="UserProfile" 
-            component={UserProfile} 
-              options={{
-headerStyle: {
-  backgroundColor: 'transparent'
-}
-              }}
-            />
-            <HomeStack.Screen name="GymProfile" component={GymProfile} />
-            <HomeStack.Screen
-              name="Detail"
-              component={ProductDetail}
-              options={{
-                headerTitle: (
-                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Product Detail
-                  </Text>
-                ),
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-                headerTintColor: 'white',
-                headerBackTitle: '',
-              }}
-            />
+        <HomeStack.Screen
+          name="bottombar"
+          component={BottomNavigation}
+          options={{
+            headerShown: false,
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+          }}
+        />
 
-            <HomeStack.Screen
-              name="Subscription"
-              component={Subscription}
-              options={{
-                headerTitle: (
-                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Subscription
-                  </Text>
-                ),
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-                headerTintColor: 'white',
-                headerBackTitle: '',
-              }}
-            />
-            <HomeStack.Screen
-              name="Supplement"
-              component={ViewShop}
-              options={{
-                headerTitle: (
-                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Supplement
-                  </Text>
-                ),
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
+        <HomeStack.Screen name="blog" component={Blog} />
+        <HomeStack.Screen name="location" component={Location} />
+        <HomeStack.Screen
+          name="UserProfile"
+          component={UserProfile}
+          options={{
+            headerStyle: {
+              backgroundColor: 'transparent',
+            },
+          }}
+        />
+        <HomeStack.Screen name="GymProfile" component={GymProfile} />
+        <HomeStack.Screen
+          name="Detail"
+          component={ProductDetail}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Product Detail
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
 
-                headerTintColor: 'white',
-                headerBackTitle: '',
-              }}
-            />
+        <HomeStack.Screen
+          name="viewstdios"
+          component={ViewStudios}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
 
-            <HomeStack.Screen
-              name="Payment"
-              component={Payment}
-              options={{
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
+        <HomeStack.Screen
+          name="Subscription"
+          component={Subscription}
+          options={{
+            headerShown:false,
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
+        <HomeStack.Screen
+          name="Supplement"
+          component={ViewShop}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Supplement
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
 
-                headerTintColor: 'white',
-              }}
-            />
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
 
-            <HomeStack.Screen
-              name="gymprofile"
-              component={GymProfileTab}
-              options={{
-                headerTitle: (
-                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Gym Profile
-                  </Text>
-                ),
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
+        <HomeStack.Screen
+          name="Payment"
+          component={Payment}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
 
-                headerTintColor: 'white',
-                headerBackTitle: '',
-              }}
-            />
+            headerTintColor: 'white',
+          }}
+        />
 
-            <HomeStack.Screen
-              name="cart"
-              component={Cart}
-              options={{
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-                headerTintColor: 'white',
-              }}
-            />
+        <HomeStack.Screen
+          name="gymprofile"
+          component={GymProfileTab}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Gym Profile
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
 
-            <HomeStack.Screen
-              name="gymList"
-              component={GymsList}
-              options={{
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-                headerTintColor: 'white',
-              }}
-            />
-            <HomeStack.Screen
-              name="GymProfie"
-              component={GymProfile}
-              
-            />
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
 
-            <HomeStack.Screen name="FITCOACH" component={FitCoach} />
-            <HomeStack.Screen
-              name="ViewAllGym"
-              component={ViewAllGymTab}
-              options={{
-                headerTitle: (
-                  <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-                    Gyms In
-                  </Text>
-                ),
-                headerStyle: {
-                  backgroundColor: '#f23535',
-                },
-                headerTintColor: 'white',
-                headerBackTitle: '',
-              }}
-            />
-       
-            <HomeStack.Screen
-              name="Onboarding"
-              component={Onboarding}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <HomeStack.Screen
-              name="Login"
-              component={Login}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <HomeStack.Screen
-              name="EnterMobile"
-              component={EnterMobile}
-              options={{
-                headerShown: false,
-              }}
-            />
+        <HomeStack.Screen
+          name="cart"
+          component={Cart}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
 
-            {/* <HomeStack.Screen name="Splash" component={Splash} options={{}} /> */}
-            <HomeStack.Screen
-              name="EnterOTP"
-              component={EnterOTP}
-              options={{
-                headerShown: false,
-                animationTypeForReplace: isLoggenIn ? 'pop' : 'push',
-              }}
-            />
-       
+        <HomeStack.Screen
+          name="gymList"
+          component={GymsList}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+        <HomeStack.Screen name="GymProfie" component={GymProfile} />
+
+        <HomeStack.Screen name="FITCOACH" component={FitCoach} />
+        <HomeStack.Screen
+          name="ViewAllGym"
+          component={ViewAllGymTab}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Gyms In
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <HomeStack.Screen
+          name="Login"
+          component={Login}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <HomeStack.Screen
+          name="EnterMobile"
+          component={EnterMobile}
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        {/* <HomeStack.Screen name="Splash" component={Splash} options={{}} /> */}
+        <HomeStack.Screen
+          name="EnterOTP"
+          component={EnterOTP}
+          options={{
+            headerShown: false,
+            animationTypeForReplace: isLoggenIn ? 'pop' : 'push',
+          }}
+        />
       </HomeStack.Navigator>
     </NavigationContainer>
   );
