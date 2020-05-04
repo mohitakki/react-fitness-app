@@ -22,9 +22,7 @@ export default class Splash extends Component {
     if (token) {
       this.props.navigation.navigate('bottombar')
     } else {
-      this.props.navigation.navigate('bottombar')
-
-      // this.props.navigation.navigate('Onboarding')
+      this.props.navigation.navigate('Onboarding')
     }
  
 
