@@ -5,7 +5,6 @@ import Login from './Login';
 import Splash from './Splash';
 import Blog from './Blog';
 import ViewShop from './ViewShop';
-import FitCoach from './FitCoach';
 import Shop from './Shop';
 import Help from './Help';
 import Location from './Location';
@@ -17,9 +16,14 @@ import Subscription from './Subscription';
 import UserProfile from './UserProfile';
 import GymProfile from './GymProfile';
 import ProductDetail from './ProductDetail';
-import Cart from './Cart'
-import Payment from './Payment'
-import ViewStudios from './ViewStudios'
+import Cart from './Cart';
+import Payment from './Payment';
+import ViewStudios from './ViewStudios';
+import FitPrime from './FitPrime';
+import Nutritionist from './Nutritionst';
+import Coach from './Coach'
+import FitPass from './FitPass'
+import TermsConditions from './TermsConditions'
 export {
   EnterMobile,
   EnterOTP,
@@ -28,7 +32,6 @@ export {
   Splash,
   Blog,
   ViewShop,
-  FitCoach,
   Shop,
   Help,
   Location,
@@ -42,5 +45,10 @@ export {
   ProductDetail,
   Cart,
   Payment,
-  ViewStudios
+  ViewStudios,
+  FitPrime,
+  Nutritionist,
+  Coach,
+  FitPass,
+  TermsConditions
 };

@@ -44,13 +44,15 @@ export default class Header extends React.Component {
               <Ionicons name="md-arrow-dropdown" size={20} color="white" />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}>
-              <HeaderMenue getItem={this.menuItem} />
-            </TouchableOpacity>
+            {this.props.headerLeft ? (
+              <TouchableOpacity
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}>
+                <HeaderMenue getItem={this.menuItem} props={this.props.props} />
+              </TouchableOpacity>
+            ) : null}
           </View>
         </View>
       </>

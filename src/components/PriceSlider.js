@@ -6,50 +6,22 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default class PriceSlider extends Component {
   render() {
-    let posts = [
-      {
-        uri:
-          'https://cdn.lynda.com/course/734634/734634-637199682524857000-16x9.jpg',
-        heading: '5 Strectching Excercises for better posture & flexiblities',
-      },
-      {
-        uri:
-          'https://i.pinimg.com/originals/79/60/26/796026dd0490f87f5a18ffe365c01b0d.jpg',
-
-        heading: '5 Strectching Excercises for better posture & flexiblities',
-      },
-
-      {
-        uri: 'https://i.ytimg.com/vi/ETsekJKsr3M/maxresdefault.jpg',
-        heading: '5 Strectching Excercises for better posture & flexiblities',
-      },
-      {
-        uri:
-          'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-skincare-products-glowing-skin-1561735403.png?crop=0.984xw:0.984xh;0,0&resize=1200:*',
-        heading: '5 Strectching Excercises for better posture & flexiblities',
-      },
-      {
-        uri:
-          'https://scstylecaster.files.wordpress.com/2018/11/old-school-products.jpg',
-        heading: '5 Strectching Excercises for better posture & flexiblities',
-      },
-    ];
+    let data = this.props.data;
+    let bg = this.props.bg;
     return (
       <CardSilder>
-        {posts.map((val, i) => {
+        {data.map((val, i) => {
           return (
             <View style={styles._postStyle} key={i}>
-              <View style={styles._bodySection}>
-                <Text style={styles.card_heading}>Monthly Plan</Text>
-                <Text style={styles._description}>
-                  All fitness centers across India
-                </Text>
+              <View style={[styles._bodySection, {backgroundColor: bg}]}>
+                <Text style={styles.card_heading}>{val.title}</Text>
+                <Text style={styles._description}>{val.description}</Text>
               </View>
               <View style={styles._footerSection}>
                 <Text style={{color: 'grey', fontSize: 16}}>PRICE</Text>
-                <Text style={styles._price}>
-                  {' '}
-                  <FontAwesome name="rupee" size={14} /> 2313
+                <Text style={[styles._price,{color:bg}]}>
+                  <FontAwesome name="rupee" size={14} style={{color: bg}} />
+                  {val.price}/{val.month} Months
                 </Text>
               </View>
             </View>
@@ -70,8 +42,6 @@ let styles = StyleSheet.create({
       width: 0.5,
       height: 2,
     },
-    // borderColor: 'white',
-    // borderWidth: 3,
   },
 
   _description: {
@@ -86,7 +56,6 @@ let styles = StyleSheet.create({
   },
   _bodySection: {
     height: widthToDp(25),
-    backgroundColor: '#f4b87c',
     // opacity: 0.8,
     padding: 15,
     borderTopLeftRadius: 5,

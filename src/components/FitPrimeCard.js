@@ -5,12 +5,20 @@ import {widthToDp} from '../config/responsive';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default class FitPrimeCard extends Component {
- 
-
+  constructor() {
+    super();
+    this.state = {
+      add: false,
+    };
+  }
   render() {
     return (
       <CardSilder>
-        <View style={styles._postStyle}>
+        <View
+          style={[
+            styles._postStyle,
+            {backgroundColor: this.state.add ? 'green' : 'grey'},
+          ]}>
           <View style={styles._bodySection}>
             <Text style={styles.card_heading}>Monthly Plan</Text>
             <Text style={styles._price}>
@@ -22,11 +30,13 @@ export default class FitPrimeCard extends Component {
           </Text>
           <View style={styles._footerSection}>
             <Text style={{fontSize: 12, color: 'white', fontWeight: 'bold'}}>
-              DETAILS  <FontAwesome name="angle-double-right" size={16} />
+              DETAILS <FontAwesome name="angle-double-right" size={16} />
             </Text>
 
-            <Text style={styles._price}>
-              <FontAwesome name="rupee" size={14} /> 2313
+            <Text
+              style={styles.addBtn}
+              onPress={() => this.setState({add: !this.state.add})}>
+              <Text style={{fontSize: 10}}>ADD</Text>
             </Text>
           </View>
         </View>
@@ -50,7 +60,6 @@ let styles = StyleSheet.create({
     },
   },
 
-  
   _heading: {
     color: 'white',
     padding: widthToDp(10),
@@ -75,7 +84,7 @@ let styles = StyleSheet.create({
     fontSize: 15,
   },
   _description: {
-    color:"#d6cdcd",
+    color: '#d6cdcd',
     fontWeight: 'bold',
     fontSize: 12,
     paddingTop: 10,
@@ -84,5 +93,18 @@ let styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     fontSize: 15,
+  },
+  addBtn: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 5,
+    padding: 5,
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: '#f4f6f7',
+    opacity: 0.5,
   },
 });

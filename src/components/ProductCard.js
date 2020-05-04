@@ -27,7 +27,6 @@ export default class ProductCard extends React.Component {
           <View style={styles._card_body}>
             <Text style={styles._title}>{this.data.title}</Text>
             <Text style={styles._subTitle}>{this.data.title_flawer}</Text>
-            {/* <Text style={styles._subTitle}>Flawer watermelon</Text> */}
 
             <View style={styles._price_section}>
               <Text style={styles._price}>

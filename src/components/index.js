@@ -8,11 +8,15 @@ import GymCard from './GymCard';
 import Dropdown from './Dropdown';
 import Subscription from './Subscription';
 import PorductCard from './ProductCard';
-import CityPicker from './CityPicker'
-import  PriceSlider from './PriceSlider'
-import FitPrimeCard from './FitPrimeCard'
-import SubscribeCard from './SubscribeCard'
-
+import CityPicker from './CityPicker';
+import PriceSlider from './PriceSlider';
+import FitPrimeCard from './FitPrimeCard';
+import SubscribeCard from './SubscribeCard';
+import Fitcoach from './Fitcoach';
+import FitFeast from './Fitfeast';
+import FitPass from './Fitpass';
+import PlanSlider from './PlanSlider'
+import GreeingCard from './GreetingCard'
 // import Reviews from './Reviews'
 export {
   MobileDiologBox,
@@ -28,7 +32,13 @@ export {
   CityPicker,
   PriceSlider,
   FitPrimeCard,
-  SubscribeCard
+  SubscribeCard,
+  Fitcoach,
+  FitPass,
+  FitFeast,
+  PlanSlider,
+  GreeingCard
+  
 
   // Reviews
 };

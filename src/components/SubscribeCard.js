@@ -33,7 +33,9 @@ export default class SubscribeCard extends React.Component {
                     <Text style={styles.price}>899/M </Text>
                   </View>
                   <View style={{marginTop: widthToDp(10)}}>
-                    <TouchableOpacity style={styles.SubscriptionButton}>
+                    <TouchableOpacity
+                      style={styles.SubscriptionButton}
+                      onPress={() => this.props.navigation.navigate('FITPASS')}>
                       <Text
                         style={{
                           color: 'red',

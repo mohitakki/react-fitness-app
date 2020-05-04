@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -16,7 +16,6 @@ import {
   Blog,
   GymsList,
   ViewShop,
-  FitCoach,
   Location,
   Onboarding,
   ViewAllGym,
@@ -28,6 +27,11 @@ import {
   Payment,
   Help,
   ViewStudios,
+  FitPrime,
+  Nutritionist,
+  Coach,
+  FitPass,
+  TermsConditions,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -279,7 +283,7 @@ export default function HomeStackScreen() {
           name="Subscription"
           component={Subscription}
           options={{
-            headerShown:false,
+            headerShown: false,
             headerStyle: {
               backgroundColor: '#f23535',
             },
@@ -302,6 +306,69 @@ export default function HomeStackScreen() {
 
             headerTintColor: 'white',
             headerBackTitle: '',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Nutritionist"
+          component={Nutritionist}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                FITPASS Nutritionist
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="COACH"
+          component={Coach}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+              color: 'white',
+            },
+
+            headerTintColor: 'white',
+            headerBackTitle: '',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="FITPASS"
+          component={FitPass}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+              color: 'white',
+            },
+
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="termscondtions"
+          component={TermsConditions}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Terms & Condtions
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+              color: 'white',
+            },
+
+            headerTintColor: 'white',
           }}
         />
 
@@ -358,7 +425,17 @@ export default function HomeStackScreen() {
         />
         <HomeStack.Screen name="GymProfie" component={GymProfile} />
 
-        <HomeStack.Screen name="FITCOACH" component={FitCoach} />
+        <HomeStack.Screen
+          name="fitprime"
+          component={FitPrime}
+          options={{
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
         <HomeStack.Screen
           name="ViewAllGym"
           component={ViewAllGymTab}

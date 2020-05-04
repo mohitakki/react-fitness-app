@@ -3,23 +3,16 @@ import {
   View,
   StyleSheet,
   Dimensions,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  TouchableHighlight,
 } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {
   CityPicker,
-  FitPrimeCard,
   Header,
-  PriceSlider,
-  SubscribeCard,
+  FitPass,
+  FitFeast,
+  Fitcoach,
 } from './../components';
 import {widthToDp, heightToDp} from '../config/responsive';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import RazorpayCheckout from 'react-native-razorpay';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -45,6 +38,7 @@ export default class Subscription extends Component {
   };
 
   render() {
+    let {menueItem} = this.state;
     return (
       <>
         <Header
@@ -52,145 +46,31 @@ export default class Subscription extends Component {
           dropdown={this.drowpdown}
           city={this.state.city}
           selectedItem={this.menueItem}
+          headerLeft={true}
         />
-        <ScrollView style={{marginBottom: 150}}>
-          <View>
-            <RBSheet
-              ref={ref => {
-                this.RBSheet = ref;
-              }}
-              height={widthToDp(137)}
-              duration={250}
-              customStyles={{
-                container: {
-                  justifyContent: 'center',
-                },
-              }}>
-              <CityPicker
-                props={this.props}
-                onpress={() => this.RBSheet.close()}
-                cityName={this.selectCity}
-              />
-            </RBSheet>
-          </View>
-
-          <View style={styles._heading}>
-            <Text style={styles._tab}>CHOOSE PLAN</Text>
-            {/* <View style={{flexDirection: 'row'}} /> */}
-          </View>
-          <View style={{height: widthToDp(55)}}>
-            <PriceSlider />
-          </View>
-
-          <View style={styles._detailSection}>
-            <Text style={styles._title}>What is FITPASS?</Text>
-
-            <View style={styles._li}>
-              <FontAwesome name="check" size={16} color={'red'} />
-              <Text style={styles.li_text}>
-                Your membership to India largest fitness network
-              </Text>
-            </View>
-
-            <View style={styles._li}>
-              <FontAwesome name="check" size={16} color={'red'} />
-              <Text style={styles.li_text}>
-                Workout any where -across 4000+ gyms and fitness studios pan
-                India
-              </Text>
-            </View>
-
-            <View style={styles._li}>
-              <FontAwesome name="check" size={16} color={'red'} />
-              <Text style={styles.li_text}>
-                Workout anytime -close to home, office,near a friend house
-              </Text>
-            </View>
-
-            <View style={styles._li}>
-              <FontAwesome name="check" size={16} color={'red'} />
-              <Text style={styles.li_text}>
-                Get unlimited wokout of top trending workout -yoga, Zumba,
-                Pilates, Crossfit, Kickboxing, Bollydance & many more
-              </Text>
-            </View>
-            <Text
-              style={styles._viewshop}
-              onPress={() =>
-                this.props.navigation.navigate('viewstdios', {
-                  city: this.state.city,
-                  type: this.state.typ,
-                })
-              }>
-              <Text style={{padding: 12}}>VIEW STUDIOS </Text>
-              <Text style={{margin: 20}}>
-                <AntDesign name="rightcircle" style={styles._viewBtn} />
-              </Text>
-            </Text>
-            <Text style={styles._instructions}>Don't miss out FITPRIME</Text>
-
-            <FitPrimeCard />
-          </View>
-        </ScrollView>
-        <View style={{position: 'absolute', bottom: 0}}>
-          <SubscribeCard />
-
-          <View style={styles._bottom_section}>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <TouchableOpacity style={styles.total_price} activeOpacity={0.8}>
-                <Text
-                  style={{fontSize: 20, fontWeight: 'bold', color: 'green'}}>
-                  <FontAwesome size={18} name="rupee" /> 1230
-                </Text>
-                <Text style={{color: 'red', fontSize: 12}}>For 1 month</Text>
-              </TouchableOpacity>
-              {/* payment */}
-              <TouchableHighlight
-                style={styles._proceed}
-                disabled={this.state.total === 0 ? true : false}
-                onPress={() => {
-                  var options = {
-                    description: 'Credits towards consultation',
-                    image: 'https://i.imgur.com/3g7nmJC.png',
-                    currency: 'INR',
-                    key: 'rzp_test_1OaQM6M6lY56GN',
-                    amount: this.state.total,
-                    name: 'Fit Book',
-                    prefill: {
-                      email: 'void@razorpay.com',
-                      contact: '9191919191',
-                      name: 'Razorpay Software',
-                    },
-                    theme: {color: 'green'},
-                  };
-                  RazorpayCheckout.open(options)
-                    .then(data => {
-                      // handle success
-                      alert(`Success: ${data.razorpay_payment_id}`);
-                    })
-                    .catch(error => {
-                      // handle failure
-                      // alert(`Error: ${error.code} | ${error.description}`);
-                    });
-                }}>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: 'white',
-                    letterSpacing: 1,
-                  }}>
-                  PROCEED
-                </Text>
-              </TouchableHighlight>
-            </View>
-          </View>
+        <View>
+          <RBSheet
+            ref={ref => {
+              this.RBSheet = ref;
+            }}
+            height={widthToDp(137)}
+            duration={250}
+            customStyles={{
+              container: {
+                justifyContent: 'center',
+              },
+            }}>
+            <CityPicker
+              props={this.props}
+              onpress={() => this.RBSheet.close()}
+              cityName={this.selectCity}
+            />
+          </RBSheet>
         </View>
+
+        {menueItem === 'FITPASS' ? <FitPass navigation={this.props.navigation} /> : null}
+        {menueItem === 'FITFEAST' ? <FitFeast navigation={this.props.navigation} /> : null}
+        {menueItem === 'FITCOACH' ? <Fitcoach navigation={this.props.navigation} /> : null}
       </>
     );
   }
