@@ -12,7 +12,8 @@ import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Reviews from './../components/Reviews';
 import RazorpayCheckout from 'react-native-razorpay';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {AddressCard} from './../components';
 
 export default class Cart extends React.Component {
   constructor() {
@@ -24,172 +25,170 @@ export default class Cart extends React.Component {
     };
   }
   componentDidMount() {
-    fetch('http://fitbook.fit/fitbookadmin/api_v1/cart.php',{
+    fetch('http://fitbook.fit/fitbookadmin/api_v1/cart.php', {
       method: 'GET',
     })
-  
-      .then(response =>response.json())
+      .then(response => response.json())
       .then(res => {
-                let total = []
-        let card = []
-        res.cart_list.map((val)=>{
-          val.quantity = 1
-          card.push(val)
-          var result = val.offer_price.replace(",", "");
-          total.push(Number(result))
-        })
-   var sum =total.reduce((a, b) => a + b, 0)
+        let total = [];
+        let card = [];
+        res.cart_list.map(val => {
+          val.quantity = 1;
+          card.push(val);
+          var result = val.offer_price.replace(',', '');
+          total.push(Number(result));
+        });
+        var sum = total.reduce((a, b) => a + b, 0);
 
         this.setState({
           isLoading: false,
           cart: card,
-          total:sum
-
-          
+          total: sum,
         });
       });
-      this.props.navigation.setOptions({
-        headerRight: () => (
-          <TouchableOpacity
-            style={styles._headerLeft}
-            onPress={() => this.logout()}>
-            <View style={styles._labelView}>
-              <View style={styles._label}>
-                <Text style={styles._numbering}>{this.state.cart.length}</Text>
-              </View>
+    this.props.navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          style={styles._headerLeft}
+          onPress={() => this.logout()}>
+          <View style={styles._labelView}>
+            <View style={styles._label}>
+              <Text style={styles._numbering}>{this.state.cart.length}</Text>
             </View>
-            <Icon
-              name="shopping-cart"
-              size={20}
-              color="white"
-              style={{zIndex: -1}}
-            />
-          </TouchableOpacity>
-        ),
-      })
+          </View>
+          <Icon
+            name="shopping-cart"
+            size={20}
+            color="white"
+            style={{zIndex: -1}}
+          />
+        </TouchableOpacity>
+      ),
+    });
   }
-  
-  addQuantity = (index) => {
 
-let newa = this.state.cart
-newa[index].quantity = 1+newa[index].quantity
+  addQuantity = index => {
+    let newa = this.state.cart;
+    newa[index].quantity = 1 + newa[index].quantity;
 
-let newtotal = Number(this.state.cart[index].offer_price) + this.state.total
-this.setState({cart:newa,total: newtotal})
-
+    let newtotal =
+      Number(this.state.cart[index].offer_price) + this.state.total;
+    this.setState({cart: newa, total: newtotal});
   };
 
-  removeItem = (index) => { 
-    let newa = this.state.cart
-  
+  removeItem = index => {
+    let newa = this.state.cart;
 
-    if (newa[index].quantity == 1){
-    
-       fetch ('http://fitbook.fit/fitbookadmin/api_v1/cart.php',{
+    if (newa[index].quantity == 1) {
+      fetch('http://fitbook.fit/fitbookadmin/api_v1/cart.php', {
         method: 'POST',
-        body:{
-          "product_id": newa[index].product_id,
-          "type":"0"
-       
-       }
-      }
-      ).then(response =>response.json())
-      .then(res => {
-        const filteredItems1 = newa.slice(0, index)
-        let newtotal =  this.state.total - Number(this.state.cart[index].offer_price)
+        body: {
+          product_id: newa[index].product_id,
+          type: '0',
+        },
+      })
+        .then(response => response.json())
+        .then(res => {
+          const filteredItems1 = newa.slice(0, index);
+          let newtotal =
+            this.state.total - Number(this.state.cart[index].offer_price);
 
-        this.setState({
-          cart : filteredItems1,
-          total: newtotal
+          this.setState({
+            cart: filteredItems1,
+            total: newtotal,
+          });
         })
-      }).catch(error=>console.log(error))
-
+        .catch(error => console.log(error));
+    } else {
+      newa[index].quantity = newa[index].quantity - 1;
+      let newtotal =
+        this.state.total - Number(this.state.cart[index].offer_price);
+      this.setState({cart: newa, total: newtotal});
     }
-    else{
-      newa[index].quantity = newa[index].quantity-1
-      let newtotal =  this.state.total - Number(this.state.cart[index].offer_price)
-      this.setState({cart:newa,total: newtotal})
-    
-    }
-
   };
-  
 
-
- 
-
-  
   render() {
     let {card} = this.state;
-        return (
+    return (
       <>
-      <FlatList
-      data={this.state.cart}
-      renderItem={({item,index})=>{
-        console.log(index)
-      
-        return(
-          <>
-          <TouchableOpacity activeOpacity={0.8}   onPress={() => this.props.navigation.navigate('Detail',{id:item.id})}
->
+        <ScrollView style={styles._container}>
+          <FlatList
+            data={this.state.cart}
+            renderItem={({item, index}) => {
+              console.log(index);
 
-         
-        <View style={styles._card}>
-          
-        <View style={styles._imgSection}>
-          <FoundationIcon name="burst-new" size={30} style={styles._badge} />
-          <Image
-              source={{ uri:item.image}}
-              style={styles._product_Img}
-            />
-        </View>
-        <View style={styles._card_body}>
-          <Text style={styles._title}>{item.title}</Text>
-          <Text style={styles._subTitle}>{item.title_flawer}</Text>
-      
-          <View style={styles._price_section}>
-            <Text style={styles._price}>
-              <FontAwesome name="rupee" /> {item.offer_price}
-            </Text>
-      
-            <Text style={{color: '#c1c1c1', marginLeft: 10}}>{
+              return (
+                <>
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() =>
+                      this.props.navigation.navigate('Detail', {id: item.id})
+                    }>
+                    <View style={styles._card}>
+                      <View style={styles._imgSection}>
+                        <FoundationIcon
+                          name="burst-new"
+                          size={30}
+                          style={styles._badge}
+                        />
+                        <Image
+                          source={{uri: item.image}}
+                          style={styles._product_Img}
+                        />
+                      </View>
+                      <View style={styles._card_body}>
+                        <Text style={styles._title}>{item.title}</Text>
+                        <Text style={styles._subTitle}>
+                          {item.title_flawer}
+                        </Text>
+
+                        <View style={styles._price_section}>
+                          <Text style={styles._price}>
+                            <FontAwesome name="rupee" /> {item.offer_price}
+                          </Text>
+
+                          <Text style={{color: '#c1c1c1', marginLeft: 10}}>
+                            {item.price}
+                          </Text>
+                        </View>
+
+                        <View style={styles._reviewsRow}>
+                          <Reviews />
+                          <Text>{item.rating}</Text>
+                        </View>
+                      </View>
+                      <View style={styles._detail_row}>
+                        <TouchableOpacity
+                          style={styles._detail_btn}
+                          onPress={() => this.addQuantity(index)}>
+                          <Text style={styles._detail_btn_plus}>+</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles._detail_btn}>
+                          <Text style={styles._detail_btn_text}>
+                            {item.quantity}
+                          </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                          // disabled={item.quantity < 2 ? true: false}
+                          style={styles._detail_btn}
+                          onPress={() => this.removeItem(index)}>
+                          <Text style={styles._detail_btn_minus}>-</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </>
+              );
+            }}
             
-             
-            item.price
-            }</Text>
-          </View>
-      
-          <View style={styles._reviewsRow}>
-            <Reviews />
-            <Text>{item.rating}</Text>
-          </View>
-        </View>
-        <View style={styles._detail_row}>
-          <TouchableOpacity
-            style={styles._detail_btn}
+          />
+           <Text style={styles._address}>DELEIVERY ADDRESS</Text>
+          <AddressCard navigation={this.props.navigation} />
+          
+        </ScrollView>
 
-            onPress={() => this.addQuantity(index)}>
-            <Text style={styles._detail_btn_plus}>+</Text>
-          </TouchableOpacity>
-      
-          <TouchableOpacity style={styles._detail_btn}>
-            <Text style={styles._detail_btn_text}>
-              {item.quantity}
-            </Text>
-          </TouchableOpacity>
-      
-          <TouchableOpacity
-            // disabled={item.quantity < 2 ? true: false}
-            style={styles._detail_btn}
-            onPress={() => this.removeItem( index)}>
-            <Text style={styles._detail_btn_minus}>-</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      </TouchableOpacity>
-      </>
-      )}} />
-     
         <View style={styles._proceedSection}>
           <TouchableOpacity style={styles.total_price} activeOpacity={0.8}>
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>
@@ -229,7 +228,6 @@ this.setState({cart:newa,total: newtotal})
               PROCEED
             </Text>
           </TouchableHighlight>
-        
         </View>
       </>
     );
@@ -237,6 +235,9 @@ this.setState({cart:newa,total: newtotal})
 }
 
 let styles = StyleSheet.create({
+  _container: {
+    marginBottom:60
+  },
   _label: {
     height: 20,
     width: 20,
@@ -383,6 +384,7 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    backgroundColor: 'white',
     // backgroundColor: 'green',
     position: 'absolute',
     bottom: 0,
@@ -401,5 +403,14 @@ let styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
+  },
+  _address: {
+    color: 'grey',
+    letterSpacing: 2.5,
+    fontWeight: 'bold',
+    fontSize: 12,
+    padding: 10,
+    paddingBottom:0,
+    marginTop:10
   },
 });

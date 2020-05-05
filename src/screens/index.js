@@ -24,6 +24,7 @@ import Nutritionist from './Nutritionst';
 import Coach from './Coach'
 import FitPass from './FitPass'
 import TermsConditions from './TermsConditions'
+import Address from './Address'
 export {
   EnterMobile,
   EnterOTP,
@@ -50,5 +51,6 @@ export {
   Nutritionist,
   Coach,
   FitPass,
-  TermsConditions
+  TermsConditions,
+  Address
 };

@@ -131,22 +131,7 @@ export default class ProductDetail extends React.Component {
                       </View>
                     </View>
 
-                    <View style={styles._price_section}>
-                      <Text
-                        style={{
-                          color: 'green',
-                          fontWeight: 'bold',
-                          fontSize: 16,
-                        }}>
-                        PRICE:
-                      </Text>
-                      <Text style={styles._price}>
-                        <FontAwesome name="rupee" size={17} />{' '}
-                        {item.offer_price}
-                      </Text>
-                      <Text style={{}}>{item.price}</Text>
-                    </View>
-
+                   
                     <View style={styles._desciption}>
                       <Text style={styles._heading}>DESCRIPTION:</Text>
                       <Text>
@@ -159,6 +144,9 @@ export default class ProductDetail extends React.Component {
                     </View>
                   </ScrollView>
                 </View>
+              </>
+            )}
+          />
                 <View style={styles._detail_row}>
                   <TouchableOpacity style={{width: '50%'}}>
                     <Text style={styles._detail_price}>Rs. 3400.00</Text>
@@ -170,9 +158,6 @@ export default class ProductDetail extends React.Component {
                     <Text style={styles._detail_btn_text}>BUY NOW</Text>
                   </TouchableOpacity>
                 </View>
-              </>
-            )}
-          />
         </View>
       </>
     );
@@ -256,15 +241,6 @@ let styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Gill Sans',
   },
-  _price_section: {
-    // flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    marginBottom: 10,
-    borderBottomWidth: 2,
-    borderColor: '#f0f0f0',
-  },
 
   _Icon_section: {
     flexDirection: 'row',
@@ -297,6 +273,8 @@ let styles = StyleSheet.create({
     width: '100%',
     marginBottom: 10,
     height: 50,
+    position:"absolute",
+    bottom:0
   },
   _detail_btn: {
     backgroundColor: '#f23535',

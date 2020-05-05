@@ -17,6 +17,7 @@ import FitFeast from './Fitfeast';
 import FitPass from './Fitpass';
 import PlanSlider from './PlanSlider'
 import GreeingCard from './GreetingCard'
+import AddressCard from './AddressCard'
 // import Reviews from './Reviews'
 export {
   MobileDiologBox,
@@ -37,8 +38,8 @@ export {
   FitPass,
   FitFeast,
   PlanSlider,
-  GreeingCard
-  
+  GreeingCard,
+  AddressCard
 
   // Reviews
 };

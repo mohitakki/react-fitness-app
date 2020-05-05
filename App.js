@@ -32,6 +32,7 @@ import {
   Coach,
   FitPass,
   TermsConditions,
+  Address,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -361,6 +362,24 @@ export default function HomeStackScreen() {
             headerTitle: (
               <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
                 Terms & Condtions
+              </Text>
+            ),
+            headerStyle: {
+              backgroundColor: '#f23535',
+              color: 'white',
+            },
+
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="address"
+          component={Address}
+          options={{
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+                Shipping Address Details
               </Text>
             ),
             headerStyle: {
