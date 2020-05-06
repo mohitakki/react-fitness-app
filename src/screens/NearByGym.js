@@ -8,7 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-export default class GymsList extends React.Component {
+export default class NearByGym extends React.Component {
   constructor() {
     super();
     this.state = {

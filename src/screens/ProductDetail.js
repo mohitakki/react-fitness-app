@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Dimensions
 } from 'react-native';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -13,6 +14,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Reviews from './../components/Reviews';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+const windowHeight = Dimensions.get('window').height;
+
 export default class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -80,6 +83,7 @@ export default class ProductDetail extends React.Component {
         <View style={styles._card}>
           <FlatList
             data={this.state.data}
+            contentContainerStyle={{height:windowHeight,flex:1,flexDirection:"row"}}
             keyExtractor={(x, i) => i}
             renderItem={({item}) => (
               <>
@@ -144,9 +148,6 @@ export default class ProductDetail extends React.Component {
                     </View>
                   </ScrollView>
                 </View>
-              </>
-            )}
-          />
                 <View style={styles._detail_row}>
                   <TouchableOpacity style={{width: '50%'}}>
                     <Text style={styles._detail_price}>Rs. 3400.00</Text>
@@ -158,6 +159,9 @@ export default class ProductDetail extends React.Component {
                     <Text style={styles._detail_btn_text}>BUY NOW</Text>
                   </TouchableOpacity>
                 </View>
+              </>
+            )}
+          />
         </View>
       </>
     );

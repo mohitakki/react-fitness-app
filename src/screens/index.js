@@ -21,10 +21,18 @@ import Payment from './Payment';
 import ViewStudios from './ViewStudios';
 import FitPrime from './FitPrime';
 import Nutritionist from './Nutritionst';
-import Coach from './Coach'
-import FitPass from './FitPass'
-import TermsConditions from './TermsConditions'
-import Address from './Address'
+import Coach from './Coach';
+import FitPass from './FitPass';
+import TermsConditions from './TermsConditions';
+import Address from './Address';
+import FitCash from './FitCash';
+import Follow from './Follow';
+import Setting from './Follow';
+import MyOrders from './MyOrders';
+import NearByGym from './NearByGym';
+import MealLog from './Meal'
+import FitCoachLog from './FitCoachLog'
+import WorkOuts from './WorkOuts'
 export {
   EnterMobile,
   EnterOTP,
@@ -52,5 +60,13 @@ export {
   Coach,
   FitPass,
   TermsConditions,
-  Address
+  Address,
+  FitCash,
+  Follow,
+  Setting,
+  MyOrders,
+  NearByGym,
+  MealLog,
+  FitCoachLog,
+  WorkOuts
 };

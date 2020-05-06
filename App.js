@@ -33,6 +33,14 @@ import {
   FitPass,
   TermsConditions,
   Address,
+  FitCash,
+  Follow,
+  Setting,
+  MyOrders,
+  NearByGym,
+  MealLog,
+  FitCoachLog,
+  WorkOuts,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -424,6 +432,104 @@ export default function HomeStackScreen() {
         <HomeStack.Screen
           name="cart"
           component={Cart}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="fitcash"
+          component={FitCash}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+               Refer & Earn
+              </Text>
+            ),
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="follow"
+          component={Follow}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTitle: (
+              <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
+               In Your Circle
+              </Text>
+            ),
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Settings"
+          component={Setting}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="My Orders"
+          component={MyOrders}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Meal Log"
+          component={MealLog}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Gyms Near You"
+          component={NearByGym}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="FITCOACH Log"
+          component={FitCoachLog}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="WORKOUTS"
+          component={WorkOuts}
           options={{
             headerStyle: {
               backgroundColor: '#f23535',
