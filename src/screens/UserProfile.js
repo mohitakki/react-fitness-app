@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Image,
-  Button,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
@@ -13,7 +12,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {widthToDp, heightToDp} from '../config/responsive';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {SubscribeCard} from './../components';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
@@ -72,12 +70,56 @@ export default class UserProfile extends Component {
         <ScrollView>
           <View style={styles.body_view}>
             <Text style={styles._address}>SUBSCRIPTION OFFERS</Text>
-            <TouchableOpacity
-              activeOpacity={0.9}
-              style={styles._subscriptionView}
-              onPress={() => this.props.navigation.navigate('fitprime')}>
-              <SubscribeCard />
-            </TouchableOpacity>
+            {/* SUBSCRIPTION card */}
+            <View style={styles._subscriptionView}>
+              <View style={styles.shopingCard}>
+                <View
+                  style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
+                  <LinearGradient
+                    colors={['#b22193', '#f23535']}
+                    style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={styles.leftArea}>
+                      <View style={styles._label}>
+                        <Text style={styles.getText}>GET</Text>
+                        <Text style={styles.percentText}>40%</Text>
+                        <Text style={styles.offText}>OFF</Text>
+                      </View>
+                    </View>
+
+                    <View style={styles.rightArea}>
+                      <View style={{}}>
+                        <View style={{flexDirection: 'row'}}>
+                          <View style={{marginTop: widthToDp(4)}}>
+                            <Text style={styles.fitpass}>FITBOOK PASS </Text>
+                            <Text style={styles.price}>899/M </Text>
+                          </View>
+                          <View style={{marginTop: widthToDp(10)}}>
+                            <TouchableOpacity
+                              style={styles.SubscriptionButton}
+                              onPress={() =>
+                                this.props.navigation.navigate('fitprime')
+                              }>
+                              <Text
+                                style={{
+                                  color: 'red',
+                                  fontWeight: '600',
+                                  fontSize: widthToDp(3),
+                                }}>
+                                SUBSCRIBE
+                              </Text>
+                            </TouchableOpacity>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </LinearGradient>
+                </View>
+              </View>
+            </View>
             <Text style={styles._membership}>MEMBERSHIPT</Text>
             <View style={styles._cardView}>
               {/* FITPASS */}
@@ -129,14 +171,18 @@ export default class UserProfile extends Component {
 
             <Text style={styles._mylogs}>MY LOGS</Text>
             <View style={styles._logItem}>
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('WORKOUTS')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('WORKOUTS')}>
                 <View style={styles._circle}>
                   <FoundationIcon name="shopping-bag" color="#f23535" />
                 </View>
                 <Text style={styles._li_text}>WORKOUTS</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('FITCOACH Log')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('FITCOACH Log')}>
                 <View style={styles._circle}>
                   <FontAwesome5 name="walking" color="#f23535" />
                 </View>
@@ -152,38 +198,45 @@ export default class UserProfile extends Component {
                 <Text style={styles._li_text}>MYORDERS</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles._li}  onPress={() => navigation.navigate('Meal Log')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('Meal Log')}>
                 <View style={styles._circle}>
                   <Icon name="apple" color="#f23535" />
                 </View>
                 <Text style={styles._li_text}>MEAL</Text>
               </TouchableOpacity>
-              
 
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('Gyms Near You')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('Gyms Near You')}>
                 <View style={styles._circle}>
                   <Entypo name="location" color="#f23535" />
                 </View>
                 <Text style={styles._li_text}>SUTDIO</Text>
               </TouchableOpacity>
-              
 
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('fitcash')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('fitcash')}>
                 <View style={styles._circle}>
                   <Ionicons name="ios-fitness" color="#f23535" />
                 </View>
                 <Text style={styles._li_text}>FITCASH</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('follow')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('follow')}>
                 <View style={styles._circle}>
                   <FontAwesome name="feed" color="#f23535" />
                 </View>
                 <Text style={styles._li_text}>FOLLOW</Text>
               </TouchableOpacity>
-              
 
-              <TouchableOpacity style={styles._li} onPress={() => navigation.navigate('Settings')}>
+              <TouchableOpacity
+                style={styles._li}
+                onPress={() => navigation.navigate('Settings')}>
                 <View style={styles._circle}>
                   <FontistoIcon name="nav-icon-grid" color="#f23535" />
                 </View>
@@ -325,5 +378,98 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginRight: 10,
     backgroundColor: 'white',
+  },
+  // SubscribeCard
+  shopingCard: {
+    height: widthToDp(25),
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: 0.3,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 1.84,
+    width: widthToDp(100),
+    flex: 1,
+  },
+  leftArea: {
+    width: widthToDp(30),
+    backgroundColor: '#f4e6e6',
+    height: widthToDp(25),
+    borderTopRightRadius: 75,
+    borderBottomRightRadius: 75,
+    alignItems: 'center',
+    shadowOpacity: 0.85,
+    shadowRadius: 3.84,
+    flexDirection: 'row',
+  },
+  _label: {
+    alignItems: 'center',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingRight: 40,
+  },
+  getText: {
+    color: 'red',
+    marginLeft: widthToDp(3),
+    width: 50,
+    fontSize: widthToDp(4),
+    fontWeight: '700',
+    fontFamily: 'Gill Sans',
+  },
+  percentText: {
+    color: 'red',
+    width: 50,
+    marginLeft: widthToDp(10),
+    fontSize: widthToDp(6),
+    fontWeight: '700',
+    fontFamily: 'Gill Sans',
+  },
+  offText: {
+    color: 'red',
+    width: 50,
+    marginLeft: widthToDp(20),
+    fontSize: widthToDp(4),
+    fontWeight: '700',
+    fontFamily: 'Gill Sans',
+  },
+  passText: {
+    color: 'white',
+  },
+  rightArea: {
+    backgroundColor: 'transparent',
+    marginTop: widthToDp(1),
+  },
+  textRight: {
+    color: 'white',
+    fontSize: heightToDp(2),
+    fontWeight: '500',
+    fontFamily: 'Gill Sans',
+  },
+  fitpass: {
+    color: 'white',
+    marginLeft: widthToDp(2),
+    fontSize: widthToDp(4),
+    fontWeight: '700',
+    fontFamily: 'Gill Sans',
+  },
+  price: {
+    color: 'white',
+    marginLeft: widthToDp(3),
+    fontSize: widthToDp(4),
+    fontWeight: '700',
+    fontFamily: 'Gill Sans',
+  },
+  SubscriptionButton: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    paddingHorizontal: widthToDp(4),
+    paddingVertical: widthToDp(1),
+    marginVertical: 5,
+    marginHorizontal: 5,
   },
 });
