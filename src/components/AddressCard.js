@@ -24,10 +24,10 @@ export default class AddressCard extends React.Component {
 
           <View style={styles._row}>
             <TouchableOpacity style={styles._addressBtn}>
-              <Text style={styles._btnText} onPress={()=>this.props.navigation.navigate("address")}>CHANGE</Text>
+              <Text style={styles._btnText} onPress={()=>this.props.navigation.navigate("ShippingAddress")}>CHANGE</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles._addressBtn} onPress={()=>this.props.navigation.navigate("address")} >
+            <TouchableOpacity style={styles._addressBtn} onPress={()=>this.props.navigation.navigate("ShippingAddress")} >
               <Text style={styles._btnText}>+ ADD NEW</Text>
             </TouchableOpacity>
           </View>

@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {widthToDp, heightToDp} from '../config/responsive';
 
 export default class Address extends React.Component {
   constructor() {
@@ -107,7 +108,9 @@ export default class Address extends React.Component {
                 placeholder="eg: friends flat"
                 style={styles._otherAddressInput}
               />
-              <TouchableOpacity style={styles._cancel} onPress={()=>this.setState({address:"Home"})}>
+              <TouchableOpacity
+                style={styles._cancel}
+                onPress={() => this.setState({address: 'Home'})}>
                 <Text style={styles._cancelTxt}>CANCEL</Text>
               </TouchableOpacity>
             </View>
@@ -155,6 +158,8 @@ let styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#e8e3e3',
     marginTop: 5,
+    // width: widthToDp(80),
+    height: widthToDp(13),
   },
   _saveBtn: {
     backgroundColor: '#f23535',
@@ -177,9 +182,11 @@ let styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     borderColor: '#e8e3e3',
+    height: widthToDp(13),
   },
   _otherAddressInput: {
     flex: 1,
+    height: widthToDp(13),
   },
   _cancel: {
     alignItems: 'center',
@@ -191,7 +198,7 @@ let styles = StyleSheet.create({
   },
   _cancelTxt: {
     // color: '',
-    fontWeight:"bold",
-    color:"grey"
+    fontWeight: 'bold',
+    color: 'grey',
   },
 });

@@ -24,15 +24,16 @@ import Nutritionist from './Nutritionst';
 import Coach from './Coach';
 import FitPass from './FitPass';
 import TermsConditions from './TermsConditions';
-import Address from './Address';
+import ShippingAddress from './ShippingAddress';
 import FitCash from './FitCash';
 import Follow from './Follow';
-import Setting from './Follow';
+import Setting from './Setting';
 import MyOrders from './MyOrders';
 import NearByGym from './NearByGym';
 import MealLog from './Meal'
 import FitCoachLog from './FitCoachLog'
 import WorkOuts from './WorkOuts'
+import EditProfile from './EditProfile'
 export {
   EnterMobile,
   EnterOTP,
@@ -60,7 +61,7 @@ export {
   Coach,
   FitPass,
   TermsConditions,
-  Address,
+  ShippingAddress,
   FitCash,
   Follow,
   Setting,
@@ -68,5 +69,6 @@ export {
   NearByGym,
   MealLog,
   FitCoachLog,
-  WorkOuts
+  WorkOuts,
+  EditProfile
 };

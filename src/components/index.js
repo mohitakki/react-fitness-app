@@ -15,9 +15,10 @@ import SubscribeCard from './SubscribeCard';
 import Fitcoach from './Fitcoach';
 import FitFeast from './Fitfeast';
 import FitPass from './Fitpass';
-import PlanSlider from './PlanSlider'
-import GreeingCard from './GreetingCard'
-import AddressCard from './AddressCard'
+import PlanSlider from './PlanSlider';
+import GreeingCard from './GreetingCard';
+import AddressCard from './AddressCard';
+import DatePicker from './DatePicker';
 // import Reviews from './Reviews'
 export {
   MobileDiologBox,
@@ -39,7 +40,8 @@ export {
   FitFeast,
   PlanSlider,
   GreeingCard,
-  AddressCard
+  AddressCard,
+  DatePicker,
 
   // Reviews
 };

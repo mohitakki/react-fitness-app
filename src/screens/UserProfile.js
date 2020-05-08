@@ -57,9 +57,19 @@ export default class UserProfile extends Component {
     return (
       <LinearGradient colors={['#f23535', '#48CCF7']} style={{flex: 1}}>
         <View style={styles.circleView}>
-          <Image source={require('../assests/img1.jpg')} style={styles.image} />
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Settings')}>
+            <Image
+              source={require('../assests/img1.jpg')}
+              style={styles.image}
+            />
+          </TouchableOpacity>
           <View>
-            <Text style={styles._name}>Mohit Kumar</Text>
+            <Text
+              style={styles._name}
+              onPress={() => this.props.navigation.navigate('Settings')}>
+              Mohit Kumar
+            </Text>
             <Text style={styles._id}>FITPASS ID - 120396022025</Text>
             <Text style={styles._location}>
               <Entypo name="location-pin" color="white" />

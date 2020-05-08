@@ -32,7 +32,7 @@ import {
   Coach,
   FitPass,
   TermsConditions,
-  Address,
+  ShippingAddress,
   FitCash,
   Follow,
   Setting,
@@ -41,6 +41,7 @@ import {
   MealLog,
   FitCoachLog,
   WorkOuts,
+  EditProfile,
 } from './src/screens';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -382,8 +383,8 @@ export default function HomeStackScreen() {
         />
 
         <HomeStack.Screen
-          name="address"
-          component={Address}
+          name="ShippingAddress"
+          component={ShippingAddress}
           options={{
             headerTitle: (
               <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
@@ -449,7 +450,7 @@ export default function HomeStackScreen() {
             },
             headerTitle: (
               <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-               Refer & Earn
+                Refer & Earn
               </Text>
             ),
             headerTintColor: 'white',
@@ -465,7 +466,7 @@ export default function HomeStackScreen() {
             },
             headerTitle: (
               <Text style={{color: 'white', fontFamily: 'Gill Sans'}}>
-               In Your Circle
+                In Your Circle
               </Text>
             ),
             headerTintColor: 'white',
@@ -530,6 +531,17 @@ export default function HomeStackScreen() {
         <HomeStack.Screen
           name="WORKOUTS"
           component={WorkOuts}
+          options={{
+            headerStyle: {
+              backgroundColor: '#f23535',
+            },
+            headerTintColor: 'white',
+          }}
+        />
+
+        <HomeStack.Screen
+          name="Edit Profile"
+          component={EditProfile}
           options={{
             headerStyle: {
               backgroundColor: '#f23535',
