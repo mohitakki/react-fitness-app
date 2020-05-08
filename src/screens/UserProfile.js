@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import AsyncStorage from '@react-native-community/async-storage';
+
 import {widthToDp, heightToDp} from '../config/responsive';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -38,18 +38,7 @@ export default class UserProfile extends Component {
     });
   }
 
-  logout = async () => {
-    try {
-      // await AsyncStorage.removeItem('token');
-      const getItem = await AsyncStorage.removeItem('token');
-
-      //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
-      console.log('Should not be stored:', getItem);
-      this.props.navigation.navigate('Login');
-    } catch (err) {
-      throw new Error(err);
-    }
-  };
+  
   // <Button title="Logout" onPress={() => this.logout()} />
 
   render() {

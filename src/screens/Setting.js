@@ -14,7 +14,32 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-community/async-storage';
+
+
+
+
+
 export default class Setting extends React.Component {
+  constructor(props) {
+    super(props);
+    
+  }
+  
+
+  logout = async () => {
+    try {
+      // await AsyncStorage.removeItem('token');
+      const getItem = await AsyncStorage.removeItem('token');
+
+      //This works and it is cleared, but when the app is relaunched or refreshed the value comes back
+      console.log('Should not be stored:', getItem);
+      this.props.navigation.navigate('Login');
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
   render() {
     return (
       <View style={styles._container}>
@@ -34,7 +59,7 @@ export default class Setting extends React.Component {
 
           <TouchableOpacity
             style={styles._li}
-            onPress={() => this.props.navigation.navigate('address')}>
+            onPress={() => this.props.navigation.navigate('location')}>
             <View style={styles._leftView}>
               <View style={[styles._circle, {backgroundColor: '#f97272'}]}>
                 <Entypo name="location" color="white" />
@@ -116,12 +141,14 @@ export default class Setting extends React.Component {
             <FontAwesome5 name="angle-double-right" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles._li}>
+          <TouchableOpacity style={styles._li} onPress={()=>this.logout()}>
             <View style={styles._leftView}>
               <View style={[styles._circle, {backgroundColor: '#f97272'}]}>
                 <FontAwesome5 name="clipboard-list" color="white" />
               </View>
-              <Text style={styles._list_text}>LOGOUT</Text>
+            
+                <Text style={styles._list_text}>LOGOUT</Text>
+           
             </View>
             <FontAwesome5 name="angle-double-right" />
           </TouchableOpacity>

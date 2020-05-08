@@ -18,7 +18,7 @@ export default class AddressCard extends React.Component {
               <Text style={styles._locationTxt}>Mobile - 9084632266</Text>
             </View>
             <TouchableOpacity>
-              <Entypo name="edit" color="grey" size={16} />
+              <Entypo name="edit" color="gray" size={16} />
             </TouchableOpacity>
           </View>
 

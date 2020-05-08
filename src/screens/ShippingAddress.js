@@ -119,11 +119,11 @@ export default class Address extends React.Component {
 
         {/*address form */}
         <View style={styles._form}>
-          <TextInput placeholder="Name" style={styles._textInput} />
-          <TextInput placeholder="Address" style={styles._textInput} />
-          <TextInput placeholder="Locality" style={styles._textInput} />
-          <TextInput placeholder="State" style={styles._textInput} />
-          <TextInput placeholder="Pincode" style={styles._textInput} />
+          <TextInput placeholder="Name" placeholderTextColor='gray' style={styles._textInput} />
+          <TextInput placeholder="Address" placeholderTextColor='gray' style={styles._textInput} />
+          <TextInput placeholder="Locality" placeholderTextColor='gray' style={styles._textInput} />
+          <TextInput placeholder="State" placeholderTextColor='gray' style={styles._textInput} />
+          <TextInput placeholder="Pincode" placeholderTextColor='gray' style={styles._textInput} />
           <TouchableOpacity style={styles._saveBtn} activeOpacity={0.8}>
             <Text style={styles._saveText}>SAVE CHANGES</Text>
           </TouchableOpacity>

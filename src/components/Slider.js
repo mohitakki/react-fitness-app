@@ -65,7 +65,7 @@ export default class Slider extends Component {
           }}>
           <Text
             style={styles.exploreText}
-            onPress={() => this.props.props.navigate('GymProfile')}>
+            onPress={() => this.props.props.navigate('gymprofile')}>
             Explore this GYM
           </Text>
         </View>

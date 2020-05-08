@@ -398,7 +398,7 @@ let styles = StyleSheet.create({
     borderRadius: 10,
   },
   _proceed: {
-    backgroundColor: 'green',
+    backgroundColor: '#f23535',
     width: '47%',
     justifyContent: 'center',
     alignItems: 'center',

@@ -78,21 +78,21 @@ export default class EditProfile extends React.Component {
             </View>
           </View>
           <View style={styles._body}>
-            <Text style={styles._tab_heading}>Name</Text>
-            <TextInput value="Mohit Kumar" style={styles._textInput} />
+            <Text style={styles._tab_heading}>NAME</Text>
+            <TextInput placeholder="Mohit Kumar" placeholderTextColor='gray' style={styles._textInput} />
             <Text style={styles._tab_heading}>DOB</Text>
             <DatePicker />
-            <Text style={styles._tab_heading}>Email</Text>
+            <Text style={styles._tab_heading}>EMAIL</Text>
             <TextInput
-              value="Bhullansaab@gmail.com"
+              placeholder="Bhullansaab@gmail.com" placeholderTextColor='gray'
               style={styles._textInput}
             />
 
             <Text style={styles._tab_heading}>PREFERRED LOCATION</Text>
-            <TextInput value="Ahmedabad" style={styles._textInput} />
+            <TextInput placeholder="Ahmedabad" placeholderTextColor='gray' style={styles._textInput} />
 
             <Text style={styles._tab_heading}>MOBILE</Text>
-            <TextInput value="9084632266" style={styles._textInput} />
+            <TextInput placeholder="9084632266" placeholderTextColor='gray' style={styles._textInput} />
 
             <Text style={styles._tab_heading}>GENDER</Text>
 
@@ -104,7 +104,7 @@ export default class EditProfile extends React.Component {
                   style={[
                     styles._radioBtn,
                     {
-                      borderColor: selected ? '#1bd582' : 'grey',
+                      borderColor: selected ? '#48CCF7' : 'grey',
                     },
                   ]}>
                   <Text
@@ -112,7 +112,7 @@ export default class EditProfile extends React.Component {
                       styles._optionNum,
                       {
                         backgroundColor:
-                          selected === 'Male' ? '#1bd582' : 'white',
+                          selected === 'Male' ? '#48CCF7' : 'white',
                       },
                     ]}
                   />
@@ -127,7 +127,7 @@ export default class EditProfile extends React.Component {
                   style={[
                     styles._radioBtn,
                     {
-                      borderColor: selected ? '#1bd582' : 'grey',
+                      borderColor: selected ? '#48CCF7' : 'grey',
                     },
                   ]}>
                   <Text
@@ -135,7 +135,7 @@ export default class EditProfile extends React.Component {
                       styles._optionNum,
                       {
                         backgroundColor:
-                          selected === 'Female' ? '#1bd582' : 'white',
+                          selected === 'Female' ? '#48CCF7' : 'white',
                       },
                     ]}
                   />
@@ -148,12 +148,12 @@ export default class EditProfile extends React.Component {
             <View style={styles._row}>
               <View>
                 <Text style={styles._tab_heading}>HEIGHT</Text>
-                <TextInput value="5'6" style={styles._heightInput} />
+                <TextInput placeholder="5'6" placeholderTextColor='gray' style={styles._heightInput} />
               </View>
 
               <View>
                 <Text style={styles._tab_heading}>WEIGHT</Text>
-                <TextInput value="5'6" style={styles._wightInput} />
+                <TextInput placeholder="5'6" placeholderTextColor='gray' style={styles._wightInput} />
               </View>
             </View>
             <TextInput />
@@ -215,7 +215,7 @@ let styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     letterSpacing: 2,
-    color: 'grey',
+    color: '#000',
     marginTop: 10,
     // padding: 10,
   },
@@ -223,7 +223,8 @@ let styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'grey',
     //   height:30,
-    padding: 0,
+    padding: 8,
+    color:'#000'
   },
   _radioBtn: {
     height: 20,
@@ -259,18 +260,20 @@ let styles = StyleSheet.create({
   _wightInput: {
     borderColor: 'grey',
     width: 140,
-    padding: 0,
+    padding: 8,
     borderBottomWidth: 1,
+    color:'gray'
   },
   _heightInput: {
     borderColor: 'grey',
     width: 140,
-    padding: 0,
+    padding: 8,
     flex: 1,
     borderBottomWidth: 1,
+    color:'gray'
   },
   _saveBtn: {
-    backgroundColor: '#1bd582',
+    backgroundColor: '#f23535',
     borderRadius: 5,
   },
   _saveBtn_text: {
