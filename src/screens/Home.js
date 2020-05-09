@@ -33,6 +33,9 @@ export default class Home extends Component {
       data: [],
     };
   }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+  }
 
   componentDidMount() {
 

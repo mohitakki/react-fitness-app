@@ -143,6 +143,8 @@ const styles = StyleSheet.create({
     paddingVertical: widthToDp(3),
     marginTop: widthToDp(3),
     shadowColor: '#48CCF7',
+       alignItems: 'center',
+    justifyContent: 'center',
     shadowOffset: {
       width: 0,
       height: 2,

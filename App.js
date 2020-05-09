@@ -226,8 +226,8 @@ export default function HomeStackScreen() {
     detectLogin();
   }, []);
   return (
-    <NavigationContainer ref={navigationRef}>
-      <HomeStack.Navigator>
+    <NavigationContainer ref={navigationRef} >
+      <HomeStack.Navigator initialRouteName="bottombar"> 
         <HomeStack.Screen
           name="Splash"
           component={Splash}

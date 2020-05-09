@@ -7,6 +7,7 @@ import {
   StatusBar,
   Modal,
   TouchableOpacity,
+  BackHandler
 } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 
@@ -55,6 +56,24 @@ export default class Onboarding extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    console.log('onbo un')
+
+    BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+  }
+ 
+
+  componentDidMount() {
+    console.log('onbo mount')
+
+
+    BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+  }
+
+  handleBackPress = screen => {
+    BackHandler.exitApp();
+    return true;
+  };
   _renderItem = ({item,index}) => {
     return (
       <View

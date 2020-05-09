@@ -67,7 +67,7 @@ export default class EnterMobile extends Component {
       .catch((error) => {
         this.setState({isloding:false})
 
-        console.error(error);
+        console.log(error);
       });
     }
     )
@@ -169,6 +169,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: widthToDp(80),
     height: widthToDp(13),
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
     marginTop: widthToDp(5),
     shadowColor: '#48CCF7',
@@ -184,7 +186,6 @@ const styles = StyleSheet.create({
   sentText: {
     textAlign: 'center',
     fontSize: widthToDp(5),
-    marginTop:widthToDp(3),
     fontWeight: '700',
     color: '#F23873',
   },
