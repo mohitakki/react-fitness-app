@@ -5,6 +5,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   BackHandler,
+  ActivityIndicator
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
@@ -15,41 +16,53 @@ export default class EnterOTP extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      otp:""
+      otp:"",
+      
+      isloding:false
     };
   }
+  async sendOTP () {
 
-  sendOTP = async = () => {
-    fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
-    {
-      method:'POST',
-      headers: {
-       'Accept': 'application/json, text/plain',
-       'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        otp: this.state.otp
+    this.setState({isloding:true},()=>{
+      fetch('http://fitbook.fit/fitbookadmin/api_v1/otp_check.php',
+      {
+        method:'POST',
+        headers: {
+         'Accept': 'application/json, text/plain',
+         'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          otp: this.state.otp
+        })
       })
-    })
-    .then((response) => response.json())
-    .then( async(res) => {
-
-      if(res.error === false){
-        await  AsyncStorage.setItem('token', res.token)
-      this.props.navigation.navigate('bottombar')
-      console.warn('done');
-      
-      }
-      else{
-        alert("OTP to Sahi daal Bhai")
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => response.json())
+      .then( async(res) => {
   
-  }
+        if(res.error === false){
+          await  AsyncStorage.setItem('token', res.token)
+          this.setState({isloding :false},()=>{
+            this.props.navigation.navigate('bottombar')
+            console.warn('done');
 
+          })
+        
+        }
+        else{
+          this.setState({isloding:false})
+          alert("OTP to Sahi daal Bhai")
+        }
+      })
+      .catch((error) => {
+        this.setState({isloding:false})
+
+        console.error(error);
+      });
+
+    })
+    
+    }
+
+  
   render() {
     return (
       <KeyboardAvoidingView
@@ -77,11 +90,16 @@ export default class EnterOTP extends Component {
             />
             <TouchableOpacity
               style={styles.sentButon}
+              disabled={this.state.isloding}
               onPress={() => this.sendOTP()}>
+                  {this.state.isloading ? 
+                          <ActivityIndicator  color="red" size="small"/>
+  :
               <Text style={styles.sentText}>SUBMIT</Text>
+  }
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.sendOTP()}>
+            <TouchableOpacity onPress={() => this.sendOTP()} disabled={this.state.isloding}>
               <Text style={styles.resendOTP}>
                 Resend OTP
               </Text>

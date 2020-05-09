@@ -5,6 +5,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   BackHandler,
+  ActivityIndicator,
   
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,45 +20,60 @@ export default class EnterMobile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile:""
+      mobile:"",
+      isloading:false
     };
   }
 
-  sendOTP = async =()=> {
-   
-    fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
-    {
-      method:'POST',
-      headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        mobile: this.state.mobile
+  async sendOTP () {
+    this.setState({isloading:true},()=>{
+
+      fetch('https://fitbook.fit/fitbookadmin/api_v1/signup.php',
+      {
+        method:'POST',
+        headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          mobile: this.state.mobile
+        })
       })
-    })
-    .then((response) => response.json())
-    .then( async (res) => {
-      try{
-      if(res.error === false){
-    console.log(res.message);
-    
-      this.props.navigation.navigate('EnterOTP')
-      }
-      else{
-        alert('Enter a valid mobile')
-      }
-      } catch(e){
+      .then((response) => response.json())
+      .then( async (res) => {
+        try{
+        if(res.error === false){
+      console.log(res.message);
+      this.setState({
+        isloading:false
+      })
+      
+        this.props.navigation.navigate('EnterOTP')
+        }
+        else{
+          alert('Enter a valid mobile')
+          this.setState({
+            isloading:false
+          })
+        }
+        } catch(e){
+          this.setState({
+            isloading:false
+          })
+  
+        }
+       
+      })
+      .catch((error) => {
+        this.setState({isloding:false})
 
-      }
+        console.error(error);
+      });
+    }
+    )
      
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-    
-  }
-
+   }
+  
   render() {
     return (
       <>
@@ -88,10 +104,18 @@ export default class EnterMobile extends Component {
             />
             <TouchableOpacity
               style={styles.sentButon}
-              onPress={() => this.sendOTP()}>
+              onPress={() => this.sendOTP()}
+              disabled={this.state.isloading}
+              >
+              
               {/* onPress={() => this.RBSheet.open()}
               > */}
-              <Text style={styles.sentText}>Send OTP</Text>
+              {this.state.isloading ? 
+                          <ActivityIndicator  color="red" size="small"/>
+  :
+                          <Text style={styles.sentText}>Send OTP</Text>
+            }
+
             </TouchableOpacity>
 
             <RBSheet
