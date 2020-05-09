@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  BackHandler,
   TouchableOpacity,
   StatusBar,
   Button,
@@ -34,6 +35,10 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+
+
+    BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+
     return fetch('https://fitbook.fit/fitbookadmin/api_v1/home.php', {
       method: 'POST',
     })
@@ -44,8 +49,15 @@ export default class Home extends Component {
           data: res.slider,
         });
       });
+
+
   }
 
+
+  handleBackPress = screen => {
+    BackHandler.exitApp();
+    return true;
+  };
   // logout= async ()=>{
   //   try {
   //     await AsyncStorage.removeItem('token');
